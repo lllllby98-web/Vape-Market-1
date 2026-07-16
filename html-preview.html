@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雾化烟（E-Vapor）全球市场格局 2016–2027｜市场情报简报</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,72,400;0,72,500;0,72,600;1,72,400;1,72,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js">
+    </script>
+    <style>
+        :root {
+            --bg: #FFFFFF;
+            --bg-panel: #F7F6F3;
+            --bg-panel-raised: #EEECEA;
+            --ink: #1A1814;
+            --ink-dim: #5A5650;
+            --ink-faint: #9A9690;
+            --blue: #1A56A0;
+            --blue-soft: #4580C8;
+            --blue-light: #E8F0FB;
+            --red: #B83030;
+            --green: #2E7D5A;
+            --line: #E2DED8;
+            --line-soft: #EDEBE7;
+            --us: #1A56A0;
+            --uk: #B83030;
+            --de: #2E7D5A;
+            --focus-strip: #F0F4FB;
+            --shadow-sm: 0 2px 12px rgba(0, 0, 0, .06);
+            --radius: 6px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .mono {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        .serif {
+            font-family: 'Newsreader', serif;
+        }
+
+        .wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 36px;
+        }
+        @media(max-width:720px) {
+            .wrap {
+                padding: 0 18px;
+            }
+        }
+
+        /* ===== TOP NAV BAR ===== */
+        .topbar {
+            border-bottom: 1px solid var(--line);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(8px);
+        }
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .topbar-logo {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11.5px;
+            color: var(--ink-faint);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+        .topbar-nav {
+            display: flex;
+            gap: 0;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .topbar-nav a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11.5px;
+            padding: 6px 14px;
+            color: var(--ink-dim);
+            text-decoration: none;
+            border-right: 1px solid var(--line);
+            transition: background .12s;
+        }
+        .topbar-nav a:last-child {
+            border-right: none;
+        }
+        .topbar-nav a:hover {
+            background: var(--bg-panel);
+            color: var(--ink);
+        }
+        @media(max-width:680px) {
+            .topbar-nav {
+                display: none;
+            }
+        }
+
+        /* ===== MASTHEAD ===== */
+        .masthead {
+            padding: 60px 0 44px;
+            border-bottom: 1px solid var(--line);
+        }
+        .eyebrow {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11.5px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .eyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--blue);
+            display: inline-block;
+        }
+        h1.title {
+            font-family: 'Newsreader', serif;
+            font-weight: 500;
+            font-style: italic;
+            font-size: clamp(36px, 5vw, 60px);
+            line-height: 1.1;
+            color: var(--ink);
+            max-width: 860px;
+        }
+        h1.title em {
+            color: var(--blue);
+            font-style: normal;
+        }
+        .subtitle {
+            margin-top: 16px;
+            font-size: 16px;
+            color: var(--ink-dim);
+            max-width: 640px;
+        }
+        .meta-row {
+            margin-top: 28px;
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--ink-faint);
+        }
+        .meta-row span b {
+            color: var(--ink-dim);
+        }
+
+        .stat-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 40px;
+            border: 1px solid var(--line);
+        }
+        .stat-cell {
+            padding: 22px 24px;
+            border-right: 1px solid var(--line);
+        }
+        .stat-cell:last-child {
+            border-right: none;
+        }
+        .stat-cell .num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--blue);
+        }
+        .stat-cell .lbl {
+            margin-top: 6px;
+            font-size: 12.5px;
+            color: var(--ink-dim);
+        }
+        @media(max-width:720px) {
+            .stat-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stat-cell {
+                border-bottom: 1px solid var(--line);
+            }
+        }
+
+        /* ===== SECTION ===== */
+        section.block {
+            padding: 64px 0;
+            border-bottom: 1px solid var(--line);
+            position: relative;
+        }
+        .sec-head {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .sec-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--ink-faint);
+            letter-spacing: .1em;
+        }
+        .sec-title {
+            font-family: 'Newsreader', serif;
+            font-weight: 500;
+            font-size: 28px;
+            color: var(--ink);
+        }
+        .sec-desc {
+            color: var(--ink-dim);
+            font-size: 14.5px;
+            max-width: 700px;
+            margin-top: 6px;
+            margin-bottom: 28px;
+        }
+
+        .panel {
+            background: var(--bg-panel);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 28px;
+        }
+
+        .pillbar {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .pill {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            padding: 7px 14px;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: #fff;
+            color: var(--ink-dim);
+            cursor: pointer;
+            transition: all .14s;
+        }
+        .pill:hover {
+            border-color: var(--blue-soft);
+            color: var(--ink);
+        }
+        .pill.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: #fff;
+            font-weight: 600;
+        }
+        .pill.active-uk {
+            background: var(--uk);
+            border-color: var(--uk);
+            color: #fff;
+        }
+        .pill.active-de {
+            background: var(--de);
+            border-color: var(--de);
+            color: #fff;
+        }
+
+        .chart-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .legend-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 18px;
+            margin-top: 18px;
+        }
+        .legend-chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12.5px;
+            color: var(--ink-dim);
+            cursor: pointer;
+            user-select: none;
+        }
+        .legend-chip .sw {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            flex: none;
+        }
+        .legend-chip.dim {
+            opacity: .28;
+        }
+        .legend-chip:hover {
+            color: var(--ink);
+        }
+
+        .footnote {
+            margin-top: 16px;
+            font-size: 12.5px;
+            color: var(--ink-faint);
+            line-height: 1.65;
+        }
+
+        /* ===== BUMP ===== */
+        .bump-wrap {
+            display: flex;
+            gap: 24px;
+        }
+        .bump-chart-area {
+            flex: 1;
+            min-width: 0;
+            position: relative;
+        }
+        .bump-legend {
+            width: 178px;
+            flex: none;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding-top: 4px;
+        }
+        @media(max-width:880px) {
+            .bump-wrap {
+                flex-direction: column;
+            }
+            .bump-legend {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+
+        .bump-legend .item {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11.5px;
+            padding: 5px 8px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            cursor: pointer;
+            color: var(--ink-dim);
+            transition: background .1s;
+        }
+        .bump-legend .item .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex: none;
+        }
+        .bump-legend .item:hover {
+            background: var(--bg-panel);
+            color: var(--ink);
+        }
+        .bump-legend .item.dimmed {
+            opacity: .25;
+        }
+        .bump-legend .item.is-focus {
+            font-weight: 600;
+        }
+
+        #bumpTooltip {
+            position: absolute;
+            pointer-events: none;
+            background: #fff;
+            border: 1px solid var(--line);
+            padding: 9px 13px;
+            border-radius: 4px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--ink);
+            opacity: 0;
+            transition: opacity .1s;
+            z-index: 10;
+            white-space: nowrap;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ===== COMPOSITION ===== */
+        .year-scrubber {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .year-scrubber input[type=range] {
+            flex: 1;
+            accent-color: var(--blue);
+        }
+        .ylabel {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 22px;
+            color: var(--blue);
+            width: 60px;
+        }
+        .play-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--ink-dim);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: none;
+            transition: border-color .12s;
+        }
+        .play-btn:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        .comp-wrap {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+        .comp-donut {
+            flex: none;
+            width: 280px;
+            position: relative;
+        }
+        .comp-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none;
+        }
+        .comp-center .ylbl {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--ink-faint);
+        }
+        .comp-center .vv {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 25px;
+            color: var(--blue);
+            margin-top: 2px;
+        }
+        .comp-list {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-row {
+            display: grid;
+            grid-template-columns: 26px 1fr 58px 68px;
+            gap: 10px;
+            align-items: center;
+            padding: 9px 0;
+            border-bottom: 1px solid var(--line-soft);
+            font-size: 13px;
+        }
+        .comp-row .rank {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--ink-faint);
+            font-size: 11.5px;
+        }
+        .comp-row .name {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .comp-row .sw {
+            width: 9px;
+            height: 9px;
+            border-radius: 2px;
+            flex: none;
+        }
+        .comp-row .pct {
+            font-family: 'IBM Plex Mono', monospace;
+            text-align: right;
+            color: var(--ink-dim);
+        }
+        .comp-row .val {
+            font-family: 'IBM Plex Mono', monospace;
+            text-align: right;
+            color: var(--ink-faint);
+            font-size: 11.5px;
+        }
+        .comp-row.is-focus .name {
+            font-weight: 600;
+        }
+        .new-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            background: var(--blue-light);
+            color: var(--blue);
+            padding: 1px 5px;
+            border-radius: 3px;
+        }
+        .f-tag {
+            font-size: 9px;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        .f-us {
+            background: #E8F0FB;
+            color: var(--us);
+        }
+        .f-uk {
+            background: #FDEAEA;
+            color: var(--uk);
+        }
+        .f-de {
+            background: #E8F5EE;
+            color: var(--de);
+        }
+        @media(max-width:780px) {
+            .comp-wrap {
+                flex-direction: column;
+                align-items: center;
+            }
+            .comp-list {
+                width: 100%;
+            }
+        }
+/* ===== INSIGHT CARDS ===== */
+.insight-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+}
+.insight-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px 22px;
+}
+.insight-card .ic-head {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.insight-card p {
+    font-size: 13.5px;
+    color: var(--ink-dim);
+    line-height: 1.72;
+}
+.insight-card p b {
+    color: var(--ink);
+    font-weight: 600;
+}
+@media(max-width:720px) {
+    .insight-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+        /* ================================================================
+                   SECTION 04 — 三国专题 全新排版（优化后）
+                   ================================================================ */
+
+        /* ---- 国家切换 Tabs ---- */
+        .country-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .country-tab {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 12px 28px;
+            border: 2px solid var(--line);
+            border-radius: var(--radius);
+            background: #fff;
+            color: var(--ink-dim);
+            cursor: pointer;
+            transition: all .2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 0 1 auto;
+        }
+        .country-tab:hover {
+            border-color: #b0aaa4;
+            color: var(--ink);
+            background: var(--bg-panel);
+        }
+        .country-tab .flag {
+            font-size: 20px;
+            line-height: 1;
+        }
+        .country-tab .name {
+            font-weight: 600;
+        }
+        .country-tab .badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            background: var(--bg-panel);
+            color: var(--ink-faint);
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 2px;
+        }
+        .country-tab.active-us {
+            border-color: var(--us);
+            background: var(--blue-light);
+            color: var(--us);
+            box-shadow: 0 0 0 1px var(--us);
+        }
+        .country-tab.active-us .badge {
+            background: var(--us);
+            color: #fff;
+        }
+        .country-tab.active-uk {
+            border-color: var(--uk);
+            background: #FDEAEA;
+            color: var(--uk);
+            box-shadow: 0 0 0 1px var(--uk);
+        }
+        .country-tab.active-uk .badge {
+            background: var(--uk);
+            color: #fff;
+        }
+        .country-tab.active-de {
+            border-color: var(--de);
+            background: #E8F5EE;
+            color: var(--de);
+            box-shadow: 0 0 0 1px var(--de);
+        }
+        .country-tab.active-de .badge {
+            background: var(--de);
+            color: #fff;
+        }
+
+        /* ---- 面板容器 ---- */
+        .detail-section {
+            display: none;
+        }
+        .detail-section.active {
+            display: block;
+            animation: fadeUp .35s ease;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---- 关键数据 4 卡片 ---- */
+        .key-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .metric-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 18px 20px 16px;
+            transition: border-color .15s;
+        }
+        .metric-card .mc-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            color: var(--ink-faint);
+        }
+        .metric-card .mc-value {
+            font-family: 'Newsreader', serif;
+            font-weight: 500;
+            font-size: 28px;
+            line-height: 1.2;
+            margin-top: 4px;
+            color: var(--ink);
+        }
+        .metric-card .mc-sub {
+            font-size: 12px;
+            color: var(--ink-dim);
+            margin-top: 2px;
+        }
+        .metric-card .mc-value .mc-color-us {
+            color: var(--us);
+        }
+        .metric-card .mc-value .mc-color-uk {
+            color: var(--uk);
+        }
+        .metric-card .mc-value .mc-color-de {
+            color: var(--de);
+        }
+        @media(max-width:780px) {
+            .key-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media(max-width:480px) {
+            .key-metrics {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---- 趋势图卡片 ---- */
+        .chart-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 24px 24px;
+            margin-bottom: 28px;
+        }
+        .chart-card .chart-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .chart-card .chart-head h3 {
+            font-family: 'Newsreader', serif;
+            font-weight: 500;
+            font-size: 20px;
+            color: var(--ink);
+        }
+        .chart-card .chart-head .pillbar .pill {
+            font-size: 11px;
+            padding: 5px 12px;
+        }
+        .chart-card .chart-body {
+            position: relative;
+            height: 260px;
+        }
+        @media(max-width:720px) {
+            .chart-card .chart-body {
+                height: 200px;
+            }
+        }
+
+        /* ---- 两列：产品形态 + 渠道分布 (重写) ---- */
+        .focus-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+        .focus-grid-2 .sub-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 22px 22px;
+            display: flex;
+            flex-direction: column;
+        }
+        .focus-grid-2 .sub-card h4 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            margin-bottom: 14px;
+            flex-shrink: 0;
+        }
+
+        /* --- 产品形态：饼图 + 图例 横向紧凑 --- */
+        .pie-wrap {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex: 1;
+        }
+        .pie-wrap .pie-canvas-wrap {
+            flex: 0 0 130px;
+            width: 130px;
+            height: 130px;
+            position: relative;
+        }
+        .pie-wrap .pie-canvas-wrap canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .pie-legend {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 100px;
+        }
+        .pie-legend .pl-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12.5px;
+            color: var(--ink-dim);
+        }
+        .pie-legend .pl-item .pl-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            flex: none;
+        }
+        .pie-legend .pl-item .pl-pct {
+            font-family: 'IBM Plex Mono', monospace;
+            margin-left: auto;
+            color: var(--ink-faint);
+            font-size: 11.5px;
+        }
+
+        /* --- 渠道分布：条形图 (Chart.js) + 额外数据 --- */
+        .chan-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .chan-content .chan-chart-wrap {
+            height: 140px;
+            position: relative;
+        }
+        .chan-content .chan-chart-wrap canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .channel-extras {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            padding-top: 12px;
+            border-top: 1px solid var(--line-soft);
+        }
+        .channel-extras .ce-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--ink-dim);
+            padding: 2px 0;
+        }
+        .channel-extras .ce-item .ce-key {
+            color: var(--ink-faint);
+            font-size: 11.5px;
+        }
+        .channel-extras .ce-item .ce-val {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        @media(max-width:820px) {
+            .focus-grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .pie-wrap {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .pie-wrap .pie-canvas-wrap {
+                flex: 0 0 120px;
+                width: 120px;
+                height: 120px;
+            }
+            .chan-content .chan-chart-wrap {
+                height: 120px;
+            }
+        }
+        @media(max-width:480px) {
+            .pie-wrap .pie-canvas-wrap {
+                flex: 0 0 100px;
+                width: 100px;
+                height: 100px;
+            }
+            .channel-extras {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---- 分析笔记 ---- */
+        .analyst-note {
+            background: var(--bg-panel);
+            border-left: 4px solid var(--blue);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding: 22px 28px;
+            margin-top: 6px;
+            transition: border-color .2s;
+        }
+        .analyst-note .note-head {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--ink);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analyst-note .note-head .note-flag {
+            font-size: 20px;
+        }
+        .analyst-note .note-body {
+            font-size: 14px;
+            color: var(--ink-dim);
+            line-height: 1.8;
+        }
+        .analyst-note .note-body strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+        .analyst-note .note-signoff {
+            margin-top: 12px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11.5px;
+            color: var(--ink-faint);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 48px 0 72px;
+        }
+        footer .cols {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 36px;
+        }
+        footer h4 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            margin-bottom: 12px;
+        }
+        footer p,
+        footer li {
+            font-size: 12.5px;
+            color: var(--ink-dim);
+            line-height: 1.72;
+        }
+        footer ul {
+            list-style: none;
+        }
+        footer li {
+            margin-bottom: 5px;
+        }
+
+        ::selection {
+            background: var(--blue);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="topbar">
+        <div class="wrap topbar-inner">
+            <div class="topbar-logo">E-VAPOR · Global Market Intelligence</div>
+            <div class="topbar-nav">
+                <a href="#sec-overview">01 全球总览</a>
+                <a href="#sec-bump">02 排位变迁</a>
+                <a href="#sec-composition">03 年度构成</a>
+                <a href="#sec-focus">04 三国专题</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wrap">
+
+        <header class="masthead">
+            <div class="eyebrow">Global Market Intelligence · 数据来源 TobaccoIntelligence</div>
+            <h1 class="title">雾化烟（E-Vapor）<br><em>全球格局追踪分析（2026 H1）</em></h1>
+            <p class="subtitle">51个市场，2016–2027年规模追踪（含预测）。本简报聚焦全球前十大市场的此起彼伏，以及英国、美国、德国三个结构迥异的核心市场。</p>
+            <div class="meta-row">
+                <span>覆盖区间 <b>2016–2027</b></span>
+                <span>样本市场 <b>51</b></span>
+                <span>口径 <b>Top10 + 其他</b></span>
+                <span>专题市场 <b>英国 · 美国 · 德国</b></span>
+            </div>
+            <div class="stat-strip" id="heroStats"></div>
+        </header>
+
+        <!-- 01 总览 -->
+        <section class="block" id="sec-overview">
+            <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">全球总览</span></div>
+            <p class="sec-desc">Top10 市场叠加"其他"构成全球总量；右轴折线为总量同比增速，F2026/F2027 为预测值，以虚线区分。</p>
+
+            <div class="panel">
+                <div class="chart-toolbar">
+                    <div class="pillbar" id="overviewToggle">
+                        <button class="pill active" data-mode="abs">绝对规模 (USD)</button>
+                        <button class="pill" data-mode="pct">占比构成 (%)</button>
+                    </div>
+                    <div class="pillbar">
+                        <button class="pill active" id="growthToggle">同比增速 ✓</button>
+                    </div>
+                </div>
+                <div style="position:relative;height:420px;"><canvas id="overviewChart"></canvas></div>
+                <div class="legend-row" id="overviewLegend"></div>
+                <p class="footnote">悬停可查看各国当年数值。2026–2027 年为预测值（F），以半透明柱区分；空心圆增速标记代表负增长。</p>
+            </div>
+
+            <div class="insight-grid" style="margin-top:28px;">
+                <div class="insight-card">
+                    <div class="ic-head">📊 市场规模与增速拐点</div>
+                    <p>全球雾化烟市场从2016年的<b>$8.5B</b>增长到2025年的<b>$41.8B</b>，九年扩张近5倍，2016–2025年CAGR约19.4%。但增速曲线并非单调放缓——<b>2020年出现-10.8%的唯一一次年度收缩</b>（美国FDA对JUUL等产品的监管重拳），随即被2021年+39.8%的强烈反弹抵消。2024–2025年增速已降至个位数，预测值显示2026–2027年总量将在$41–42B区间<b>近乎停滞</b>，说明全球雾化烟市场整体已触及成熟平台期。</p>
+                </div>
+                <div class="insight-card">
+                    <div class="ic-head">🌍 集中度稀释与新兴市场崛起</div>
+                    <p>美国一家之力在2016年贡献全球44.3%的份额，到2025年这一数字仍有36.5%，说明雾化烟市场的集中度比HNB高得多，始终难以"去美国化"。但"其他国家"这个篮子的<b>复合增速（约27%）远超前十合计（约18%）</b>——俄罗斯、巴西、印尼、沙特、南非是贡献大部分边缘市场增量的五个新兴市场，它们共同代表的是监管相对宽松、渗透率仍处于早期的蓝海，而不是美欧的成熟替代。</p>
+                </div>
+                <div class="insight-card">
+                    <div class="ic-head">🇨🇳 中国：最大的异常值</div>
+                    <p>中国在2021年曾以<b>$3.0B</b>强势占据全球第二，份额接近14%，彼时是整个雾化烟产业最令人兴奋的增量来源。然而<b>2022年监管突变</b>（禁止调味雾化烟、电子烟纳入烟草专卖管控），市场规模两年内几乎砍半，从$3.0B骤降到2024年的$1.1B，排名也从第二跌至第八。这是全球雾化烟史上最剧烈的单市场政策冲击，也是当前规模在"其他国家"那个篮子里不断蚕食头部份额的反面教材。</p>
+                </div>
+                <div class="insight-card">
+                    <div class="ic-head">🏆 谁是真正的稳定增长者</div>
+                    <p>在所有前十市场里，<b>法国、加拿大、墨西哥</b>是增速最稳定、排名最少波动的三个市场——没有中国式政策崩塌，没有美国式监管过山车，也没有英国式总量见顶回落。德国在2022–2023年的<b>跳涨（$959M→$1,444M）</b>是欧洲前所未有的单年增量，背后是一次性税率变化叠加市场正规化，可复制性存疑；波兰2025年异常冲高到$1,422M后2026年预测骤降到$947M，同样反映政策/税收扰动而非真实需求跃升。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 bump -->
+        <section class="block" id="sec-bump">
+            <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">十二年排位变迁</span></div>
+            <p class="sec-desc">曾进入全球前十的14个市场，纵轴为当年排名（1为最高）。悬停图例可单独追踪某一市场轨迹；英/美/德三国以品牌色高亮。</p>
+
+            <div class="panel">
+                <div class="bump-wrap">
+                    <div class="bump-chart-area">
+                        <svg id="bumpSvg" viewBox="0 0 960 480" style="width:100%;height:auto;display:block;"></svg>
+                        <div id="bumpTooltip"></div>
+                    </div>
+                    <div class="bump-legend" id="bumpLegend"></div>
+                </div>
+                <p class="footnote">○ 空心圆标记该市场当年首次进入前十；F2026/F2027 以浅色虚线延伸。英国（红）、美国（蓝）、德国（绿）三国高亮。</p>
+            </div>
+        </section>
+
+        <!-- 03 composition -->
+        <section class="block" id="sec-composition">
+            <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">年度构成</span></div>
+            <p class="sec-desc">拖动滑块或点击播放，逐年查看前十市场的份额；英国、美国、德国加彩色标签高亮。</p>
+            <div class="panel">
+                <div class="year-scrubber">
+                    <button class="play-btn" id="playBtn">▶</button>
+                    <input type="range" id="yearSlider" min="0" max="11" step="1" value="9">
+                    <div class="ylabel" id="yearLabel">2025</div>
+                </div>
+                <div class="comp-wrap">
+                    <div class="comp-donut">
+                        <canvas id="compDonut" width="280" height="280"></canvas>
+                        <div class="comp-center">
+                            <div class="ylbl">总规模</div>
+                            <div class="vv" id="compTotal">$41.8B</div>
+                        </div>
+                    </div>
+                    <div class="comp-list" id="compList"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================================
+        04 三国专题 — 全新排版（优化后）
+        ============================================================== -->
+        <section class="block" id="sec-focus">
+            <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">三国专题</span></div>
+            <p class="sec-desc">点击下方按钮切换国家，查看英国、美国、德国的完整市场画像——从规模走势到用户构成与渠道分布。</p>
+
+            <!-- 国家切换 Tabs -->
+            <div class="country-tabs">
+                <button class="country-tab active-us" id="tab-us" data-country="United States" onclick="switchCountry('United States')">
+                    <span class="flag">🇺🇸</span>
+                    <span class="name">美国</span>
+                    <span class="badge">#1</span>
+                </button>
+                <button class="country-tab" id="tab-uk" data-country="United Kingdom" onclick="switchCountry('United Kingdom')">
+                    <span class="flag">🇬🇧</span>
+                    <span class="name">英国</span>
+                    <span class="badge">#4</span>
+                </button>
+                <button class="country-tab" id="tab-de" data-country="Germany" onclick="switchCountry('Germany')">
+                    <span class="flag">🇩🇪</span>
+                    <span class="name">德国</span>
+                    <span class="badge">#5</span>
+                </button>
+            </div>
+
+            <!-- ===== 美国面板 ===== -->
+            <div class="detail-section active" id="panel-United States">
+
+                <!-- 关键数据 4 卡片 -->
+                <div class="key-metrics" id="banner-United States"></div>
+
+                <!-- 趋势图 -->
+                <div class="chart-card">
+                    <div class="chart-head">
+                        <h3>市场规模与使用人口</h3>
+                        <div class="pillbar" id="metricToggle-United States">
+                            <button class="pill active" data-m="value">市场规模</button>
+                            <button class="pill" data-m="pop">使用人口</button>
+                            <button class="pill" data-m="share">全球占比</button>
+                            <button class="pill" data-m="rank">全球排名</button>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="trendChart-United States"></canvas>
+                    </div>
+                </div>
+
+                <!-- 两列：产品形态 + 渠道分布 (重写) -->
+                <div class="focus-grid-2">
+                    <!-- 产品形态 -->
+                    <div class="sub-card">
+                        <h4>产品形态占比（2026年，用户份额）</h4>
+                        <div class="pie-wrap">
+                            <div class="pie-canvas-wrap">
+                                <canvas id="formPie-United States"></canvas>
+                            </div>
+                            <div class="pie-legend" id="formLegend-United States"></div>
+                        </div>
+                    </div>
+                    <!-- 渠道分布 -->
+                    <div class="sub-card">
+                        <h4>零售渠道分布（用户份额）</h4>
+                        <div class="chan-content">
+                            <div class="chan-chart-wrap">
+                                <canvas id="chanChart-United States"></canvas>
+                            </div>
+                            <div class="channel-extras" id="chanExtras-United States"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 分析笔记 -->
+                <div class="analyst-note" style="border-left-color:var(--us);">
+                    <div class="note-head"><span class="note-flag">🇺🇸</span> 美国 · 全球绝对主导，但监管风险最高</div>
+                    <div class="note-body">
+                        美国是目前全球最大的雾化烟市场，且体量遥遥领先——2025年的<b>$15.3B</b>约等于第2至第7名之和。然而这个主导地位建立在<b>监管的反复横跳上</b>：FDA对一次性雾化烟和调味产品的态度几乎每隔两三年就大幅摇摆一次，直接造成了2020年的市场骤缩（-28.4%）和2021年的强反弹（+47.6%）。更值得注意的是，预测显示<b>2026–2027年美国市场将连续下滑</b>（$14.6B→$14.1B），这是12年历史里首次出现连续两年预测收缩，背后是FDA PMTA审批收紧与一次性烟弹监管压力。从产品形态看，美国<b>一次性产品（Disposables）占比高达42%</b>，远超英德两国，这也正是当前监管压力最集中的品类，结构性风险显著。
+                    </div>
+                    <div class="note-signoff">— 分析笔记 · TobaccoIntelligence 数据</div>
+                </div>
+            </div>
+
+            <!-- ===== 英国面板 ===== -->
+            <div class="detail-section" id="panel-United Kingdom">
+
+                <div class="key-metrics" id="banner-United Kingdom"></div>
+
+                <div class="chart-card">
+                    <div class="chart-head">
+                        <h3>市场规模与使用人口</h3>
+                        <div class="pillbar" id="metricToggle-United Kingdom">
+                            <button class="pill active" data-m="value">市场规模</button>
+                            <button class="pill" data-m="pop">使用人口</button>
+                            <button class="pill" data-m="share">全球占比</button>
+                            <button class="pill" data-m="rank">全球排名</button>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="trendChart-United Kingdom"></canvas>
+                    </div>
+                </div>
+
+                <div class="focus-grid-2">
+                    <div class="sub-card">
+                        <h4>产品形态占比（2026年，用户份额）</h4>
+                        <div class="pie-wrap">
+                            <div class="pie-canvas-wrap">
+                                <canvas id="formPie-United Kingdom"></canvas>
+                            </div>
+                            <div class="pie-legend" id="formLegend-United Kingdom"></div>
+                        </div>
+                    </div>
+                    <div class="sub-card">
+                        <h4>零售渠道分布（用户份额）</h4>
+                        <div class="chan-content">
+                            <div class="chan-chart-wrap">
+                                <canvas id="chanChart-United Kingdom"></canvas>
+                            </div>
+                            <div class="channel-extras" id="chanExtras-United Kingdom"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analyst-note" style="border-left-color:var(--uk);">
+                    <div class="note-head"><span class="note-flag">🇬🇧</span> 英国 · 曾是欧洲第一，正在失速</div>
+                    <div class="note-body">
+                        英国在2016–2024年间始终是全球第二大雾化烟市场，一度以<b>份额10.6%（2017年）</b>稳坐亚军宝座。但2025年出现了-16%的显著下滑（$2,365M→$1,987M），排名也跌落至全球第四，首次被俄罗斯超越。这次下滑的直接导火索是<b>政府对一次性雾化烟的全面打压</b>——禁售一次性产品（Disposables）的法规讨论提前透支了需求，大量消费者提前购买库存后消费萎缩。从渠道上看，英国拥有<b>全球密度最高的雾化烟专卖店网络之一</b>（4,000家），线下专卖店渠道占用户比例高达37%，远超德国（18%）；线上流量中96%流向本国网站，生态高度本土化，受监管冲击时缓冲能力较弱。F2027预测显示英国会反弹回$2.1B重回前四，但能否持续仍取决于监管最终落地后市场的自我调整速度。
+                    </div>
+                    <div class="note-signoff">— 分析笔记 · TobaccoIntelligence 数据</div>
+                </div>
+            </div>
+
+            <!-- ===== 德国面板 ===== -->
+            <div class="detail-section" id="panel-Germany">
+
+                <div class="key-metrics" id="banner-Germany"></div>
+
+                <div class="chart-card">
+                    <div class="chart-head">
+                        <h3>市场规模与使用人口</h3>
+                        <div class="pillbar" id="metricToggle-Germany">
+                            <button class="pill active" data-m="value">市场规模</button>
+                            <button class="pill" data-m="pop">使用人口</button>
+                            <button class="pill" data-m="share">全球占比</button>
+                            <button class="pill" data-m="rank">全球排名</button>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="trendChart-Germany"></canvas>
+                    </div>
+                </div>
+
+                <div class="focus-grid-2">
+                    <div class="sub-card">
+                        <h4>产品形态占比（2026年，用户份额）</h4>
+                        <div class="pie-wrap">
+                            <div class="pie-canvas-wrap">
+                                <canvas id="formPie-Germany"></canvas>
+                            </div>
+                            <div class="pie-legend" id="formLegend-Germany"></div>
+                        </div>
+                    </div>
+                    <div class="sub-card">
+                        <h4>零售渠道分布（用户份额）</h4>
+                        <div class="chan-content">
+                            <div class="chan-chart-wrap">
+                                <canvas id="chanChart-Germany"></canvas>
+                            </div>
+                            <div class="channel-extras" id="chanExtras-Germany"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analyst-note" style="border-left-color:var(--de);">
+                    <div class="note-head"><span class="note-flag">🇩🇪</span> 德国 · 欧洲最具看点的结构性增长</div>
+                    <div class="note-body">
+                        德国是12年里轨迹最值得单独研究的市场：前期（2016–2021）表现中规中矩，一直徘徊在$390–600M；<b>2022年起突然跳级，仅2022–2023两年就从$600M涨到$1,444M，涨幅141%</b>，跻身全球前四。这次跳涨与德国<b>EVPG法规对产品标准化的推进</b>、正规市场替代灰市的过程密切相关，而非单纯的消费需求爆发。从产品结构看，德国以<b>开放式pod系统（33%）和预充式pod系统（31%）</b>为主，一次性产品仅占12%，是三国中产品结构最均衡、对监管冲击抵御力最强的市场；线上流量中有16%流向海外网站，是三国中跨境电商渗透率最高的，反映正规本土市场仍有一定缺口。
+                    </div>
+                    <div class="note-signoff">— 分析笔记 · TobaccoIntelligence 数据</div>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            <div class="cols">
+                <div>
+                    <h4>关于本简报</h4>
+                    <p>本报告基于 TobaccoIntelligence 提供的51个市场雾化烟（E-Vapor/E-Cigarette）数据。"*"号原始数据表示该市场当年无估算值（非零），已在总量与排名计算中剔除。2026–2027 年为预测值（F），在图表中以半透明或虚线区分。年度 Top10 基于当年可得数据重新排序。</p>
+                </div>
+                <div>
+                    <h4>口径说明</h4>
+                    <ul>
+                        <li>单位：百万美元（$M）</li>
+                        <li>Top10 = 当年规模前十</li>
+                        <li>其他 = 全样本总量 − Top10 之和</li>
+                        <li>CAGR 按复合年化计算</li>
+                        <li>F2026/F2027 = 预测值</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>数据来源</h4>
+                    <ul>
+                        <li>TobaccoIntelligence</li>
+                        <li>生成时间：2026年6月</li>
+                        <li>本报告最终解释权归用户体验部所有，如有疑问可联系@刘宓 @李步岳</li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- /wrap -->
+
+    <script>
+        /* ========= DATA ========= */
+        const RAW = { "years": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027], "data": { "Argentina": [null, null, 40, 88, 43, 54, 85, 103, 73, 80, 93, 113], "Australia": [44, 52, 81, 128, 149, 181, 405, 823, 603, 374, 373, 373], "Austria": [null, 38, 39, 47, 39, 43, 50, 107, 135, 144, 139, 122], "Belgium": [51, 76, 93, 114, 111, 136, 161, 285, 388, 380, 388, 392], "Brazil": [null, null, 91, 198, 187, 476, 743, 790, 818, 848, 890, 897], "Bulgaria": [29, 25, 30, 35, 37, 46, 67, 76, 94, 92, 86, 79], "Canada": [228, 267, 311, 397, 402, 522, 619, 941, 1282, 1833, 1881, 1971], "Chile": [null, null, 43, 64, 61, 75, 106, 146, 183, 196, 215, 232], "China": [null, 513, 764, 1513, 1826, 2959, 2327, 1221, 1094, 1272, 1233, 1212], "Colombia": [40, 53, 73, 89, 85, 122, 237, 304, 356, 399, 420, 443], "Costa Rica": [null, null, 26, 31, 27, 34, 33, 39, 45, 48, 47, 46], "Czech Republic": [null, 119, 109, 126, 131, 200, 328, 441, 552, 633, 741, 734], "Denmark": [40, 48, 53, 54, 56, 59, 63, 104, 132, 136, 145, 148], "Egypt": [null, null, null, null, 44, 61, 93, 149, 201, 235, 286, 343], "Estonia": [null, 6, 12, 15, 15, 28, 48, 60, 65, 64, 61, 58], "Finland": [24, 35, 37, 45, 40, 43, 40, 44, 52, 56, 49, 54], "France": [693, 750, 857, 1176, 1092, 1474, 1471, 1933, 2086, 2166, 2178, 2145], "Germany": [393, 453, 490, 623, 570, 600, 959, 1444, 1431, 1540, 1659, 1749], "Greece": [81, 111, 122, 146, 137, 141, 149, 180, 199, 231, 258, 274], "Hungary": [29, 29, 34, 50, 46, 58, 96, 93, 93, 86, 81, 80], "Indonesia": [null, null, 180, 301, 321, 438, 632, 857, 1065, 1417, 1540, 1595], "Ireland": [36, 36, 42, 57, 53, 59, 109, 158, 173, 195, 173, 167], "Italy": [338, 418, 395, 606, 524, 594, 708, 843, 861, 879, 939, 1017], "Japan": [409, 511, 487, 510, 434, 452, 466, 438, 435, 434, 400, 371], "Latvia": [null, 6, 11, 14, 20, 38, 52, 74, 91, 68, 64, 61], "Lithuania": [null, null, 16, 21, 33, 54, 65, 75, 85, 85, 84, 86], "Malaysia": [135, 169, 209, 286, 213, 278, 376, 413, 446, 425, 423, 415], "Mexico": [195, 214, 230, 308, 311, 545, 710, 946, 1116, 1430, 1618, 1767], "Netherlands": [49, 47, 52, 73, 70, 70, 155, 241, 235, 204, 180, 164], "New Zealand": [40, 49, 67, 78, 137, 205, 258, 297, 350, 364, 398, 406], "Norway": [34, 36, 33, 37, 39, 38, 36, 52, 87, 76, 73, 71], "Pakistan": [null, null, null, null, 73, 103, 138, 198, 265, 338, 364, 333], "Paraguay": [null, null, 8, 9, null, 15, 29, 41, 54, 58, 62, 65], "Peru": [null, null, 28, 30, 25, 35, 45, 60, 80, 95, 108, 115], "Philippines": [25, 33, 40, 115, 209, 351, 372, 493, 451, 394, 395, 367], "Poland": [235, 242, 250, 308, 260, 345, 526, 887, 1025, 1422, 947, 918], "Portugal": [21, 31, 38, 48, 42, 54, 55, 70, 82, 86, 87, 87], "Romania": [21, 23, 33, 48, 50, 61, 77, 99, 121, 130, 135, 141], "Russia": [244, 271, 303, 359, 343, 708, 1005, 1426, 2074, 2504, 2676, 2610], "Saudi Arabia": [null, null, null, null, 113, 182, 310, 474, 657, 774, 832, 879], "Slovakia": [null, null, 17, 24, 31, 40, 63, 75, 85, 93, 97, 87], "Slovenia": [null, 3, 6, 9, 10, 17, 38, 27, 25, 21, 24, 24], "South Africa": [47, 53, 57, 64, 77, 107, 166, 241, 383, 545, 603, 706], "South Korea": [256, 321, 359, 483, 444, 482, 526, 702, 845, 784, 702, 710], "Spain": [85, 97, 120, 151, 139, 145, 179, 205, 237, 314, 325, 339], "Sweden": [31, 39, 45, 44, 32, 34, 57, 98, 113, 115, 124, 135], "Switzerland": [34, 34, 43, 72, 60, 74, 130, 159, 171, 183, 171, 164], "Ukraine": [null, 48, 47, 60, 58, 70, 57, 85, 102, 130, 135, 137], "United Arab Emirates": [null, null, null, null, 24, 35, 66, 112, 166, 199, 228, 245], "United Kingdom": [834, 1111, 1156, 1432, 1274, 1393, 1934, 2138, 2365, 1987, 1845, 2137], "United States": [3750, 4123, 5216, 6555, 4689, 6923, 9241, 11698, 14107, 15259, 14576, 14126] } };
+        const YEARS = RAW.years;
+        const DATA = RAW.data;
+        const FORECAST_FROM = 10;
+
+        const CN = {
+            "United States": "美国",
+            "United Kingdom": "英国",
+            "France": "法国",
+            "China": "中国",
+            "Germany": "德国",
+            "Italy": "意大利",
+            "South Korea": "韩国",
+            "Russia": "俄罗斯",
+            "Poland": "波兰",
+            "Canada": "加拿大",
+            "Japan": "日本",
+            "Mexico": "墨西哥",
+            "Brazil": "巴西",
+            "Indonesia": "印尼",
+            "Others": "其他国家"
+        };
+        const FOCUS3 = ["United States", "United Kingdom", "Germany"];
+        const FOCUS_COLOR = { "United States": "#1A56A0", "United Kingdom": "#B83030", "Germany": "#2E7D5A" };
+        const FOCUS_TAG = { "United States": "f-us", "United Kingdom": "f-uk", "Germany": "f-de" };
+        const FOCUS_FLAG = { "United States": "🇺🇸", "United Kingdom": "🇬🇧", "Germany": "🇩🇪" };
+
+        const EVER_TOP10 = ["United States", "United Kingdom", "France", "Japan", "Germany", "Italy", "South Korea", "Russia",
+            "Poland", "Canada", "China", "Mexico", "Brazil", "Indonesia"
+        ];
+        const PALETTE = ["#1A56A0", "#B83030", "#E07820", "#6B6B6B", "#2E7D5A", "#9B59B6", "#D4AC0D", "#1A9B8A", "#7F7F7F",
+            "#C0392B", "#2980B9", "#E74C3C", "#16A085", "#8E44AD"
+        ];
+        const COLORS = {};
+        EVER_TOP10.forEach((c, i) => COLORS[c] = PALETTE[i]);
+        COLORS["Others"] = "#D0CCC6";
+
+        function computeYear(yi) {
+            const rows = [];
+            for (const c in DATA) { const v = DATA[c][yi]; if (v !== null) rows.push([c, v]); }
+            rows.sort((a, b) => b[1] - a[1]);
+            const total = rows.reduce((s, r) => s + r[1], 0);
+            const top10 = rows.slice(0, 10);
+            return { top10, total, others: total - top10.reduce((s, r) => s + r[1], 0), n: rows.length };
+        }
+        const YD = YEARS.map((_, yi) => computeYear(yi));
+        const GROWTH = YD.map((d, i) => i === 0 ? null : (d.total / YD[i - 1].total - 1) * 100);
+
+        function fmtB(v) { return "$" + (v / 1000).toFixed(2) + "B"; }
+
+        function fmtB1(v) { return "$" + (v / 1000).toFixed(1) + "B"; }
+
+        /* ======= HERO STATS ======= */
+        document.getElementById("heroStats").innerHTML = [
+            { n: fmtB1(YD[9].total), l: "2025年全球总规模" },
+            { n: ((YD[9].total / YD[0].total - 1) * 100).toFixed(0) + "%", l: "2016→2025 累计增长" },
+            { n: "#1 · 12年", l: "美国蝉联全球第一年数" },
+            { n: "14", l: "曾进入前十的市场总数" },
+        ].map(s => `<div class="stat-cell"><div class="num">${s.n}</div><div class="lbl">${s.l}</div></div>`).join("");
+
+        /* ======= SECTION 01: OVERVIEW CHART ======= */
+        let overviewMode = "abs";
+        let showGrowth = true;
+        const ovCtx = document.getElementById("overviewChart");
+
+        function buildOvDatasets(mode) {
+            const ds = EVER_TOP10.map(c => ({
+                label: CN[c],
+                data: YD.map((d, yi) => {
+                    const f = d.top10.find(r => r[0] === c);
+                    const v = f ? f[1] : 0;
+                    return mode === "abs" ? v / 1000 : v / d.total * 100;
+                }),
+                backgroundColor: YD.map((_, yi) => {
+                    const hex = COLORS[c];
+                    return yi >= FORECAST_FROM ? hex + "88" : hex;
+                }),
+                stack: "s",
+                borderWidth: 0,
+            }));
+            ds.push({
+                label: "其他国家",
+                data: YD.map((d, yi) => mode === "abs" ? d.others / 1000 : d.others / d.total * 100),
+                backgroundColor: YD.map((_, yi) => yi >= FORECAST_FROM ? "#D0CCC688" : "#D0CCC6"),
+                stack: "s",
+                borderWidth: 0,
+            });
+            if (showGrowth) {
+                ds.push({
+                    label: "同比增速(%)",
+                    type: "line",
+                    data: GROWTH,
+                    yAxisID: "y1",
+                    borderColor: "#E07820",
+                    backgroundColor: "#E07820",
+                    borderWidth: 2.2,
+                    tension: .25,
+                    spanGaps: true,
+                    pointRadius: GROWTH.map(g => g !== null ? 4 : 0),
+                    pointBackgroundColor: GROWTH.map(g => g !== null ? (g < 0 ? "#B83030" : "#E07820") : "transparent"),
+                    pointBorderColor: GROWTH.map(g => g !== null ? (g < 0 ? "#B83030" : "#E07820") : "transparent"),
+                    segment: { borderDash: ctx => ctx.p1DataIndex >= FORECAST_FROM ? [4, 3] : undefined },
+                });
+            }
+            return ds;
+        }
+
+        const ovChart = new Chart(ovCtx, {
+            type: "bar",
+            data: { labels: YEARS.map(y => y >= 2026 ? "F" + y : String(y)), datasets: buildOvDatasets("abs") },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: "index", intersect: false },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: "#fff",
+                        borderColor: "#E2DED8",
+                        borderWidth: 1,
+                        padding: 10,
+                        titleColor: "#1A1814",
+                        bodyColor: "#5A5650",
+                        titleFont: { family: "IBM Plex Mono", size: 12 },
+                        bodyFont: { family: "IBM Plex Mono", size: 11 },
+                        callbacks: {
+                            label(ctx) {
+                                if (ctx.dataset.label === "同比增速(%)") {
+                                    const g = ctx.parsed.y;
+                                    if (g === null || g === undefined) return null;
+                                    return ` 同比增速: ${g.toFixed(1)}%`;
+                                }
+                                const s = overviewMode === "abs";
+                                return ` ${ctx.dataset.label}: ${s ? "$"+ctx.parsed.y.toFixed(2)+"B" : ctx.parsed.y.toFixed(1)+"%"}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: { grid: { display: false }, ticks: { color: "#9A9690", font: { family: "IBM Plex Mono",
+                                size: 11.5 } } },
+                    y: { stacked: true, grid: { color: "#EDEBE7" }, ticks: { color: "#9A9690", font: { family: "IBM Plex Mono",
+                                size: 11 }, callback: v => overviewMode === "abs" ? "$" + v + "B" : v + "%" } },
+                    y1: { position: "right", grid: { display: false }, ticks: { color: "#E07820", font: { family: "IBM Plex Mono",
+                                size: 11 }, callback: v => v + "%" }, display: showGrowth }
+                }
+            }
+        });
+
+        function rebuildOv() {
+            const h = ovChart.data.datasets.map((_, i) => ovChart.getDatasetMeta(i).hidden);
+            ovChart.data.datasets = buildOvDatasets(overviewMode);
+            h.forEach((hid, i) => { try { ovChart.getDatasetMeta(i).hidden = hid; } catch (e) {} });
+            ovChart.options.scales.y.ticks.callback = v => overviewMode === "abs" ? "$" + v + "B" : v + "%";
+            ovChart.options.scales.y1.display = showGrowth;
+            ovChart.update();
+        }
+        document.getElementById("overviewToggle").addEventListener("click", e => {
+            const b = e.target.closest(".pill");
+            if (!b) return;
+            document.querySelectorAll("#overviewToggle .pill").forEach(p => p.classList.remove("active"));
+            b.classList.add("active");
+            overviewMode = b.dataset.mode;
+            rebuildOv();
+        });
+        document.getElementById("growthToggle").addEventListener("click", function() {
+            showGrowth = !showGrowth;
+            this.textContent = showGrowth ? "同比增速 ✓" : "同比增速 ○";
+            this.classList.toggle("active", showGrowth);
+            rebuildOv();
+        });
+
+        [...EVER_TOP10, "Others"].forEach(c => {
+            const chip = document.createElement("div");
+            chip.className = "legend-chip";
+            chip.dataset.key = c;
+            chip.innerHTML =
+                `<span class="sw" style="background:${COLORS[c]||COLORS["Others"]}"></span>${CN[c]}`;
+            chip.addEventListener("click", () => {
+                const ds = ovChart.data.datasets.find(d => d.label === CN[c]);
+                if (!ds) return;
+                const idx = ovChart.data.datasets.indexOf(ds);
+                const meta = ovChart.getDatasetMeta(idx);
+                meta.hidden = !meta.hidden;
+                chip.classList.toggle("dim");
+                ovChart.update();
+            });
+            document.getElementById("overviewLegend").appendChild(chip);
+        });
+
+        /* ======= SECTION 02: BUMP ======= */
+        const svgNS = "http://www.w3.org/2000/svg";
+        const bSvg = document.getElementById("bumpSvg");
+        const tt = document.getElementById("bumpTooltip");
+        const BW = 960,
+            BH = 480,
+            PL = 44,
+            PR = 44,
+            PT = 26,
+            PB = 40;
+        const colStep = (BW - PL - PR) / (YEARS.length - 1);
+        const rowStep = (BH - PT - PB) / 9;
+
+        const RANKS = {};
+        EVER_TOP10.forEach(c => {
+            RANKS[c] = YD.map(d => {
+                const idx = d.top10.findIndex(r => r[0] === c);
+                return idx === -1 ? null : idx + 1;
+            });
+        });
+        const FIRST_APPEAR = {};
+        EVER_TOP10.forEach(c => {
+            let seen = false;
+            FIRST_APPEAR[c] = RANKS[c].map(r => {
+                if (r !== null && !seen) { seen = true; return true; }
+                return false;
+            });
+        });
+
+        for (let r = 1; r <= 10; r++) {
+            const y2 = PT + (r - 1) * rowStep;
+            const ln = document.createElementNS(svgNS, "line");
+            ln.setAttribute("x1", PL);
+            ln.setAttribute("x2", BW - PR);
+            ln.setAttribute("y1", y2);
+            ln.setAttribute("y2", y2);
+            ln.setAttribute("stroke", "#EDEBE7");
+            ln.setAttribute("stroke-width", "1");
+            bSvg.appendChild(ln);
+            const lbl = document.createElementNS(svgNS, "text");
+            lbl.setAttribute("x", PL - 12);
+            lbl.setAttribute("y", y2 + 4);
+            lbl.setAttribute("text-anchor", "end");
+            lbl.setAttribute("font-family", "IBM Plex Mono");
+            lbl.setAttribute("font-size", "11");
+            lbl.setAttribute("fill", "#9A9690");
+            lbl.textContent = "#" + r;
+            bSvg.appendChild(lbl);
+        }
+        YEARS.forEach((y, yi) => {
+            const x = PL + yi * colStep;
+            const lbl = document.createElementNS(svgNS, "text");
+            lbl.setAttribute("x", x);
+            lbl.setAttribute("y", BH - 12);
+            lbl.setAttribute("text-anchor", "middle");
+            lbl.setAttribute("font-family", "IBM Plex Mono");
+            lbl.setAttribute("font-size", "11.5");
+            lbl.setAttribute("fill", "#9A9690");
+            lbl.textContent = y >= 2026 ? "F" + y : String(y);
+            bSvg.appendChild(lbl);
+        });
+
+        const fx = PL + (FORECAST_FROM) * colStep;
+        const fdiv = document.createElementNS(svgNS, "line");
+        fdiv.setAttribute("x1", fx);
+        fdiv.setAttribute("x2", fx);
+        fdiv.setAttribute("y1", PT);
+        fdiv.setAttribute("y2", BH - PB);
+        fdiv.setAttribute("stroke", "#B8B4AE");
+        fdiv.setAttribute("stroke-width", "1");
+        fdiv.setAttribute("stroke-dasharray", "4 3");
+        bSvg.appendChild(fdiv);
+        const ftxt = document.createElementNS(svgNS, "text");
+        ftxt.setAttribute("x", fx + 5);
+        ftxt.setAttribute("y", PT + 10);
+        ftxt.setAttribute("font-family", "IBM Plex Mono");
+        ftxt.setAttribute("font-size", "10");
+        ftxt.setAttribute("fill", "#9A9690");
+        ftxt.textContent = "预测 →";
+        bSvg.appendChild(ftxt);
+
+        const bGroups = {};
+        EVER_TOP10.forEach(c => {
+            const g = document.createElementNS(svgNS, "g");
+            g.setAttribute("data-country", c);
+            const isFocus = FOCUS3.includes(c);
+            const col = isFocus ? FOCUS_COLOR[c] : (COLORS[c] || "#aaa");
+            const ranks = RANKS[c];
+            const points = [];
+            ranks.forEach((r, yi) => {
+                if (r === null) return;
+                points.push([PL + yi * colStep, PT + (r - 1) * rowStep, yi, r]);
+            });
+
+            for (let i = 0; i < points.length - 1; i++) {
+                const [x1, y1, yi1] = points[i];
+                const [x2, y2, yi2] = points[i + 1];
+                const seg = document.createElementNS(svgNS, "line");
+                seg.setAttribute("x1", x1);
+                seg.setAttribute("y1", y1);
+                seg.setAttribute("x2", x2);
+                seg.setAttribute("y2", y2);
+                seg.setAttribute("stroke", col);
+                seg.setAttribute("stroke-width", isFocus ? 3 : 1.8);
+                seg.setAttribute("opacity", isFocus ? 1 : 0.7);
+                seg.setAttribute("stroke-linecap", "round");
+                if (yi1 >= FORECAST_FROM - 1) seg.setAttribute("stroke-dasharray", "5 4");
+                g.appendChild(seg);
+            }
+
+            points.forEach(([x, y, yi, r]) => {
+                const isFirst = FIRST_APPEAR[c][yi];
+                const dot = document.createElementNS(svgNS, "circle");
+                dot.setAttribute("cx", x);
+                dot.setAttribute("cy", y);
+                dot.setAttribute("r", isFirst ? 6 : isFocus ? 4.5 : 3.2);
+                dot.setAttribute("fill", isFirst ? "#fff" : col);
+                dot.setAttribute("stroke", col);
+                dot.setAttribute("stroke-width", isFirst ? 2.2 : 0);
+                dot.style.cursor = "pointer";
+                dot.addEventListener("mousemove", ev => {
+                    const v = DATA[c][yi];
+                    const wRect = ev.target.closest(".bump-chart-area").getBoundingClientRect();
+                    tt.innerHTML =
+                        `<b style="color:${col}">${FOCUS_FLAG[c]||""}${CN[c]}</b> · ${YEARS[yi]>=2026?"<span style='color:#9A9690'>F</span>":""}<b>${YEARS[yi]}</b><br>第${r}名 · ${v?fmtB(v):"—"}${isFirst?'<br><span style="color:'+col+'">首次进入前十</span>':""}`;
+                    tt.style.left = (ev.clientX - wRect.left + 14) + "px";
+                    tt.style.top = (ev.clientY - wRect.top - 10) + "px";
+                    tt.style.opacity = 1;
+                });
+                dot.addEventListener("mouseleave", () => tt.style.opacity = 0);
+                g.appendChild(dot);
+            });
+            bSvg.appendChild(g);
+            bGroups[c] = g;
+        });
+
+        function setBumpFocus(country) {
+            EVER_TOP10.forEach(c => {
+                bGroups[c].style.transition = "opacity .15s";
+                bGroups[c].style.opacity = (!country || c === country) ? 1 : 0.1;
+            });
+            document.querySelectorAll(".bump-legend .item").forEach(item => {
+                item.classList.toggle("dimmed", country && item.dataset.country !== country);
+            });
+        }
+
+        const bLeg = document.getElementById("bumpLegend");
+        EVER_TOP10.forEach(c => {
+            const r0 = RANKS[c].find(r => r !== null);
+            const rN = [...RANKS[c]].reverse().find(r => r !== null);
+            const isFocus = FOCUS3.includes(c);
+            const div = document.createElement("div");
+            div.className = "item " + (isFocus ? "is-focus" : "");
+            div.dataset.country = c;
+            div.innerHTML =
+                `<span class="dot" style="background:${isFocus?FOCUS_COLOR[c]:COLORS[c]}"></span>${FOCUS_FLAG[c]||""}${CN[c]}<span style="margin-left:auto;color:#9A9690;font-size:10px;">#${r0}→#${rN}</span>`;
+            div.addEventListener("mouseenter", () => setBumpFocus(c));
+            div.addEventListener("mouseleave", () => setBumpFocus(null));
+            bLeg.appendChild(div);
+        });
+
+        /* ======= SECTION 03: COMPOSITION ======= */
+        let donutChart;
+        const slider = document.getElementById("yearSlider");
+        const yearLabel = document.getElementById("yearLabel");
+        const compTotal = document.getElementById("compTotal");
+
+        function renderComp(yi) {
+            const d = YD[yi];
+            const y = YEARS[yi];
+            yearLabel.textContent = y >= 2026 ? "F" + y : String(y);
+            compTotal.textContent = fmtB1(d.total);
+            const prevSet = yi > 0 ? new Set(YD[yi - 1].top10.map(r => r[0])) : new Set();
+            const labels = d.top10.map(([c]) => CN[c]).concat(["其他"]);
+            const values = d.top10.map(([, v]) => v).concat([d.others]);
+            const colors = d.top10.map(([c]) => COLORS[c]).concat(["#D0CCC6"]);
+            if (donutChart) {
+                donutChart.data.labels = labels;
+                donutChart.data.datasets[0].data = values;
+                donutChart.data.datasets[0].backgroundColor = colors;
+                donutChart.update("none");
+            } else {
+                donutChart = new Chart(document.getElementById("compDonut"), {
+                    type: "doughnut",
+                    data: { labels, datasets: [{ data: values, backgroundColor: colors, borderColor: "#F7F6F3",
+                            borderWidth: 2 }] },
+                    options: {
+                        cutout: "65%",
+                        animation: { duration: 400 },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: "#fff",
+                                borderColor: "#E2DED8",
+                                borderWidth: 1,
+                                padding: 10,
+                                titleColor: "#1A1814",
+                                bodyColor: "#5A5650",
+                                titleFont: { family: "IBM Plex Mono", size: 12 },
+                                bodyFont: { family: "IBM Plex Mono", size: 11 },
+                                callbacks: { label: ctx =>
+                                        ` ${ctx.label}: ${fmtB(ctx.parsed)} (${(ctx.parsed/d.total*100).toFixed(1)}%)` }
+                            }
+                        }
+                    }
+                });
+            }
+            const listEl = document.getElementById("compList");
+            listEl.innerHTML = d.top10.map(([c, v], i) => {
+                const isNew = yi > 0 && !prevSet.has(c);
+                const isFocus = FOCUS3.includes(c);
+                const ftag = isFocus ? `<span class="f-tag ${FOCUS_TAG[c]}">${FOCUS_FLAG[c]}</span>` : "";
+                return `<div class="comp-row ${isFocus?"is-focus":""}">
+              <div class="rank">${i+1}</div>
+              <div class="name"><span class="sw" style="background:${COLORS[c]}"></span>${CN[c]}${isNew?'<span class="new-tag">NEW</span>':""}${ftag}</div>
+              <div class="pct">${(v/d.total*100).toFixed(1)}%</div>
+              <div class="val">${fmtB(v)}</div>
+            </div>`;
+            }).join("") + `<div class="comp-row">
+            <div class="rank">—</div>
+            <div class="name"><span class="sw" style="background:#D0CCC6"></span>其他（${d.n-10}个市场）</div>
+            <div class="pct">${(d.others/d.total*100).toFixed(1)}%</div>
+            <div class="val">${fmtB(d.others)}</div>
+          </div>`;
+        }
+        renderComp(9);
+        slider.addEventListener("input", () => renderComp(+slider.value));
+
+        let playTimer = null;
+        document.getElementById("playBtn").addEventListener("click", function() {
+            if (playTimer) { clearInterval(playTimer);
+                playTimer = null;
+                this.textContent = "▶"; return; }
+            this.textContent = "❙❙";
+            if (+slider.value >= 11) slider.value = 0;
+            playTimer = setInterval(() => {
+                let v = +slider.value;
+                if (v >= 11) { clearInterval(playTimer);
+                    playTimer = null;
+                    document.getElementById("playBtn").textContent = "▶"; return; }
+                slider.value = v + 1;
+                renderComp(v + 1);
+            }, 900);
+        });
+
+        /* ================================================================
+           SECTION 04 — 三国专题 全新渲染逻辑 (优化)
+           ================================================================ */
+
+        const focusClass = { "United States": "us", "United Kingdom": "uk", "Germany": "de" };
+        const POP_DATA = {
+            "United States": { years: [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
+            vals: [9000000, 10000000, 12000000, 9000000, 12000000, 15000000, 17000000, 18500000, 19000000, 18500000,
+                17500000
+            ] },
+            "United Kingdom": { years: [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
+            vals: [2900000, 3200000, 3600000, 3300000, 3700000, 4300000, 4700000, 5700000, 5900000, 6000000, 5900000] },
+            "Germany": { years: [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
+            vals: [1500000, 1750000, 1900000, 1650000, 1700000, 2100000, 2500000, 2800000, 3000000, 3200000, 3350000] }
+        };
+        const FORM_DATA = {
+            "United States": { labels: ["Basic open systems", "Open pod systems", "Advanced open systems", "Prefilled pod systems", "Disposables"],
+            vals: [8, 19, 6, 25, 42] },
+            "United Kingdom": { labels: ["Basic open systems", "Open pod systems", "Advanced open systems", "Prefilled pod systems", "Disposables"],
+            vals: [12, 34, 11, 35, 8] },
+            "Germany": { labels: ["Basic open systems", "Open pod systems", "Advanced open systems", "Prefilled pod systems", "Disposables"],
+            vals: [10, 33, 14, 31, 12] }
+        };
+        const CHAN_DATA = {
+            "United States": { labels: ["线下专卖店", "其他线下渠道", "线上渠道"], vals: [10, 70, 20] },
+            "United Kingdom": { labels: ["线下专卖店", "其他线下渠道", "线上渠道"], vals: [37, 40, 23] },
+            "Germany": { labels: ["线下专卖店", "其他线下渠道", "线上渠道"], vals: [18, 50, 32] }
+        };
+        const FORM_COLORS = ["#5B8DB8", "#1A56A0", "#0D3A6E", "#7BB3D4", "#A0C4E0"];
+        const CHAN_COLORS = ["#2E7D5A", "#5FAA85", "#A8D5BE"];
+
+        const CHAN_EXTRAS = {
+            "United States": {
+                rows: [
+                    { k: "线下雾化烟专卖店数量", v: "6,000 家" },
+                    { k: "线上相关零售商数量", v: "246 家" },
+                    { k: "线上总流量（Q1 2026）", v: "2,162 万" },
+                    { k: "流向本国网站占比", v: "91%" },
+                    { k: "流向海外网站占比", v: "9%" },
+                ]
+            },
+            "United Kingdom": {
+                rows: [
+                    { k: "线下雾化烟专卖店数量", v: "4,000 家" },
+                    { k: "线上相关零售商数量", v: "183 家" },
+                    { k: "线上总流量（Q1 2026）", v: "1,198 万" },
+                    { k: "流向本国网站占比", v: "96%" },
+                    { k: "流向海外网站占比", v: "4%" },
+                ]
+            },
+            "Germany": {
+                rows: [
+                    { k: "线下雾化烟专卖店数量", v: "1,200 家" },
+                    { k: "线上相关零售商数量", v: "117 家" },
+                    { k: "线上总流量（Q1 2026）", v: "698 万" },
+                    { k: "流向本国网站占比", v: "84%" },
+                    { k: "流向海外网站占比", v: "16%" },
+                ]
+            }
+        };
+
+        /* ---- 渲染横幅 (4 卡片) ---- */
+        function renderBanner(c) {
+            const el = document.getElementById("banner-" + c);
+            if (!el) return;
+            const col = FOCUS_COLOR[c];
+            const cls = focusClass[c];
+            const vals = DATA[c];
+            const share2025 = (vals[9] / YD[9].total * 100).toFixed(1);
+            const rank2025 = YD[9].top10.findIndex(r => r[0] === c) + 1;
+            const rank2016 = YD[0].top10.findIndex(r => r[0] === c) + 1;
+            const cagr = ((vals[9] / vals[0]) ** (1 / 9) - 1) * 100;
+            const colorClass = "mc-color-" + cls;
+
+            el.innerHTML = `
+            <div class="metric-card">
+              <div class="mc-label">2025年规模</div>
+              <div class="mc-value ${colorClass}">${fmtB1(vals[9])}</div>
+              <div class="mc-sub">${FOCUS_FLAG[c]} ${CN[c]}</div>
+            </div>
+            <div class="metric-card">
+              <div class="mc-label">全球占比</div>
+              <div class="mc-value ${colorClass}">${share2025}%</div>
+              <div class="mc-sub">2025年</div>
+            </div>
+            <div class="metric-card">
+              <div class="mc-label">排名变化</div>
+              <div class="mc-value ${colorClass}">#${rank2016} → #${rank2025}</div>
+              <div class="mc-sub">2016 → 2025</div>
+            </div>
+            <div class="metric-card">
+              <div class="mc-label">CAGR</div>
+              <div class="mc-value ${colorClass}">${cagr.toFixed(1)}%</div>
+              <div class="mc-sub">2016–2025 复合年化</div>
+            </div>
+          `;
+        }
+        FOCUS3.forEach(c => renderBanner(c));
+
+        /* ---- 渲染饼图图例 (纯文本) ---- */
+function renderFormLegend(c) {
+    const el = document.getElementById("formLegend-" + c);
+    if (!el) return;
+    const d = FORM_DATA[c];
+
+    // 与饼图颜色保持一致
+    const countryFormColors = {
+        "United States": ["#1A56A0", "#3A7BC8", "#5A9CD4", "#7ABDE0", "#A0D4E8"],
+        "United Kingdom": ["#B83030", "#D45A5A", "#E88A8A", "#F0B0B0", "#F8D0D0"],
+        "Germany": ["#2E7D5A", "#5FAA85", "#8CC4A8", "#B0D8C0", "#D0E8D8"]
+    };
+
+    const colors = countryFormColors[c] || ["#5B8DB8", "#1A56A0", "#0D3A6E", "#7BB3D4", "#A0C4E0"];
+
+    el.innerHTML = d.labels.map((lbl, i) => `
+        <div class="pl-item">
+            <span class="pl-dot" style="background:${colors[i]}"></span>
+            ${lbl}
+            <span class="pl-pct">${d.vals[i]}%</span>
+        </div>
+    `).join("");
+}
+
+        /* ---- 渲染渠道额外信息 ---- */
+        function renderChanExtras(c) {
+            const el = document.getElementById("chanExtras-" + c);
+            if (!el) return;
+            const data = CHAN_EXTRAS[c];
+            if (!data) return;
+            el.innerHTML = data.rows.map(r => `
+            <div class="ce-item">
+              <span class="ce-key">${r.k}</span>
+              <span class="ce-val" style="color:${FOCUS_COLOR[c]}">${r.v}</span>
+            </div>
+          `).join("");
+        }
+        FOCUS3.forEach(c => renderChanExtras(c));
+
+        /* ---- 渠道分布条形图 (Chart.js) ---- */
+        const chanCharts = {};
+
+        function buildChanChart(c) {
+            const ctx = document.getElementById("chanChart-" + c);
+            if (!ctx) return;
+            const d = CHAN_DATA[c];
+            const countryColors = {
+                        "United States": ["#1A56A0", "#4580C8", "#7BB3D4"],
+                        "United Kingdom": ["#B83030", "#D45A5A", "#E88A8A"],
+                        "Germany": ["#2E7D5A", "#5FAA85", "#A8D5BE"]
+             };
+            if (chanCharts[c]) {
+                chanCharts[c].destroy();
+                delete chanCharts[c];
+            }
+            chanCharts[c] = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: d.labels,
+                    datasets: [{
+                        data: d.vals,
+                        backgroundColor: countryColors[c] || ["#2E7D5A", "#5FAA85", "#A8D5BE"],
+                        borderWidth: 0,
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => `${ctx.parsed.x}%`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            max: 100,
+                            grid: { color: '#EDEBE7' },
+                            ticks: { callback: v => v + '%', font: { size: 10 } }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { font: { family: 'Inter', size: 11, weight: '500' } }
+                        }
+                    }
+                }
+            });
+        }
+        FOCUS3.forEach(c => buildChanChart(c));
+
+        /* ---- 趋势图 ---- */
+        const trendCharts = {};
+
+        function buildTrendChart(c, metric) {
+            const col = FOCUS_COLOR[c];
+            const isForecastIdx = yi => YEARS[yi] >= 2026;
+            const popD = POP_DATA[c];
+            const metrics = {
+                value: {
+                    labels: YEARS.map((y, yi) => yi >= FORECAST_FROM ? "F" + y : String(y)),
+                    data: DATA[c].map(v => v ? v / 1000 : null),
+                    label: "市场规模 ($B)",
+                    fmt: v => "$" + v.toFixed(2) + "B",
+                    type: "bar",
+                    forecast: yi => yi >= FORECAST_FROM
+                },
+                pop: {
+                    labels: popD.years.map(y => y >= 2026 ? "F" + y : String(y)),
+                    data: popD.vals.map(v => v / 1e6),
+                    label: "使用人口 (百万)",
+                    fmt: v => v.toFixed(1) + "M",
+                    type: "line",
+                    forecast: yi => popD.years[yi] >= 2026
+                },
+                share: {
+                    labels: YEARS.map((y, yi) => yi >= FORECAST_FROM ? "F" + y : String(y)),
+                    data: DATA[c].map((v, i) => v ? v / YD[i].total * 100 : null),
+                    label: "全球占比 (%)",
+                    fmt: v => v.toFixed(1) + "%",
+                    type: "line",
+                    forecast: yi => yi >= FORECAST_FROM
+                },
+                rank: {
+                    labels: YEARS.map((y, yi) => yi >= FORECAST_FROM ? "F" + y : String(y)),
+                    data: YEARS.map((_, i) => { const idx = YD[i].top10.findIndex(r => r[0] === c); return idx === -1 ?
+                            null : idx + 1; }),
+                    label: "全球排名",
+                    fmt: v => "#" + v,
+                    type: "line",
+                    reverse: true,
+                    forecast: yi => yi >= FORECAST_FROM
+                }
+            };
+            const m = metrics[metric];
+            const ctx = document.getElementById("trendChart-" + c);
+            if (!ctx) return;
+            if (trendCharts[c]) trendCharts[c].destroy();
+            trendCharts[c] = new Chart(ctx, {
+                type: m.type === "bar" ? "bar" : "line",
+                data: {
+                    labels: m.labels,
+                    datasets: [{
+                        label: m.label,
+                        data: m.data,
+                        backgroundColor: m.type === "bar" ? m.data.map((_, i) => m.forecast(i) ? col + "66" :
+                            col) : col,
+                        borderColor: col,
+                        borderWidth: m.type === "bar" ? 0 : 2.4,
+                        tension: .25,
+                        pointRadius: 4,
+                        fill: false,
+                        segment: m.type !== "bar" ? { borderDash: ctx => m.forecast(ctx
+                            .p1DataIndex) ? [5, 4] : undefined } : undefined
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: "#fff",
+                            borderColor: "#E2DED8",
+                            borderWidth: 1,
+                            padding: 10,
+                            titleColor: "#1A1814",
+                            bodyColor: "#5A5650",
+                            titleFont: { family: "IBM Plex Mono", size: 12 },
+                            bodyFont: { family: "IBM Plex Mono", size: 11 },
+                            callbacks: { label: ctx => { const v = ctx.parsed.y; return v === null || v ===
+                                    undefined ? null : ` ${m.label}: ${m.fmt(v)}`; } }
+                        }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { color: "#9A9690", font: { family: "IBM Plex Mono",
+                                    size: 11 } } },
+                        y: {
+                            reverse: !!m.reverse,
+                            grid: { color: "#EDEBE7" },
+                            ticks: {
+                                 color: "#9A9690",
+                                 font: { family: "IBM Plex Mono", size: 11 },
+                                 callback: v => {
+                                             if (metric === "rank") return "#" + v;
+                                            // 对数值四舍五入保留一位小数
+                                             let val = v;
+                                             if (typeof v === 'number') val = v.toFixed(1);
+                                             if (metric === "pop") return val + "M";
+                                             if (metric === "value") return "$" + val + "B";
+                                             return val + "%";
+                                        }
+}
+                        }
+                    }
+                }
+            });
+        }
+
+        /* ---- 饼图 (Chart.js) ---- */
+        const formCharts = {};
+
+function buildFormPie(c) {
+    const ctx = document.getElementById("formPie-" + c);
+    if (!ctx) return;
+    const d = FORM_DATA[c];
+
+    // 按国家定义颜色（5种颜色渐变，对应5个产品形态）
+    const countryFormColors = {
+        "United States": ["#1A56A0", "#3A7BC8", "#5A9CD4", "#7ABDE0", "#A0D4E8"],
+        "United Kingdom": ["#B83030", "#D45A5A", "#E88A8A", "#F0B0B0", "#F8D0D0"],
+        "Germany": ["#2E7D5A", "#5FAA85", "#8CC4A8", "#B0D8C0", "#D0E8D8"]
+    };
+
+    if (formCharts[c]) {
+        formCharts[c].destroy();
+        delete formCharts[c];
+    }
+    formCharts[c] = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+            labels: d.labels,
+            datasets: [{
+                data: d.vals,
+                backgroundColor: countryFormColors[c] || ["#5B8DB8", "#1A56A0", "#0D3A6E", "#7BB3D4", "#A0C4E0"],
+                borderColor: "#fff",
+                borderWidth: 2
+            }]
+        },
+        options: {
+            cutout: "55%",
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: "#fff",
+                    borderColor: "#E2DED8",
+                    borderWidth: 1,
+                    padding: 8,
+                    titleColor: "#1A1814",
+                    bodyColor: "#5A5650",
+                    titleFont: { family: "IBM Plex Mono", size: 11.5 },
+                    bodyFont: { family: "IBM Plex Mono", size: 11 },
+                    callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}%` }
+                }
+            }
+        }
+    });
+}
+
+        /* ---- 国家切换 ---- */
+        const MAIN_TAB_STYLE = {
+            "United States": "active-us",
+            "United Kingdom": "active-uk",
+            "Germany": "active-de"
+        };
+
+        function switchCountry(c) {
+            // 切换 tabs
+            document.querySelectorAll(".country-tab").forEach(b => {
+                b.className = "country-tab";
+            });
+            const btn = document.getElementById("tab-" + {
+                "United States": "us",
+                "United Kingdom": "uk",
+                "Germany": "de"
+            } [c]);
+            if (btn) btn.classList.add(MAIN_TAB_STYLE[c]);
+
+            // 切换面板
+            document.querySelectorAll(".detail-section").forEach(el => el.classList.remove("active"));
+            const panel = document.getElementById("panel-" + c);
+            if (panel) panel.classList.add("active");
+
+            // 重新渲染所有图表（因为 canvas 被隐藏再显示后需要重新绘制）
+            setTimeout(() => {
+                const activeMetric = document.querySelector("#metricToggle-" + c + " .pill.active");
+                const m = activeMetric ? activeMetric.dataset.m : "value";
+                buildTrendChart(c, m);
+                buildFormPie(c);
+                buildChanChart(c);
+                renderFormLegend(c);
+                renderChanExtras(c);
+            }, 80);
+        }
+
+        /* ---- 指标切换 ---- */
+        FOCUS3.forEach(c => {
+            const tog = document.getElementById("metricToggle-" + c);
+            if (!tog) return;
+            tog.addEventListener("click", e => {
+                const b = e.target.closest(".pill");
+                if (!b) return;
+                tog.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+                b.classList.add("active");
+                buildTrendChart(c, b.dataset.m);
+            });
+        });
+
+        /* ---- 初始化 ---- */
+        FOCUS3.forEach(c => {
+            buildTrendChart(c, "value");
+            buildFormPie(c);
+            buildChanChart(c);
+            renderFormLegend(c);
+            renderChanExtras(c);
+        });
+
+        // 默认激活美国（已由 HTML 类 active-us 控制）
+        // 确保美国面板可见
+        document.querySelectorAll(".detail-section").forEach(el => el.classList.remove("active"));
+        document.getElementById("panel-United States").classList.add("active");
+
+        // 手动修正 tab 样式
+        document.querySelectorAll(".country-tab").forEach(b => b.className = "country-tab");
+        document.getElementById("tab-us").classList.add("active-us");
+    </script>
+
+</body>
+</html>
