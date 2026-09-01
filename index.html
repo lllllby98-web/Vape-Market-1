@@ -8,27 +8,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,72,400;0,72,500;0,72,600;1,72,400;1,72,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js">
+    </script>
     <style>
         :root {
-            --bg: #FFFFFF;
-            --bg-panel: #F7F6F3;
-            --bg-panel-raised: #EEECEA;
-            --ink: #1A1814;
-            --ink-dim: #5A5650;
-            --ink-faint: #9A9690;
+            --bg: #F5EFE1;
+            --bg-card: #FBF7EC;
+            --bg-panel: #EFE7D3;
+            --bg-panel-raised: #E7DCC1;
+            --ink: #2B2417;
+            --ink-dim: #6B5F49;
+            --ink-faint: #A0937A;
             --blue: #1A56A0;
             --blue-soft: #4580C8;
             --blue-light: #E8F0FB;
             --red: #B83030;
             --green: #2E7D5A;
-            --line: #E2DED8;
-            --line-soft: #EDEBE7;
+            --line: #DFD3B4;
+            --line-soft: #E9DFC5;
             --us: #1A56A0;
             --uk: #B83030;
             --de: #2E7D5A;
             --focus-strip: #F0F4FB;
-            --shadow-sm: 0 2px 12px rgba(0, 0, 0, .06);
-            --radius: 6px;
+            --shadow-sm: 0 2px 14px rgba(84, 63, 21, .08);
+            --radius: 8px;
         }
         * {
             margin: 0;
@@ -70,7 +73,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, .95);
+            background: rgba(245, 239, 225, .92);
             backdrop-filter: blur(8px);
         }
         .topbar-inner {
@@ -211,30 +214,41 @@
             border-bottom: 1px solid var(--line);
             position: relative;
         }
+        /* ---- 模块标题优化：更醒目的编号徽标 + 加粗大标题 ---- */
         .sec-head {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             gap: 14px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             flex-wrap: wrap;
         }
         .sec-num {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
-            color: var(--ink-faint);
-            letter-spacing: .1em;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            color: #fff;
+            background: var(--blue);
+            padding: 5px 13px;
+            border-radius: 5px;
+            flex: none;
+            box-shadow: var(--shadow-sm);
         }
         .sec-title {
             font-family: 'Newsreader', serif;
-            font-weight: 500;
-            font-size: 28px;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 32px;
             color: var(--ink);
+            border-bottom: 3px solid var(--blue);
+            padding-bottom: 5px;
+            line-height: 1.25;
         }
         .sec-desc {
             color: var(--ink-dim);
             font-size: 14.5px;
             max-width: 700px;
-            margin-top: 6px;
+            margin-top: 10px;
             margin-bottom: 28px;
         }
 
@@ -243,6 +257,54 @@
             border: 1px solid var(--line);
             border-radius: 4px;
             padding: 28px;
+        }
+
+        /* ===== KEY TAKEAWAY ===== */
+        .takeaway {
+            display: flex;
+            gap: 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--blue);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding: 18px 24px;
+            margin-bottom: 26px;
+        }
+        .takeaway .tw-lead {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 16px;
+            color: var(--blue);
+            flex: 0 0 auto;
+            padding-top: 1px;
+            white-space: nowrap;
+        }
+        .takeaway ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .takeaway li {
+            font-size: 13.5px;
+            color: var(--ink-dim);
+            line-height: 1.6;
+            padding-left: 16px;
+            position: relative;
+        }
+        .takeaway li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--ink-faint);
+        }
+        .takeaway li b {
+            color: var(--ink);
+            font-weight: 600;
+        }
+        @media(max-width:640px) {
+            .takeaway { flex-direction: column; gap: 8px; }
         }
 
         .pillbar {
@@ -256,7 +318,7 @@
             padding: 7px 14px;
             border: 1px solid var(--line);
             border-radius: 20px;
-            background: #fff;
+            background: var(--bg-card);
             color: var(--ink-dim);
             cursor: pointer;
             transition: all .14s;
@@ -387,7 +449,7 @@
         #bumpTooltip {
             position: absolute;
             pointer-events: none;
-            background: #fff;
+            background: var(--bg-card);
             border: 1px solid var(--line);
             padding: 9px 13px;
             border-radius: 4px;
@@ -424,7 +486,7 @@
             height: 34px;
             border-radius: 50%;
             border: 1px solid var(--line);
-            background: #fff;
+            background: var(--bg-card);
             color: var(--ink-dim);
             cursor: pointer;
             display: flex;
@@ -582,6 +644,56 @@
     }
 }
 
+/* ===== ANALYSIS LIST (numbered detailed commentary) ===== */
+.analysis-list {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.analysis-item {
+    display: flex;
+    gap: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+}
+.analysis-item .ai-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    flex: none;
+    width: 28px;
+    padding-top: 2px;
+}
+.analysis-item .ai-body h5 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14.5px;
+    color: var(--ink);
+    margin-bottom: 6px;
+}
+.analysis-item .ai-body p {
+    font-size: 13.5px;
+    color: var(--ink-dim);
+    line-height: 1.75;
+}
+.analysis-item .ai-body p b {
+    color: var(--ink);
+    font-weight: 600;
+}
+.analysis-section-head {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 34px;
+    margin-bottom: 4px;
+}
+
         /* ================================================================
                    SECTION 04 — 三国专题 全新排版（优化后）
                    ================================================================ */
@@ -600,7 +712,7 @@
             padding: 12px 28px;
             border: 2px solid var(--line);
             border-radius: var(--radius);
-            background: #fff;
+            background: var(--bg-card);
             color: var(--ink-dim);
             cursor: pointer;
             transition: all .2s ease;
@@ -688,7 +800,7 @@
             margin-bottom: 28px;
         }
         .metric-card {
-            background: #fff;
+            background: var(--bg-card);
             border: 1px solid var(--line);
             border-radius: var(--radius);
             padding: 18px 20px 16px;
@@ -736,7 +848,7 @@
 
         /* ---- 趋势图卡片 ---- */
         .chart-card {
-            background: #fff;
+            background: var(--bg-card);
             border: 1px solid var(--line);
             border-radius: var(--radius);
             padding: 20px 24px 24px;
@@ -752,9 +864,20 @@
         }
         .chart-card .chart-head h3 {
             font-family: 'Newsreader', serif;
-            font-weight: 500;
-            font-size: 20px;
+            font-weight: 600;
+            font-size: 21px;
             color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+        .chart-card .chart-head h3::before {
+            content: "";
+            width: 5px;
+            height: 18px;
+            border-radius: 2px;
+            background: var(--blue);
+            display: inline-block;
         }
         .chart-card .chart-head .pillbar .pill {
             font-size: 11px;
@@ -775,10 +898,10 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
-            margin-bottom: 28px;
+            margin-bottom: 12px;
         }
         .focus-grid-2 .sub-card {
-            background: #fff;
+            background: var(--bg-card);
             border: 1px solid var(--line);
             border-radius: var(--radius);
             padding: 20px 22px 22px;
@@ -787,12 +910,15 @@
         }
         .focus-grid-2 .sub-card h4 {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: 11.5px;
+            font-weight: 700;
             letter-spacing: .08em;
             text-transform: uppercase;
-            color: var(--ink-faint);
+            color: var(--ink-dim);
             margin-bottom: 14px;
             flex-shrink: 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--line-soft);
         }
 
         /* --- 产品形态：饼图 + 图例 横向紧凑 --- */
@@ -906,6 +1032,24 @@
             }
         }
 
+        /* ---- 可视化图表下方的总结性文字 ---- */
+        .viz-summary {
+            margin-top: 14px;
+            padding: 13px 18px;
+            background: var(--bg-panel);
+            border-radius: var(--radius);
+            font-size: 12.5px;
+            color: var(--ink-dim);
+            line-height: 1.75;
+        }
+        .viz-summary b {
+            color: var(--ink);
+            font-weight: 600;
+        }
+        .focus-grid-2 + .viz-summary {
+            margin-bottom: 28px;
+        }
+
         /* ---- 分析笔记 ---- */
         .analyst-note {
             background: var(--bg-panel);
@@ -913,6 +1057,7 @@
             border-radius: 0 var(--radius) var(--radius) 0;
             padding: 22px 28px;
             margin-top: 6px;
+            margin-bottom: 28px;
             transition: border-color .2s;
         }
         .analyst-note .note-head {
@@ -942,6 +1087,162 @@
             font-family: 'IBM Plex Mono', monospace;
             font-size: 11.5px;
             color: var(--ink-faint);
+        }
+
+        /* ---- 监管政策全景对比表（三国横向对比） ---- */
+        .compare-section {
+            margin-bottom: 36px;
+        }
+        .compare-section .cs-head {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+        .compare-section .cs-head h3 {
+            font-family: 'Newsreader', serif;
+            font-weight: 600;
+            font-size: 23px;
+            color: var(--ink);
+        }
+        .compare-section .cs-sub {
+            font-size: 12px;
+            color: var(--ink-faint);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        .compare-section .cs-desc {
+            font-size: 13px;
+            color: var(--ink-dim);
+            margin: 8px 0 16px;
+            max-width: 760px;
+        }
+        .compare-table-scroll {
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+        }
+        table.compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            min-width: 780px;
+        }
+        table.compare-table th,
+        table.compare-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--line-soft);
+            text-align: left;
+            vertical-align: top;
+            line-height: 1.62;
+        }
+        table.compare-table thead th {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: var(--ink-faint);
+            background: var(--bg-panel);
+            border-bottom: 2px solid var(--line);
+        }
+        table.compare-table thead th.col-us { color: var(--us); }
+        table.compare-table thead th.col-de { color: var(--de); }
+        table.compare-table thead th.col-uk { color: var(--uk); }
+        table.compare-table td.dim-label {
+            font-weight: 600;
+            color: var(--ink-dim);
+            white-space: nowrap;
+            background: var(--bg-panel);
+            font-size: 12px;
+        }
+        table.compare-table tr.grp td {
+            background: var(--bg-panel-raised);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10.5px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--ink);
+            font-weight: 700;
+            padding: 8px 16px;
+        }
+        table.compare-table td b {
+            color: var(--ink);
+        }
+        table.compare-table tbody tr:not(.grp):hover td {
+            background: var(--focus-strip);
+        }
+        @media(max-width:720px) {
+            table.compare-table { font-size: 11.5px; }
+            table.compare-table th, table.compare-table td { padding: 8px 10px; }
+        }
+
+        /* ---- 政策专题模块（各国详情卡片） ---- */
+        .policy-section {
+            margin-bottom: 28px;
+        }
+        .policy-section .policy-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+        .policy-section .policy-head h4 {
+            font-family: 'Newsreader', serif;
+            font-weight: 600;
+            font-size: 21px;
+            color: var(--ink);
+        }
+        .policy-section .policy-date {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--ink-faint);
+        }
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .policy-card {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 14px 16px 16px;
+            display: flex;
+            flex-direction: column;
+        }
+        .policy-card .policy-cat {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: #fff;
+            display: inline-block;
+            padding: 3px 9px;
+            border-radius: 10px;
+            margin-bottom: 9px;
+            align-self: flex-start;
+        }
+        .policy-card .policy-text {
+            font-size: 12.5px;
+            color: var(--ink-dim);
+            line-height: 1.62;
+        }
+        .policy-card .policy-text b {
+            color: var(--ink);
+            font-weight: 600;
+        }
+        .policy-card.status-tight .policy-cat { background: var(--red); }
+        .policy-card.status-neutral .policy-cat { background: var(--ink-faint); }
+        .policy-card.status-watch .policy-cat { background: #E07820; }
+        @media(max-width:900px) {
+            .policy-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media(max-width:520px) {
+            .policy-grid { grid-template-columns: 1fr; }
         }
 
         /* ===== FOOTER ===== */
@@ -990,6 +1291,7 @@
                 <a href="#sec-bump">02 排位变迁</a>
                 <a href="#sec-composition">03 年度构成</a>
                 <a href="#sec-focus">04 三国专题</a>
+                <a href="#sec-policy">05 政策对比</a>
             </div>
         </div>
     </nav>
@@ -997,9 +1299,9 @@
     <div class="wrap">
 
         <header class="masthead">
-            <div class="eyebrow">Global Market Intelligence · 数据来源 TobaccoIntelligence</div>
+            <div class="eyebrow">Global Market Intelligence · 数据来源 TobaccoIntelligence / ECigIntelligence</div>
             <h1 class="title">雾化烟<br><em>全球格局追踪分析</em></h1>
-            <p class="subtitle">51个市场，2016–2027年规模追踪（含预测）。本简报聚焦全球前十大市场的此起彼伏，以及英国、美国、德国三个结构迥异的核心市场。</p>
+            <p class="subtitle">51个市场，2016–2027年规模追踪（含预测）。本简报聚焦全球前十大市场的此起彼伏，以及英国、美国、德国三个结构迥异的核心市场的规模数据与最新监管政策。</p>
             <div class="meta-row">
                 <span>覆盖区间 <b>2016–2027</b></span>
                 <span>样本市场 <b>51</b></span>
@@ -1015,6 +1317,15 @@
             <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">全球总览</span></div>
             <p class="sec-desc">Top10 市场叠加"其他"构成全球总量；右轴折线为总量同比增速，F2026/F2027 为预测值，以虚线区分。</p>
 
+            <div class="takeaway">
+                <div class="tw-lead">看点</div>
+                <ul>
+                    <li>全球市场从2016年<b>$8.5B</b>涨到2025年<b>$41.8B</b>，9年扩张近5倍，但2026–2027预测<b>近乎停滞</b>，已进入成熟平台期</li>
+                    <li>美国份额从44.3%降到36.5%，集中度在稀释，但<b>"其他国家"篮子增速27%远超前十合计18%</b>，俄罗斯/巴西/印尼是主力</li>
+                    <li>中国是最大异常值：2021年一度全球第二（$3.0B），2022年监管突变后两年内<b>规模腰斩</b>，跌至第八</li>
+                </ul>
+            </div>
+
             <div class="panel">
                 <div class="chart-toolbar">
                     <div class="pillbar" id="overviewToggle">
@@ -1027,7 +1338,7 @@
                 </div>
                 <div style="position:relative;height:420px;"><canvas id="overviewChart"></canvas></div>
                 <div class="legend-row" id="overviewLegend"></div>
-                <p class="footnote">悬停可查看各国当年数值。2026–2027 年为预测值（F），以半透明柱区分；空心圆增速标记代表负增长。</p>
+                <p class="footnote">占比≥4%（或规模≥$3B）的柱段与同比增速均直接标注数值；悬停可查看被隐藏的小份额市场明细。2026–2027 年为预测值（F），以半透明柱区分；空心圆增速标记代表负增长。</p>
             </div>
 
             <div class="insight-grid" style="margin-top:28px;">
@@ -1053,7 +1364,16 @@
         <!-- 02 bump -->
         <section class="block" id="sec-bump">
             <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">十二年排位变迁</span></div>
-            <p class="sec-desc">曾进入全球前十的14个市场，纵轴为当年排名（1为最高）。悬停图例可单独追踪某一市场轨迹；英/美/德三国以品牌色高亮。</p>
+            <p class="sec-desc">曾进入全球前十的14个市场，纵轴为当年排名（1为最高）。悬停图例可单独追踪某一市场轨迹；英/美/德三国以品牌色高亮，并直接标注排名数字。</p>
+
+            <div class="takeaway">
+                <div class="tw-lead">看点</div>
+                <ul>
+                    <li><b>美国12年稳居第一</b>，但2026–2027预测显示排名不变、规模却连续两年下滑，是历史首次</li>
+                    <li><b>英国2025年从第2跌至第4</b>，首次被俄罗斯超越——一次性电子烟禁令提前透支了需求</li>
+                    <li><b>德国2022年后跳级式上升</b>，从常年第7–8名冲进前四，法规推动正规市场替代灰市</li>
+                </ul>
+            </div>
 
             <div class="panel">
                 <div class="bump-wrap">
@@ -1065,12 +1385,88 @@
                 </div>
                 <p class="footnote">○ 空心圆标记该市场当年首次进入前十；F2026/F2027 以浅色虚线延伸。英国（红）、美国（蓝）、德国（绿）三国高亮。</p>
             </div>
+
+            <div class="analysis-section-head">逐市场排位解读</div>
+            <div class="analysis-list">
+                <div class="analysis-item">
+                    <div class="ai-num">01</div>
+                    <div class="ai-body">
+                        <h5>🇺🇸 美国 · 12年"零波动"第一，但排名的稳定正在掩盖规模的松动</h5>
+                        <p>美国是14个曾进入前十的市场里唯一一个<b>连续12年稳居第一</b>的市场，从未被挑战过。但排位图的平坦线条恰恰容易掩盖背后的波动——2020年美国规模同比骤降28.4%（FDA对JUUL等产品的执法），2021年又反弹47.6%，绝对值的过山车丝毫没有反映在排名曲线上。更值得注意的是预测区间：2026–2027年美国排名依旧是#1，但这是<b>12年里第一次"排名不变、规模连续两年下滑"</b>的组合，说明领先优势正在被慢慢削薄，只是还没有薄到被第二名反超的程度。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">02</div>
+                    <div class="ai-body">
+                        <h5>🇬🇧 英国 · 从常年亚军到2025年被反超，一次性禁令是分水岭</h5>
+                        <p>英国在2016–2024年间几乎全部年份稳坐<b>第二名</b>，是仅次于美国的"永远的老二"。但2025年是关键转折：一次性电子烟全面禁令于当年6月生效，提前透支了消费需求，导致规模同比下滑16%，排名也历史性地跌至<b>第四</b>，首次被俄罗斯反超，2024年也一度被巴西反超过（第三名）。预测显示2027年英国规模会反弹回$2.1B左右，但排名能否重返前二，仍要看新规落地后专卖店渠道能否完成产品结构的切换。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">03</div>
+                    <div class="ai-body">
+                        <h5>🇩🇪 德国 · 从常年第7–8名到跳级前四，法规驱动的正规化最典型样本</h5>
+                        <p>德国在2016–2021年长期徘徊在<b>第7至第9名</b>之间，是一个不起眼的欧洲二线市场。2022年起排名开始快速上升，2023年一举冲进<b>前四</b>，这与同期规模从$600M跳涨到$1,444M（+141%）完全同步。这是14个市场里排名上升速度最快、也最"干净"的案例——没有伴随中国式的政策反噬，是目前唯一一个仍处于上升通道尾声、尚未出现明显回落迹象的欧洲主要市场。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">04</div>
+                    <div class="ai-body">
+                        <h5>🇫🇷 法国 · 全程前三的"隐形冠军"，波动最小</h5>
+                        <p>法国是排位图里最"无聊"但也最稳健的市场：12年里排名基本在<b>第2至第4名</b>之间小幅波动，从未跌出前五，也从未像英国那样经历断崖式下滑。2025年法国规模达到$2,166M，是仅次于美国的第二大市场，超过英国。这种稳定性背后是法国对雾化烟相对温和、少有剧烈政策摇摆的监管环境，使其成为14个市场里抗周期能力最强的样本。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">05</div>
+                    <div class="ai-body">
+                        <h5>🇷🇺 俄罗斯 · 后来居上，2025年反超英国跻身前三</h5>
+                        <p>俄罗斯从2016年的第9名左右起步，排名逐年稳步攀升，2025年以<b>$2,504M</b>的规模反超英国、进入全球前三，是过去五年里排名上升最持续的市场之一，没有出现德国那种"两年跳涨"的急剧拐点，而是每年小幅稳步爬升——这种"温水式"增长路径反而使其成为英国跌落后排位变动中最大的受益者。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">06</div>
+                    <div class="ai-body">
+                        <h5>🇨🇦 加拿大 & 🇲🇽 墨西哥 · 中段稳步上升的两个北美/拉美市场</h5>
+                        <p>加拿大从2016年长期排在第8–10名区间，2023年后加速上升，2025年以$1,833M升至<b>第六名左右</b>，是14个市场里少有的"晚熟型"选手——起步慢但近三年增速持续加快。墨西哥路径类似：2016年一度跌出前十，2021年后重新进入并稳步爬升，2025年以$1,430M紧随其后。两者共同点是排名爬升过程中几乎没有出现过大幅回撤，走势比多数欧洲市场更平滑。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">07</div>
+                    <div class="ai-body">
+                        <h5>🇵🇱 波兰 · 排位图里波动最剧烈的"过山车"市场</h5>
+                        <p>波兰的排位轨迹是14个市场中最不稳定的：2016–2021年长期在第5–6名附近徘徊，2022–2025年一路冲高至<b>第五名以上</b>（2025年规模达$1,422M），但2026年预测规模骤降到$947M，几乎腰斩，排名也随之明显下滑。这种冲高回落的模式提示波兰的高峰很可能是税收/政策扰动带来的短期透支，而非可持续的需求增长，与德国的"跳涨后企稳"形成鲜明对比。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">08</div>
+                    <div class="ai-body">
+                        <h5>🇧🇷 巴西 & 🇮🇩 印尼 · 全球增速最快的两个新晋前十市场</h5>
+                        <p>巴西和印尼分别在2018–2019年前后才首次进入样本统计，起点规模均不足$200M，但此后增速惊人——巴西2025年已达$848M，印尼达$1,417M，双双跻身<b>前十中段</b>，是过去六年里排名上升最快的两个新兴市场。两者的排名爬升几乎没有中国式的政策反噬打断，反映出监管相对宽松环境下的自然渗透扩张。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">09</div>
+                    <div class="ai-body">
+                        <h5>🇯🇵 日本 & 🇰🇷 韩国 · 两个逐渐"掉队"的亚洲成熟市场</h5>
+                        <p>日本和韩国是14个市场里排名下滑趋势最明确的两个：日本规模从2018年的$511M峰值后持续阴跌，2025年降至$434M，排名从中段一路滑落至接近跌出前十；韩国2023年一度达到$845M高点后同样掉头向下。两者共同特征是IQOS等加热不燃烧（HNB）产品对雾化烟形成了明显的品类替代，是亚洲两个成熟市场里雾化烟增长动能最弱的样本。</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- 03 composition -->
         <section class="block" id="sec-composition">
             <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">年度构成</span></div>
             <p class="sec-desc">拖动滑块或点击播放，逐年查看前十市场的份额；英国、美国、德国加彩色标签高亮。</p>
+
+            <div class="takeaway">
+                <div class="tw-lead">看点</div>
+                <ul>
+                    <li>前十大市场合计常年占全球总量<b>七至八成</b>，头部集中效应显著，尾部51个市场共同瓜分剩余份额</li>
+                    <li>拖动滑块可直接看到<b>NEW标签</b>——哪些市场是当年新晋前十，捕捉后起之秀</li>
+                    <li>2025年美国以<b>36.5%</b>份额仍居首位，其后前五名合计也不及美国一家</li>
+                </ul>
+            </div>
             <div class="panel">
                 <div class="year-scrubber">
                     <button class="play-btn" id="playBtn">▶</button>
@@ -1088,6 +1484,52 @@
                     <div class="comp-list" id="compList"></div>
                 </div>
             </div>
+
+            <div class="analysis-section-head">年度构成的分析要点</div>
+            <div class="analysis-list">
+                <div class="analysis-item">
+                    <div class="ai-num">01</div>
+                    <div class="ai-body">
+                        <h5>头部集中度长期稳定在七至八成，但内部座次持续洗牌</h5>
+                        <p>前十大市场合计份额从2016年到2025年始终维持在<b>七至八成</b>之间波动，说明雾化烟消费高度集中在少数发达及中等收入市场，尾部51个样本市场的41个"其他"市场共同瓜分剩余两成左右份额。但份额总量的稳定并不代表座次稳定——把滑块从2016年拖到2025年会看到前十名单本身几乎每两三年就要洗一次牌，法国、加拿大是少数在整个区间内席位从未被替换的常客。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">02</div>
+                    <div class="ai-body">
+                        <h5>美国份额从早期的近乎"半壁江山"逐步稀释，但仍一家独大</h5>
+                        <p>2016年美国以44.3%的份额几乎占据全球总量的一半，到2025年这一比例降至<b>36.5%</b>，累计稀释了近8个百分点。但即便如此，美国2025年一家的份额仍然超过第二至第五名的总和，说明这种"稀释"是相对意义上的——雾化烟市场的全球格局远没有走到多极化的地步，美国依然是决定全球总量走势的最大单一变量。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">03</div>
+                    <div class="ai-body">
+                        <h5>NEW标签揭示的"新面孔"：巴西、印尼、俄罗斯先后挤进前十</h5>
+                        <p>把滑块逐年播放，可以清楚看到几次"新面孔"闯入前十的时间点：巴西在2019年前后首次挤入，印尼紧随其后，俄罗斯虽然更早进入前十，但真正跻身前三是2025年——这几次NEW标签的出现，与"其他国家"篮子整体增速（约27%）远超前十合计（约18%）的现象相互印证：越来越多新兴市场正在从尾部走向头部，全球格局正从"美欧主导"缓慢过渡到"美欧+新兴市场并重"。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">04</div>
+                    <div class="ai-body">
+                        <h5>德国、波兰的份额曲线在2022年前后出现明显台阶式跳升</h5>
+                        <p>逐年查看构成饼图会发现，德国和波兰的份额占比在2022–2023年间都出现了肉眼可见的"台阶"——由不起眼的个位数份额直接跳到显著可见的份额区间。德国的跳升更多来自法规推动的正规市场替代灰市，是相对健康的结构性增长；波兰的跳升则在2025年后于饼图中重新收窄，2026年预测份额明显回落，两者虽然形态相似，但可持续性截然不同。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">05</div>
+                    <div class="ai-body">
+                        <h5>英国的份额切片在2025年明显"瘦身"，是十年来构成图里最显眼的收缩</h5>
+                        <p>2024年之前，英国在构成饼图里始终是仅次于美国的第二大切片；2025年这一切片明显收窄，份额占比从此前的高位下滑，是整个2016–2025年区间里除中国外收缩幅度最大的头部市场。这与其排名从第二跌至第四的变化完全对应，也直观反映出一次性禁令对存量市场结构的直接冲击。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="ai-num">06</div>
+                    <div class="ai-body">
+                        <h5>"其他"切片本身也在缓慢变厚，是格局分散化的另一佐证</h5>
+                        <p>饼图中代表尾部51个市场的"其他"切片，在2016年占比相对有限，到2025年这一比例已有明显扩大，且构成"其他"的市场数量本身也在增加。这与"其他国家"篮子27%的复合增速相互印证，说明全球雾化烟消费的地理分布正在变得更加分散，而不是持续向少数几个头部市场集中。</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- ==============================================================
@@ -1095,7 +1537,16 @@
         ============================================================== -->
         <section class="block" id="sec-focus">
             <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">三国专题</span></div>
-            <p class="sec-desc">点击下方按钮切换国家，查看英国、美国、德国的完整市场画像——从规模走势到用户构成与渠道分布。</p>
+            <p class="sec-desc">点击下方按钮切换国家，查看英国、美国、德国的完整市场画像——从规模走势、用户构成、渠道分布到最新监管政策要点。</p>
+
+            <div class="takeaway">
+                <div class="tw-lead">看点</div>
+                <ul>
+                    <li>🇺🇸 <b>美国</b>：全球第一，2025年$15.3B近乎等于第2–7名之和，但一次性产品占比42%、PMTA仅39款获批，监管风险最集中</li>
+                    <li>🇬🇧 <b>英国</b>：曾是欧洲第一，2025年因一次性禁令下滑16%跌至第四，2026年新法开启新一轮全面收紧</li>
+                    <li>🇩🇪 <b>德国</b>：2022–2023两年跳涨141%冲进前四，产品结构三国中最均衡，一次性产品去留是下一个变量</li>
+                </ul>
+            </div>
 
             <!-- 国家切换 Tabs -->
             <div class="country-tabs">
@@ -1122,6 +1573,15 @@
                 <!-- 关键数据 4 卡片 -->
                 <div class="key-metrics" id="banner-United States"></div>
 
+                <!-- 分析笔记（已提前至趋势图之前） -->
+                <div class="analyst-note" style="border-left-color:var(--us);">
+                    <div class="note-head"><span class="note-flag">🇺🇸</span> 美国 · 全球绝对主导，但监管风险最高</div>
+                    <div class="note-body">
+                        美国是目前全球最大的雾化烟市场，且体量遥遥领先——2025年的<b>$15.3B</b>约等于第2至第7名之和。然而这个主导地位建立在<b>监管的反复横跳上</b>：FDA对一次性雾化烟和调味产品的态度几乎每隔两三年就大幅摇摆一次，直接造成了2020年的市场骤缩（-28.4%）和2021年的强反弹（+47.6%）。更值得注意的是，预测显示<b>2026–2027年美国市场将连续下滑</b>（$14.6B→$14.1B），这是12年历史里首次出现连续两年预测收缩，背后是FDA PMTA审批收紧与一次性烟弹监管压力叠加。从产品形态看，美国<b>一次性产品（Disposables）占比高达42%</b>，远超英德两国，这也正是当前监管压力最集中的品类，结构性风险显著。政策层面，PMTA审批极度收紧（迄今仅39款获批）与特朗普政府"拯救调味电子烟"的表态形成张力，2028年大选前的政策走向仍存较大不确定性。
+                    </div>
+                    <div class="note-signoff">— 分析笔记 · TobaccoIntelligence / ECigIntelligence 数据</div>
+                </div>
+
                 <!-- 趋势图 -->
                 <div class="chart-card">
                     <div class="chart-head">
@@ -1136,6 +1596,7 @@
                     <div class="chart-body">
                         <canvas id="trendChart-United States"></canvas>
                     </div>
+                    <div class="viz-summary">📌 美国市场规模连续12年全球第一，但预测显示<b>2026–2027年首次出现连续两年下滑</b>（$14.6B→$14.1B）；使用人口同步在2025年见顶（约1,900万），预测2027年降至约1,750万，人口增长已先于金额触顶，显示需求端也在降温。</div>
                 </div>
 
                 <!-- 两列：产品形态 + 渠道分布 (重写) -->
@@ -1149,6 +1610,7 @@
                             </div>
                             <div class="pie-legend" id="formLegend-United States"></div>
                         </div>
+                        <div class="viz-summary" id="formInsight-United States"></div>
                     </div>
                     <!-- 渠道分布 -->
                     <div class="sub-card">
@@ -1159,16 +1621,54 @@
                             </div>
                             <div class="channel-extras" id="chanExtras-United States"></div>
                         </div>
+                        <div class="viz-summary" id="chanInsight-United States"></div>
                     </div>
                 </div>
 
-                <!-- 分析笔记 -->
-                <div class="analyst-note" style="border-left-color:var(--us);">
-                    <div class="note-head"><span class="note-flag">🇺🇸</span> 美国 · 全球绝对主导，但监管风险最高</div>
-                    <div class="note-body">
-                        美国是目前全球最大的雾化烟市场，且体量遥遥领先——2025年的<b>$15.3B</b>约等于第2至第7名之和。然而这个主导地位建立在<b>监管的反复横跳上</b>：FDA对一次性雾化烟和调味产品的态度几乎每隔两三年就大幅摇摆一次，直接造成了2020年的市场骤缩（-28.4%）和2021年的强反弹（+47.6%）。更值得注意的是，预测显示<b>2026–2027年美国市场将连续下滑</b>（$14.6B→$14.1B），这是12年历史里首次出现连续两年预测收缩，背后是FDA PMTA审批收紧与一次性烟弹监管压力。从产品形态看，美国<b>一次性产品（Disposables）占比高达42%</b>，远超英德两国，这也正是当前监管压力最集中的品类，结构性风险显著。
+                <!-- 政策专题 -->
+                <div class="policy-section">
+                    <div class="policy-head">
+                        <h4>🏛️ 监管政策要点（详情）</h4>
+                        <span class="policy-date">数据来源：ECigIntelligence《US: e-cigarette regulation》· 2026年3月11日</span>
                     </div>
-                    <div class="note-signoff">— 分析笔记 · TobaccoIntelligence 数据</div>
+                    <div class="policy-grid">
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--us)">监管框架</span>
+                            <div class="policy-text">含尼古丁电子烟自2016年起被归类为<b>"烟草制品"</b>，纳入联邦《食品药品化妆品法》管辖，未单独立法，由FDA统一监管，设备本身合法。</div>
+                        </div>
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--us)">年龄限制</span>
+                            <div class="policy-text">购买最低年龄<b>21岁</b>；外观疑似30岁以下须查验证件；线上销售必须进行年龄验证，物理销售存疑时同样适用。</div>
+                        </div>
+                        <div class="policy-card status-tight">
+                            <span class="policy-cat" style="background:var(--us)">产品与口味限制</span>
+                            <div class="policy-text">一次性电子烟<b>合法</b>，但已是FDA当前<b>执法重点</b>，相关执法行动明显增多；除烟草/薄荷醇外的调味剂事实上<b>被禁售</b>（PMTA至今未批准果味、甜味产品）。</div>
+                        </div>
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--us)">包装与标签</span>
+                            <div class="policy-text">无需素包装；须印固定文本健康警示"本产品含尼古丁，尼古丁是一种成瘾性化学物质"，正反面各占<b>30%</b>版面。</div>
+                        </div>
+                        <div class="policy-card status-tight">
+                            <span class="policy-cat" style="background:var(--us)">市场准入</span>
+                            <div class="policy-text">强制<b>上市前烟草产品申请（PMTA）</b>审批，截至2026年1月仅<b>39款</b>产品获批，多为烟草/薄荷醇口味；申请免费但无法定审核时限。</div>
+                        </div>
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--us)">销售渠道</span>
+                            <div class="policy-text">无零售分区限制，自动售货机限成人场所；网售合法但受<b>PACT法案</b>约束（禁止经USPS邮寄，其他快递须核验年龄并要求签收）。</div>
+                        </div>
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--us)">广告与营销</span>
+                            <div class="policy-text">广告须占<b>20%</b>版面刊登健康警示；禁止免费派样与专卖店试用；1998年《总协议》不适用于电子烟，线上/社媒广告暂无专门限制。</div>
+                        </div>
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--us)">公共场所使用</span>
+                            <div class="policy-text">合法，公共场所使用<b>基本不受联邦监管</b>，是否禁用由各州自行立法规定，各州差异较大。</div>
+                        </div>
+                        <div class="policy-card status-watch">
+                            <span class="policy-cat" style="background:var(--us)">税收与展望</span>
+                            <div class="policy-text">联邦层面<b>无消费税</b>（州税另计）；特朗普政府倾向"拯救"调味电子烟，最高法院正复核FDA此前否决案，<b>2028年大选</b>将是政策走向的关键节点。</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1176,6 +1676,14 @@
             <div class="detail-section" id="panel-United Kingdom">
 
                 <div class="key-metrics" id="banner-United Kingdom"></div>
+
+                <div class="analyst-note" style="border-left-color:var(--uk);">
+                    <div class="note-head"><span class="note-flag">🇬🇧</span> 英国 · 曾是欧洲第一，正在失速</div>
+                    <div class="note-body">
+                        英国在2016–2024年间始终是全球第二大雾化烟市场，一度以<b>份额10.6%（2017年）</b>稳坐亚军宝座。但2025年出现了-16%的显著下滑（$2,365M→$1,987M），排名也跌落至全球第四，首次被俄罗斯超越。这次下滑的直接导火索是<b>政府对一次性雾化烟的全面打压</b>——2025年6月生效的一次性产品禁令提前透支了需求，大量消费者提前购买库存后消费萎缩。从渠道上看，英国拥有<b>全球密度最高的雾化烟专卖店网络之一</b>（4,000家），线下专卖店渠道占用户比例高达37%，远超德国（18%）；线上流量中96%流向本国网站，生态高度本土化，受监管冲击时缓冲能力较弱。更值得关注的是，2026年4月通过的《烟草与电子烟法案2026》标志着监管进入<b>新一轮全面收紧周期</b>——广告赞助禁令、消费税与税票制度将于2026年10月同步落地，注册制、零售许可证与包装细则也将在2027年陆续跟进，英国正从"欧洲减害先锋"转向"渐进式全面强监管"的路径。F2027预测显示英国会反弹回$2.1B重回前四，但能否持续仍取决于这一系列新规落地后市场的自我调整速度。
+                    </div>
+                    <div class="note-signoff">— 分析笔记 · TobaccoIntelligence / ECigIntelligence 数据</div>
+                </div>
 
                 <div class="chart-card">
                     <div class="chart-head">
@@ -1190,6 +1698,7 @@
                     <div class="chart-body">
                         <canvas id="trendChart-United Kingdom"></canvas>
                     </div>
+                    <div class="viz-summary">📌 英国市场规模在2024年触及<b>$2,365M</b>峰值后，2025年因一次性禁令骤降<b>16%</b>至$1,987M，全球排名同步跌至第4；预测2027年反弹至约$2.1B，但使用人口2025年后基本停滞在<b>590–600万</b>之间，增长动能明显弱于规模波动。</div>
                 </div>
 
                 <div class="focus-grid-2">
@@ -1201,6 +1710,7 @@
                             </div>
                             <div class="pie-legend" id="formLegend-United Kingdom"></div>
                         </div>
+                        <div class="viz-summary" id="formInsight-United Kingdom"></div>
                     </div>
                     <div class="sub-card">
                         <h4>零售渠道分布（用户份额）</h4>
@@ -1210,15 +1720,54 @@
                             </div>
                             <div class="channel-extras" id="chanExtras-United Kingdom"></div>
                         </div>
+                        <div class="viz-summary" id="chanInsight-United Kingdom"></div>
                     </div>
                 </div>
 
-                <div class="analyst-note" style="border-left-color:var(--uk);">
-                    <div class="note-head"><span class="note-flag">🇬🇧</span> 英国 · 曾是欧洲第一，正在失速</div>
-                    <div class="note-body">
-                        英国在2016–2024年间始终是全球第二大雾化烟市场，一度以<b>份额10.6%（2017年）</b>稳坐亚军宝座。但2025年出现了-16%的显著下滑（$2,365M→$1,987M），排名也跌落至全球第四，首次被俄罗斯超越。这次下滑的直接导火索是<b>政府对一次性雾化烟的全面打压</b>——禁售一次性产品（Disposables）的法规讨论提前透支了需求，大量消费者提前购买库存后消费萎缩。从渠道上看，英国拥有<b>全球密度最高的雾化烟专卖店网络之一</b>（4,000家），线下专卖店渠道占用户比例高达37%，远超德国（18%）；线上流量中96%流向本国网站，生态高度本土化，受监管冲击时缓冲能力较弱。F2027预测显示英国会反弹回$2.1B重回前四，但能否持续仍取决于监管最终落地后市场的自我调整速度。
+                <!-- 政策专题 -->
+                <div class="policy-section">
+                    <div class="policy-head">
+                        <h4>🏛️ 监管政策要点（详情）</h4>
+                        <span class="policy-date">数据来源：ECigIntelligence《UK: e-cigarette regulation》· 2026年6月30日</span>
                     </div>
-                    <div class="note-signoff">— 分析笔记 · TobaccoIntelligence 数据</div>
+                    <div class="policy-grid">
+                        <div class="policy-card status-tight">
+                            <span class="policy-cat" style="background:var(--uk)">监管框架</span>
+                            <div class="policy-text">归类为"烟草相关产品"；2026年4月通过<b>《烟草与电子烟法案2026》</b>，赋予政府大范围二级立法权，将逐步取代现行TRPR，是近十年最重要的立法动作。</div>
+                        </div>
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--uk)">年龄限制</span>
+                            <div class="policy-text">最低购买年龄<b>18岁</b>；新法新增"代购入罪"条款；物理销售现行不强制验证年龄，但网售必须验证。</div>
+                        </div>
+                        <div class="policy-card status-tight">
+                            <span class="policy-cat" style="background:var(--uk)">产品与口味限制</span>
+                            <div class="policy-text">一次性电子烟已于<b>2025年6月1日全面禁止</b>（含无尼古丁产品）；尼古丁浓度上限<b>20mg/ml</b>；2025年10月起就调味剂、包装展开征询，预计<b>2027年中</b>出台细则。</div>
+                        </div>
+                        <div class="policy-card status-watch">
+                            <span class="policy-cat" style="background:var(--uk)">包装与标签</span>
+                            <div class="policy-text">现行无需素包装，但新法<b>授权卫生大臣</b>未来可就形状、开启方式、儿童安全设计发布细则；健康警示占正反面各<b>30%</b>。</div>
+                        </div>
+                        <div class="policy-card status-watch">
+                            <span class="policy-cat" style="background:var(--uk)">市场准入</span>
+                            <div class="policy-text">现行<b>上市前通知制</b>（MHRA），初次通知费£150/年费£60；新法拟以<b>注册制</b>取代通知制，预计<b>2027年中</b>落地。</div>
+                        </div>
+                        <div class="policy-card status-tight">
+                            <span class="policy-cat" style="background:var(--uk)">销售渠道</span>
+                            <div class="policy-text">苏格兰已禁自动售货机售卖，新法将<b>自2026年10月</b>起在全英<b>禁售自动售货机</b>；同时拟推"个人牌照+场地牌照"双轨<b>零售许可证</b>制度。</div>
+                        </div>
+                        <div class="policy-card status-tight">
+                            <span class="policy-cat" style="background:var(--uk)">广告与营销</span>
+                            <div class="policy-text">现行已<b>几乎全面禁止</b>广告（含线上）；新法新增赞助禁令与免费派样禁令（2026年10月生效），品牌联名/延伸拟于<b>2027年6月</b>生效禁止。</div>
+                        </div>
+                        <div class="policy-card status-watch">
+                            <span class="policy-cat" style="background:var(--uk)">公共场所使用</span>
+                            <div class="policy-text">合法，目前<b>无全国性限制</b>；2026年2月已启动"无烟场所升级为无雾化烟场所"公众咨询，拟将室内无烟场所、公共交通、载17岁以下人员车辆纳入禁用范围。</div>
+                        </div>
+                        <div class="policy-card status-tight">
+                            <span class="policy-cat" style="background:var(--uk)">税收与展望</span>
+                            <div class="policy-text">新设<b>Vaping Products Duty消费税 £0.22/ml</b>及强制税票制度，均于<b>2026年10月1日</b>生效；工党政府整体趋严，多项配套细则将于<b>2027年</b>陆续落地。</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1226,6 +1775,14 @@
             <div class="detail-section" id="panel-Germany">
 
                 <div class="key-metrics" id="banner-Germany"></div>
+
+                <div class="analyst-note" style="border-left-color:var(--de);">
+                    <div class="note-head"><span class="note-flag">🇩🇪</span> 德国 · 欧洲最具看点的结构性增长</div>
+                    <div class="note-body">
+                        德国是12年里轨迹最值得单独研究的市场：前期（2016–2021）表现中规中矩，一直徘徊在$390–600M；<b>2022年起突然跳级，仅2022–2023两年就从$600M涨到$1,444M，涨幅141%</b>，跻身全球前四。这次跳涨与德国<b>EVPG法规对产品标准化的推进</b>、正规市场替代灰市的过程密切相关，而非单纯的消费需求爆发。从产品结构看，德国以<b>开放式pod系统（33%）和预充式pod系统（31%）</b>为主，一次性产品仅占12%，是三国中产品结构最均衡、对监管冲击抵御力最强的市场；线上流量中有16%流向海外网站，是三国中跨境电商渗透率最高的，反映正规本土市场仍有一定缺口。政策层面，德国当前处于"广告全面禁止+适中消费税（€0.32/ml）"的组合下，监管重点正从产品标准转向<b>一次性产品去留</b>与<b>薄荷醇存废</b>两大议题，且两党（CDU vs SPD/绿党）立场分歧明显，后续走向高度依赖执政联盟构成。
+                    </div>
+                    <div class="note-signoff">— 分析笔记 · TobaccoIntelligence / ECigIntelligence 数据</div>
+                </div>
 
                 <div class="chart-card">
                     <div class="chart-head">
@@ -1240,6 +1797,7 @@
                     <div class="chart-body">
                         <canvas id="trendChart-Germany"></canvas>
                     </div>
+                    <div class="viz-summary">📌 德国市场规模在2022–2023两年间从$600M跳涨至<b>$1,444M（+141%）</b>，随后增速放缓，2025年约<b>$1.5B</b>；使用人口同期从约170万增长到约300万，与规模跳涨节奏基本同步，说明这轮增长伴随着实际渗透率的提升，而非单纯价格效应。</div>
                 </div>
 
                 <div class="focus-grid-2">
@@ -1251,6 +1809,7 @@
                             </div>
                             <div class="pie-legend" id="formLegend-Germany"></div>
                         </div>
+                        <div class="viz-summary" id="formInsight-Germany"></div>
                     </div>
                     <div class="sub-card">
                         <h4>零售渠道分布（用户份额）</h4>
@@ -1260,25 +1819,199 @@
                             </div>
                             <div class="channel-extras" id="chanExtras-Germany"></div>
                         </div>
+                        <div class="viz-summary" id="chanInsight-Germany"></div>
                     </div>
                 </div>
 
-                <div class="analyst-note" style="border-left-color:var(--de);">
-                    <div class="note-head"><span class="note-flag">🇩🇪</span> 德国 · 欧洲最具看点的结构性增长</div>
-                    <div class="note-body">
-                        德国是12年里轨迹最值得单独研究的市场：前期（2016–2021）表现中规中矩，一直徘徊在$390–600M；<b>2022年起突然跳级，仅2022–2023两年就从$600M涨到$1,444M，涨幅141%</b>，跻身全球前四。这次跳涨与德国<b>EVPG法规对产品标准化的推进</b>、正规市场替代灰市的过程密切相关，而非单纯的消费需求爆发。从产品结构看，德国以<b>开放式pod系统（33%）和预充式pod系统（31%）</b>为主，一次性产品仅占12%，是三国中产品结构最均衡、对监管冲击抵御力最强的市场；线上流量中有16%流向海外网站，是三国中跨境电商渗透率最高的，反映正规本土市场仍有一定缺口。
+                <!-- 政策专题 -->
+                <div class="policy-section">
+                    <div class="policy-head">
+                        <h4>🏛️ 监管政策要点（详情）</h4>
+                        <span class="policy-date">数据来源：ECigIntelligence《Germany: e-cigarette regulation》· 2026年3月5日</span>
                     </div>
-                    <div class="note-signoff">— 分析笔记 · TobaccoIntelligence 数据</div>
+                    <div class="policy-grid">
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--de)">监管框架</span>
+                            <div class="policy-text">归类为"烟草相关产品"，受《烟草与相关产品法》管辖，落地EU《烟草产品指令》(TPD)，设备本身合法。</div>
+                        </div>
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--de)">年龄限制</span>
+                            <div class="policy-text">最低购买年龄<b>18岁</b>，线上线下<b>均须验证</b>年龄；根据《青少年保护法》，快递配送时也须核验年龄。</div>
+                        </div>
+                        <div class="policy-card status-tight">
+                            <span class="policy-cat" style="background:var(--de)">产品与口味限制</span>
+                            <div class="policy-text">一次性电子烟目前<b>合法</b>，但政府已于2025年底表态拟<b>全面禁止</b>；尼古丁浓度上限<b>20mg/ml</b>；2026年1月联邦食品农业部提案拟<b>禁用薄荷醇</b>等添加剂（源自BfR风险评估）。</div>
+                        </div>
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--de)">包装与标签</span>
+                            <div class="policy-text">强制配备说明书（含毒性/成瘾信息）；须儿童安全包装；健康警示占正反面各<b>30%</b>；禁止暗示天然、健康或环保属性。</div>
+                        </div>
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--de)">市场准入</span>
+                            <div class="policy-text">实行<b>上市前通知制</b>（非审批），经EU-CEG提交，<b>免费</b>，<b>6个月</b>静默期；进口商与生产商需<b>独立</b>各自履行通知义务。</div>
+                        </div>
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--de)">销售渠道</span>
+                            <div class="policy-text">自动售货机仅限儿童不可进入场所；跨境网售允许，但须在德国及经营所在欧盟成员国<b>双重注册</b>。</div>
+                        </div>
+                        <div class="policy-card status-tight">
+                            <span class="policy-cat" style="background:var(--de)">广告与营销</span>
+                            <div class="policy-text">广告<b>几乎全面禁止</b>（国内外报刊、广播、电视、网络、户外广告均禁）；仅展会、影院<b>部分</b>放开；禁止免费派样与社媒营销。</div>
+                        </div>
+                        <div class="policy-card status-neutral">
+                            <span class="policy-cat" style="background:var(--de)">公共场所使用</span>
+                            <div class="policy-text">合法，部分限制：联邦层面主要限制火车/车站，其余由各州规定；青少年禁止在餐厅、销售点等场所使用。</div>
+                        </div>
+                        <div class="policy-card status-tight">
+                            <span class="policy-cat" style="background:var(--de)">罚则举例</span>
+                            <div class="policy-text">销售危害健康安全产品最高<b>€30,000</b>罚款；未上报市场数据<b>€30,000</b>；违反成分/仿冒产品最高<b>1年监禁</b>或罚款。</div>
+                        </div>
+                        <div class="policy-card status-watch">
+                            <span class="policy-cat" style="background:var(--de)">税收与展望</span>
+                            <div class="policy-text">已征收消费税<b>€0.32/ml</b>，为欧洲较高税率之一；政治高度分裂（CDU相对宽松，SPD/绿党倾向严格），一次性产品禁令具跨党派共识，EU层面TPD/TAD修订将带来新变量。</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+        </section>
+
+        <!-- ==============================================================
+        05 监管政策全景对比 — 独立模块
+        ============================================================== -->
+        <section class="block" id="sec-policy">
+            <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">监管政策全景对比</span></div>
+            <p class="sec-desc">整理自 ECigIntelligence 美国（2026年3月）、德国（2026年3月）、英国（2026年6月）监管报告，覆盖框架、年龄、产品、准入、包装、渠道、场所、广告、税收、罚则十大维度，供三国横向对比。各国详细政策要点见上一模块「三国专题」。</p>
+
+            <div class="compare-section" style="margin-bottom:0;">
+                <div class="cs-head">
+                    <h3>🏛️ 监管政策全景对比</h3>
+                    <span class="cs-sub">美国 · 德国 · 英国</span>
+                </div>
+                <div class="compare-table-scroll">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th style="width:16%;">维度</th>
+                                <th class="col-us">🇺🇸 美国</th>
+                                <th class="col-de">🇩🇪 德国</th>
+                                <th class="col-uk">🇬🇧 英国</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="grp"><td colspan="4">总体框架</td></tr>
+                            <tr>
+                                <td class="dim-label">法律定位</td>
+                                <td>归类为<b>"烟草制品"</b>，2016年纳入FD&amp;C Act</td>
+                                <td>归类为<b>"烟草相关产品"</b></td>
+                                <td>归类为"烟草相关产品"；2026年4月通过<b>《烟草与电子烟法案2026》</b>拟建立独立监管框架</td>
+                            </tr>
+                            <tr>
+                                <td class="dim-label">监管机构</td>
+                                <td>FDA</td>
+                                <td>BVL（联邦消费者保护与食品安全局）</td>
+                                <td>MHRA</td>
+                            </tr>
+                            <tr>
+                                <td class="dim-label">政策趋势</td>
+                                <td>特朗普政府倾向"拯救"调味电子烟，最高法院正复核FDA否决案</td>
+                                <td>政治分歧大；一次性禁令、薄荷醇禁令为焦点，走向依赖执政联盟</td>
+                                <td>工党政府整体趋严，2026–2027年将密集出台配套细则</td>
+                            </tr>
+                            <tr class="grp"><td colspan="4">年龄与产品限制</td></tr>
+                            <tr>
+                                <td class="dim-label">最低购买年龄</td>
+                                <td><b>21岁</b>（三国最高）</td>
+                                <td>18岁</td>
+                                <td>18岁</td>
+                            </tr>
+                            <tr>
+                                <td class="dim-label">一次性电子烟</td>
+                                <td><b>合法</b>，但为FDA当前执法重点</td>
+                                <td><b>合法</b>，政府已表态拟全面禁止（提案阶段）</td>
+                                <td><b>不合法</b>，2025年6月1日起全面禁售（含无尼古丁款）</td>
+                            </tr>
+                            <tr>
+                                <td class="dim-label">尼古丁浓度上限</td>
+                                <td>无统一上限（受PMTA约束）</td>
+                                <td>20 mg/ml</td>
+                                <td>20 mg/ml</td>
+                            </tr>
+                            <tr>
+                                <td class="dim-label">口味限制</td>
+                                <td>调味电子烟<b>事实上被禁</b>（PMTA迄今仅批准39款，多为烟草/薄荷味）</td>
+                                <td>目前未禁；2026年1月提案拟禁薄荷醇等添加剂</td>
+                                <td>目前未禁；新法授权未来限制，已启动证据征集（2025年10月）</td>
+                            </tr>
+                            <tr class="grp"><td colspan="4">上市前审批 / 备案</td></tr>
+                            <tr>
+                                <td class="dim-label">制度类型</td>
+                                <td><b>PMTA审批制</b>，门槛高，无固定审核时限</td>
+                                <td>上市前通知制（EU-CEG），6个月等待期</td>
+                                <td>上市前通知制（MHRA），拟改<b>注册制</b>（预计2027年中）</td>
+                            </tr>
+                            <tr>
+                                <td class="dim-label">费用</td>
+                                <td>免费</td>
+                                <td>免费</td>
+                                <td><b>收费</b>：首次£150、年费£60、变更费£80</td>
+                            </tr>
+                            <tr class="grp"><td colspan="4">包装、渠道与场所</td></tr>
+                            <tr>
+                                <td class="dim-label">健康警语占比</td>
+                                <td>正反面各30%</td>
+                                <td>正反面各30%</td>
+                                <td>正反面各30%</td>
+                            </tr>
+                            <tr>
+                                <td class="dim-label">自动售货机</td>
+                                <td>部分允许（限21岁以下不可进入场所）</td>
+                                <td>部分允许（限儿童青少年不可进入场所）</td>
+                                <td>目前部分允许；新法<b>2026年10月起全面禁止</b></td>
+                            </tr>
+                            <tr>
+                                <td class="dim-label">零售/批发许可证</td>
+                                <td>不需要（各州自定）</td>
+                                <td>不需要（各州自定）</td>
+                                <td>目前不需要；新法拟引入"零售许可证"制度</td>
+                            </tr>
+                            <tr>
+                                <td class="dim-label">公共场所使用</td>
+                                <td>合法，基本不受联邦监管，各州自定</td>
+                                <td>合法，联邦层面限制火车/车站，青少年在餐厅/销售点禁用</td>
+                                <td>合法，目前无全国性限制；2026年2月已启动"无雾化烟场所"公众咨询</td>
+                            </tr>
+                            <tr class="grp"><td colspan="4">广告与税收</td></tr>
+                            <tr>
+                                <td class="dim-label">广告（电视/网络）</td>
+                                <td>未特别限制（需附健康警语）</td>
+                                <td><b>全面禁止</b>（含网络、户外）</td>
+                                <td><b>全面禁止</b></td>
+                            </tr>
+                            <tr>
+                                <td class="dim-label">消费税（联邦/国家层面）</td>
+                                <td><b>无</b>（各州自行征收）</td>
+                                <td><b>€0.32/ml</b></td>
+                                <td>目前无；<b>2026年10月起£0.22/ml</b>（Vaping Products Duty）</td>
+                            </tr>
+                            <tr>
+                                <td class="dim-label">罚则举例</td>
+                                <td>未列示明确清单</td>
+                                <td>销售危害产品最高€30,000；未上报市场数据€30,000</td>
+                                <td>未核验购买者年龄：最高1年监禁或罚款</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="footnote">"*"表示该维度未在原始报告中明确列示或以各州/各邦自定为主；完整41项细分条目详见附表原文。</p>
+            </div>
         </section>
 
         <footer>
             <div class="cols">
                 <div>
                     <h4>关于本简报</h4>
-                    <p>本报告基于 TobaccoIntelligence 提供的51个市场雾化烟（E-Vapor/E-Cigarette）数据。"*"号原始数据表示该市场当年无估算值（非零），已在总量与排名计算中剔除。2026–2027 年为预测值（F），在图表中以半透明或虚线区分。年度 Top10 基于当年可得数据重新排序。</p>
+                    <p>本报告基于 TobaccoIntelligence 提供的51个市场雾化烟（E-Vapor/E-Cigarette）数据，以及 ECigIntelligence 发布的美国、英国、德国监管报告（分别更新于2026年3月11日、6月30日、3月5日）。"*"号原始数据表示该市场当年无估算值（非零），已在总量与排名计算中剔除。2026–2027 年为预测值（F），在图表中以半透明或虚线区分。年度 Top10 基于当年可得数据重新排序。</p>
                 </div>
                 <div>
                     <h4>口径说明</h4>
@@ -1294,6 +2027,7 @@
                     <h4>数据来源</h4>
                     <ul>
                         <li>TobaccoIntelligence</li>
+                        <li>ECigIntelligence（美/英/德监管报告）</li>
                         <li>生成时间：2026年6月</li>
                         <li>本报告最终解释权归用户体验部所有，如有疑问可联系@刘宓 @李步岳</li>
                     </ul>
@@ -1304,6 +2038,13 @@
     </div><!-- /wrap -->
 
     <script>
+        if (window.ChartDataLabels) { Chart.register(ChartDataLabels); }
+        Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+        Chart.defaults.set('plugins.datalabels', {
+            display: false,
+            color: "#6B5F49",
+            font: { family: "IBM Plex Mono", size: 10, weight: '600' }
+        });
         /* ========= DATA ========= */
         const RAW = { "years": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027], "data": { "Argentina": [null, null, 40, 88, 43, 54, 85, 103, 73, 80, 93, 113], "Australia": [44, 52, 81, 128, 149, 181, 405, 823, 603, 374, 373, 373], "Austria": [null, 38, 39, 47, 39, 43, 50, 107, 135, 144, 139, 122], "Belgium": [51, 76, 93, 114, 111, 136, 161, 285, 388, 380, 388, 392], "Brazil": [null, null, 91, 198, 187, 476, 743, 790, 818, 848, 890, 897], "Bulgaria": [29, 25, 30, 35, 37, 46, 67, 76, 94, 92, 86, 79], "Canada": [228, 267, 311, 397, 402, 522, 619, 941, 1282, 1833, 1881, 1971], "Chile": [null, null, 43, 64, 61, 75, 106, 146, 183, 196, 215, 232], "China": [null, 513, 764, 1513, 1826, 2959, 2327, 1221, 1094, 1272, 1233, 1212], "Colombia": [40, 53, 73, 89, 85, 122, 237, 304, 356, 399, 420, 443], "Costa Rica": [null, null, 26, 31, 27, 34, 33, 39, 45, 48, 47, 46], "Czech Republic": [null, 119, 109, 126, 131, 200, 328, 441, 552, 633, 741, 734], "Denmark": [40, 48, 53, 54, 56, 59, 63, 104, 132, 136, 145, 148], "Egypt": [null, null, null, null, 44, 61, 93, 149, 201, 235, 286, 343], "Estonia": [null, 6, 12, 15, 15, 28, 48, 60, 65, 64, 61, 58], "Finland": [24, 35, 37, 45, 40, 43, 40, 44, 52, 56, 49, 54], "France": [693, 750, 857, 1176, 1092, 1474, 1471, 1933, 2086, 2166, 2178, 2145], "Germany": [393, 453, 490, 623, 570, 600, 959, 1444, 1431, 1540, 1659, 1749], "Greece": [81, 111, 122, 146, 137, 141, 149, 180, 199, 231, 258, 274], "Hungary": [29, 29, 34, 50, 46, 58, 96, 93, 93, 86, 81, 80], "Indonesia": [null, null, 180, 301, 321, 438, 632, 857, 1065, 1417, 1540, 1595], "Ireland": [36, 36, 42, 57, 53, 59, 109, 158, 173, 195, 173, 167], "Italy": [338, 418, 395, 606, 524, 594, 708, 843, 861, 879, 939, 1017], "Japan": [409, 511, 487, 510, 434, 452, 466, 438, 435, 434, 400, 371], "Latvia": [null, 6, 11, 14, 20, 38, 52, 74, 91, 68, 64, 61], "Lithuania": [null, null, 16, 21, 33, 54, 65, 75, 85, 85, 84, 86], "Malaysia": [135, 169, 209, 286, 213, 278, 376, 413, 446, 425, 423, 415], "Mexico": [195, 214, 230, 308, 311, 545, 710, 946, 1116, 1430, 1618, 1767], "Netherlands": [49, 47, 52, 73, 70, 70, 155, 241, 235, 204, 180, 164], "New Zealand": [40, 49, 67, 78, 137, 205, 258, 297, 350, 364, 398, 406], "Norway": [34, 36, 33, 37, 39, 38, 36, 52, 87, 76, 73, 71], "Pakistan": [null, null, null, null, 73, 103, 138, 198, 265, 338, 364, 333], "Paraguay": [null, null, 8, 9, null, 15, 29, 41, 54, 58, 62, 65], "Peru": [null, null, 28, 30, 25, 35, 45, 60, 80, 95, 108, 115], "Philippines": [25, 33, 40, 115, 209, 351, 372, 493, 451, 394, 395, 367], "Poland": [235, 242, 250, 308, 260, 345, 526, 887, 1025, 1422, 947, 918], "Portugal": [21, 31, 38, 48, 42, 54, 55, 70, 82, 86, 87, 87], "Romania": [21, 23, 33, 48, 50, 61, 77, 99, 121, 130, 135, 141], "Russia": [244, 271, 303, 359, 343, 708, 1005, 1426, 2074, 2504, 2676, 2610], "Saudi Arabia": [null, null, null, null, 113, 182, 310, 474, 657, 774, 832, 879], "Slovakia": [null, null, 17, 24, 31, 40, 63, 75, 85, 93, 97, 87], "Slovenia": [null, 3, 6, 9, 10, 17, 38, 27, 25, 21, 24, 24], "South Africa": [47, 53, 57, 64, 77, 107, 166, 241, 383, 545, 603, 706], "South Korea": [256, 321, 359, 483, 444, 482, 526, 702, 845, 784, 702, 710], "Spain": [85, 97, 120, 151, 139, 145, 179, 205, 237, 314, 325, 339], "Sweden": [31, 39, 45, 44, 32, 34, 57, 98, 113, 115, 124, 135], "Switzerland": [34, 34, 43, 72, 60, 74, 130, 159, 171, 183, 171, 164], "Ukraine": [null, 48, 47, 60, 58, 70, 57, 85, 102, 130, 135, 137], "United Arab Emirates": [null, null, null, null, 24, 35, 66, 112, 166, 199, 228, 245], "United Kingdom": [834, 1111, 1156, 1432, 1274, 1393, 1934, 2138, 2365, 1987, 1845, 2137], "United States": [3750, 4123, 5216, 6555, 4689, 6923, 9241, 11698, 14107, 15259, 14576, 14126] } };
         const YEARS = RAW.years;
@@ -1340,7 +2081,7 @@
         ];
         const COLORS = {};
         EVER_TOP10.forEach((c, i) => COLORS[c] = PALETTE[i]);
-        COLORS["Others"] = "#D0CCC6";
+        COLORS["Others"] = "#C9BC9C";
 
         function computeYear(yi) {
             const rows = [];
@@ -1384,13 +2125,31 @@
                 }),
                 stack: "s",
                 borderWidth: 0,
+                datalabels: {
+                    display: ctx => {
+                        const v = ctx.dataset.data[ctx.dataIndex];
+                        return mode === "abs" ? v >= 3 : v >= 8;
+                    },
+                    color: "#FBF7EC",
+                    font: { family: "IBM Plex Mono", size: 9.5, weight: '600' },
+                    formatter: v => mode === "abs" ? v.toFixed(1) : v.toFixed(0) + "%"
+                }
             }));
             ds.push({
                 label: "其他国家",
                 data: YD.map((d, yi) => mode === "abs" ? d.others / 1000 : d.others / d.total * 100),
-                backgroundColor: YD.map((_, yi) => yi >= FORECAST_FROM ? "#D0CCC688" : "#D0CCC6"),
+                backgroundColor: YD.map((_, yi) => yi >= FORECAST_FROM ? "#C9BC9C88" : "#C9BC9C"),
                 stack: "s",
                 borderWidth: 0,
+                datalabels: {
+                    display: ctx => {
+                        const v = ctx.dataset.data[ctx.dataIndex];
+                        return mode === "abs" ? v >= 3 : v >= 8;
+                    },
+                    color: "#3A3320",
+                    font: { family: "IBM Plex Mono", size: 9.5, weight: '600' },
+                    formatter: v => mode === "abs" ? v.toFixed(1) : v.toFixed(0) + "%"
+                }
             });
             if (showGrowth) {
                 ds.push({
@@ -1407,6 +2166,17 @@
                     pointBackgroundColor: GROWTH.map(g => g !== null ? (g < 0 ? "#B83030" : "#E07820") : "transparent"),
                     pointBorderColor: GROWTH.map(g => g !== null ? (g < 0 ? "#B83030" : "#E07820") : "transparent"),
                     segment: { borderDash: ctx => ctx.p1DataIndex >= FORECAST_FROM ? [4, 3] : undefined },
+                    datalabels: {
+                        display: ctx => GROWTH[ctx.dataIndex] !== null,
+                        align: 'top',
+                        offset: 6,
+                        color: g => (g.dataset.data[g.dataIndex] < 0 ? "#B83030" : "#B8631A"),
+                        backgroundColor: "#FBF7ECdd",
+                        borderRadius: 3,
+                        padding: { top: 2, bottom: 1, left: 4, right: 4 },
+                        font: { family: "IBM Plex Mono", size: 10, weight: '600' },
+                        formatter: v => v.toFixed(1) + "%"
+                    }
                 });
             }
             return ds;
@@ -1422,12 +2192,12 @@
                 plugins: {
                     legend: { display: false },
                     tooltip: {
-                        backgroundColor: "#fff",
-                        borderColor: "#E2DED8",
+                        backgroundColor: "#FBF7EC",
+                        borderColor: "#DFD3B4",
                         borderWidth: 1,
                         padding: 10,
-                        titleColor: "#1A1814",
-                        bodyColor: "#5A5650",
+                        titleColor: "#2B2417",
+                        bodyColor: "#6B5F49",
                         titleFont: { family: "IBM Plex Mono", size: 12 },
                         bodyFont: { family: "IBM Plex Mono", size: 11 },
                         callbacks: {
@@ -1444,9 +2214,9 @@
                     }
                 },
                 scales: {
-                    x: { grid: { display: false }, ticks: { color: "#9A9690", font: { family: "IBM Plex Mono",
+                    x: { grid: { display: false }, ticks: { color: "#A0937A", font: { family: "IBM Plex Mono",
                                 size: 11.5 } } },
-                    y: { stacked: true, grid: { color: "#EDEBE7" }, ticks: { color: "#9A9690", font: { family: "IBM Plex Mono",
+                    y: { stacked: true, grid: { color: "#E9DFC5" }, ticks: { color: "#A0937A", font: { family: "IBM Plex Mono",
                                 size: 11 }, callback: v => overviewMode === "abs" ? "$" + v + "B" : v + "%" } },
                     y1: { position: "right", grid: { display: false }, ticks: { color: "#E07820", font: { family: "IBM Plex Mono",
                                 size: 11 }, callback: v => v + "%" }, display: showGrowth }
@@ -1531,7 +2301,7 @@
             ln.setAttribute("x2", BW - PR);
             ln.setAttribute("y1", y2);
             ln.setAttribute("y2", y2);
-            ln.setAttribute("stroke", "#EDEBE7");
+            ln.setAttribute("stroke", "#E9DFC5");
             ln.setAttribute("stroke-width", "1");
             bSvg.appendChild(ln);
             const lbl = document.createElementNS(svgNS, "text");
@@ -1540,7 +2310,7 @@
             lbl.setAttribute("text-anchor", "end");
             lbl.setAttribute("font-family", "IBM Plex Mono");
             lbl.setAttribute("font-size", "11");
-            lbl.setAttribute("fill", "#9A9690");
+            lbl.setAttribute("fill", "#A0937A");
             lbl.textContent = "#" + r;
             bSvg.appendChild(lbl);
         }
@@ -1552,7 +2322,7 @@
             lbl.setAttribute("text-anchor", "middle");
             lbl.setAttribute("font-family", "IBM Plex Mono");
             lbl.setAttribute("font-size", "11.5");
-            lbl.setAttribute("fill", "#9A9690");
+            lbl.setAttribute("fill", "#A0937A");
             lbl.textContent = y >= 2026 ? "F" + y : String(y);
             bSvg.appendChild(lbl);
         });
@@ -1563,7 +2333,7 @@
         fdiv.setAttribute("x2", fx);
         fdiv.setAttribute("y1", PT);
         fdiv.setAttribute("y2", BH - PB);
-        fdiv.setAttribute("stroke", "#B8B4AE");
+        fdiv.setAttribute("stroke", "#B3A582");
         fdiv.setAttribute("stroke-width", "1");
         fdiv.setAttribute("stroke-dasharray", "4 3");
         bSvg.appendChild(fdiv);
@@ -1572,7 +2342,7 @@
         ftxt.setAttribute("y", PT + 10);
         ftxt.setAttribute("font-family", "IBM Plex Mono");
         ftxt.setAttribute("font-size", "10");
-        ftxt.setAttribute("fill", "#9A9690");
+        ftxt.setAttribute("fill", "#A0937A");
         ftxt.textContent = "预测 →";
         bSvg.appendChild(ftxt);
 
@@ -1611,7 +2381,7 @@
                 dot.setAttribute("cx", x);
                 dot.setAttribute("cy", y);
                 dot.setAttribute("r", isFirst ? 6 : isFocus ? 4.5 : 3.2);
-                dot.setAttribute("fill", isFirst ? "#fff" : col);
+                dot.setAttribute("fill", isFirst ? "#FBF7EC" : col);
                 dot.setAttribute("stroke", col);
                 dot.setAttribute("stroke-width", isFirst ? 2.2 : 0);
                 dot.style.cursor = "pointer";
@@ -1619,13 +2389,26 @@
                     const v = DATA[c][yi];
                     const wRect = ev.target.closest(".bump-chart-area").getBoundingClientRect();
                     tt.innerHTML =
-                        `<b style="color:${col}">${FOCUS_FLAG[c]||""}${CN[c]}</b> · ${YEARS[yi]>=2026?"<span style='color:#9A9690'>F</span>":""}<b>${YEARS[yi]}</b><br>第${r}名 · ${v?fmtB(v):"—"}${isFirst?'<br><span style="color:'+col+'">首次进入前十</span>':""}`;
+                        `<b style="color:${col}">${FOCUS_FLAG[c]||""}${CN[c]}</b> · ${YEARS[yi]>=2026?"<span style='color:#A0937A'>F</span>":""}<b>${YEARS[yi]}</b><br>第${r}名 · ${v?fmtB(v):"—"}${isFirst?'<br><span style="color:'+col+'">首次进入前十</span>':""}`;
                     tt.style.left = (ev.clientX - wRect.left + 14) + "px";
                     tt.style.top = (ev.clientY - wRect.top - 10) + "px";
                     tt.style.opacity = 1;
                 });
                 dot.addEventListener("mouseleave", () => tt.style.opacity = 0);
                 g.appendChild(dot);
+                if (isFocus) {
+                    const lbl = document.createElementNS(svgNS, "text");
+                    lbl.setAttribute("x", x);
+                    lbl.setAttribute("y", y - 10);
+                    lbl.setAttribute("text-anchor", "middle");
+                    lbl.setAttribute("font-family", "IBM Plex Mono");
+                    lbl.setAttribute("font-size", "10.5");
+                    lbl.setAttribute("font-weight", "600");
+                    lbl.setAttribute("fill", col);
+                    lbl.style.pointerEvents = "none";
+                    lbl.textContent = "#" + r;
+                    g.appendChild(lbl);
+                }
             });
             bSvg.appendChild(g);
             bGroups[c] = g;
@@ -1650,7 +2433,7 @@
             div.className = "item " + (isFocus ? "is-focus" : "");
             div.dataset.country = c;
             div.innerHTML =
-                `<span class="dot" style="background:${isFocus?FOCUS_COLOR[c]:COLORS[c]}"></span>${FOCUS_FLAG[c]||""}${CN[c]}<span style="margin-left:auto;color:#9A9690;font-size:10px;">#${r0}→#${rN}</span>`;
+                `<span class="dot" style="background:${isFocus?FOCUS_COLOR[c]:COLORS[c]}"></span>${FOCUS_FLAG[c]||""}${CN[c]}<span style="margin-left:auto;color:#A0937A;font-size:10px;">#${r0}→#${rN}</span>`;
             div.addEventListener("mouseenter", () => setBumpFocus(c));
             div.addEventListener("mouseleave", () => setBumpFocus(null));
             bLeg.appendChild(div);
@@ -1670,7 +2453,7 @@
             const prevSet = yi > 0 ? new Set(YD[yi - 1].top10.map(r => r[0])) : new Set();
             const labels = d.top10.map(([c]) => CN[c]).concat(["其他"]);
             const values = d.top10.map(([, v]) => v).concat([d.others]);
-            const colors = d.top10.map(([c]) => COLORS[c]).concat(["#D0CCC6"]);
+            const colors = d.top10.map(([c]) => COLORS[c]).concat(["#C9BC9C"]);
             if (donutChart) {
                 donutChart.data.labels = labels;
                 donutChart.data.datasets[0].data = values;
@@ -1679,20 +2462,32 @@
             } else {
                 donutChart = new Chart(document.getElementById("compDonut"), {
                     type: "doughnut",
-                    data: { labels, datasets: [{ data: values, backgroundColor: colors, borderColor: "#F7F6F3",
+                    data: { labels, datasets: [{ data: values, backgroundColor: colors, borderColor: "#EFE7D3",
                             borderWidth: 2 }] },
                     options: {
                         cutout: "65%",
                         animation: { duration: 400 },
                         plugins: {
                             legend: { display: false },
+                            datalabels: {
+                                display: ctx => {
+                                    const t = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                                    return ctx.dataset.data[ctx.dataIndex] / t >= 0.04;
+                                },
+                                color: "#FBF7EC",
+                                font: { family: "IBM Plex Mono", size: 10.5, weight: '600' },
+                                formatter: (v, ctx) => {
+                                    const t = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                                    return (v / t * 100).toFixed(0) + "%";
+                                }
+                            },
                             tooltip: {
-                                backgroundColor: "#fff",
-                                borderColor: "#E2DED8",
+                                backgroundColor: "#FBF7EC",
+                                borderColor: "#DFD3B4",
                                 borderWidth: 1,
                                 padding: 10,
-                                titleColor: "#1A1814",
-                                bodyColor: "#5A5650",
+                                titleColor: "#2B2417",
+                                bodyColor: "#6B5F49",
                                 titleFont: { family: "IBM Plex Mono", size: 12 },
                                 bodyFont: { family: "IBM Plex Mono", size: 11 },
                                 callbacks: { label: ctx =>
@@ -1715,7 +2510,7 @@
             </div>`;
             }).join("") + `<div class="comp-row">
             <div class="rank">—</div>
-            <div class="name"><span class="sw" style="background:#D0CCC6"></span>其他（${d.n-10}个市场）</div>
+            <div class="name"><span class="sw" style="background:#C9BC9C"></span>其他（${d.n-10}个市场）</div>
             <div class="pct">${(d.others/d.total*100).toFixed(1)}%</div>
             <div class="val">${fmtB(d.others)}</div>
           </div>`;
@@ -1878,6 +2673,24 @@ function renderFormLegend(c) {
         }
         FOCUS3.forEach(c => renderChanExtras(c));
 
+        /* ---- 产品形态 / 渠道分布 各自的洞察文字 ---- */
+        const FORM_INSIGHT = {
+            "United States": "📌 一次性电子烟占<b>42%</b>，三国中最高，是FDA当前执法重点品类，也是美国监管风险最集中的产品线；预充式pod（25%）为第二大形态，开放式系统合计占比不足三分之一，说明美国用户更偏向“开箱即用”的便捷产品，而非可自行加注烟油的开放系统。",
+            "United Kingdom": "📌 受2025年一次性禁令直接冲击，产品结构已转向<b>预充式pod（35%）与开放式pod（34%）</b>并列主导，一次性占比骤降至仅8%，是三国中最低；这也印证了政策对产品形态的直接塑造作用——需求并未消失，而是被迫转移到替代品类。",
+            "Germany": "📌 德国产品结构三国中<b>最均衡</b>：开放式pod（33%）与预充式pod（31%）并重，一次性仅占12%，基础开放系统与进阶开放系统合计也有24%；这种结构使德国面对未来可能的一次性禁令冲击时，抗风险能力明显强于美英两国。"
+        };
+        const CHAN_INSIGHT = {
+            "United States": "📌 渠道高度集中在<b>其他线下渠道（便利店/加油站等，70%）</b>，专卖店占比仅10%为三国最低；线上流量中91%流向本土网站，是三国中本土化程度最高的市场，反映美国雾化烟消费高度依赖高频、低门槛的零散线下触点，而非专业渠道教育。",
+            "United Kingdom": "📌 专卖店渠道占比<b>37%</b>，为三国最高，与英国4,000家线下专卖店的密集网络相符；线上流量96%集中在本土网站，生态最为封闭——这也解释了为何一次性禁令等监管冲击对英国市场的短期扰动最为剧烈，本土渠道对冲击的缓冲空间有限。",
+            "Germany": "📌 渠道结构以<b>其他线下渠道（50%）</b>为主，专卖店占比18%居中；线上流量中<b>16%</b>流向海外网站，为三国中跨境电商渗透率最高，说明德国本土正规零售网络仍有缺口，一部分需求正通过跨境渠道满足，这也是监管者未来可能重点关注的“漏出口”。"
+        };
+        FOCUS3.forEach(c => {
+            const fEl = document.getElementById("formInsight-" + c);
+            if (fEl) fEl.innerHTML = FORM_INSIGHT[c];
+            const cEl = document.getElementById("chanInsight-" + c);
+            if (cEl) cEl.innerHTML = CHAN_INSIGHT[c];
+        });
+
         /* ---- 渠道分布条形图 (Chart.js) ---- */
         const chanCharts = {};
 
@@ -1908,8 +2721,18 @@ function renderFormLegend(c) {
                     indexAxis: 'y',
                     responsive: true,
                     maintainAspectRatio: false,
+                    layout: { padding: { right: 26 } },
                     plugins: {
                         legend: { display: false },
+                        datalabels: {
+                            display: true,
+                            align: 'end',
+                            anchor: 'end',
+                            offset: 4,
+                            color: "#6B5F49",
+                            font: { family: "IBM Plex Mono", size: 11, weight: '600' },
+                            formatter: v => v + "%"
+                        },
                         tooltip: {
                             callbacks: {
                                 label: ctx => `${ctx.parsed.x}%`
@@ -1919,7 +2742,7 @@ function renderFormLegend(c) {
                     scales: {
                         x: {
                             max: 100,
-                            grid: { color: '#EDEBE7' },
+                            grid: { color: '#E9DFC5' },
                             ticks: { callback: v => v + '%', font: { size: 10 } }
                         },
                         y: {
@@ -1994,21 +2817,31 @@ function renderFormLegend(c) {
                         pointRadius: 4,
                         fill: false,
                         segment: m.type !== "bar" ? { borderDash: ctx => m.forecast(ctx
-                            .p1DataIndex) ? [5, 4] : undefined } : undefined
+                            .p1DataIndex) ? [5, 4] : undefined } : undefined,
+                        datalabels: {
+                            display: ctx => ctx.dataset.data[ctx.dataIndex] !== null && ctx.dataIndex % (m.type === "bar" ? 2 : 1) === 0,
+                            align: m.type === "bar" ? 'end' : 'top',
+                            anchor: m.type === "bar" ? 'end' : 'center',
+                            offset: m.type === "bar" ? 2 : 6,
+                            color: col,
+                            font: { family: "IBM Plex Mono", size: 9.5, weight: '600' },
+                            formatter: v => m.fmt(v)
+                        }
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    layout: { padding: { top: 18 } },
                     plugins: {
                         legend: { display: false },
                         tooltip: {
-                            backgroundColor: "#fff",
-                            borderColor: "#E2DED8",
+                            backgroundColor: "#FBF7EC",
+                            borderColor: "#DFD3B4",
                             borderWidth: 1,
                             padding: 10,
-                            titleColor: "#1A1814",
-                            bodyColor: "#5A5650",
+                            titleColor: "#2B2417",
+                            bodyColor: "#6B5F49",
                             titleFont: { family: "IBM Plex Mono", size: 12 },
                             bodyFont: { family: "IBM Plex Mono", size: 11 },
                             callbacks: { label: ctx => { const v = ctx.parsed.y; return v === null || v ===
@@ -2016,13 +2849,13 @@ function renderFormLegend(c) {
                         }
                     },
                     scales: {
-                        x: { grid: { display: false }, ticks: { color: "#9A9690", font: { family: "IBM Plex Mono",
+                        x: { grid: { display: false }, ticks: { color: "#A0937A", font: { family: "IBM Plex Mono",
                                     size: 11 } } },
                         y: {
                             reverse: !!m.reverse,
-                            grid: { color: "#EDEBE7" },
+                            grid: { color: "#E9DFC5" },
                             ticks: {
-                                 color: "#9A9690",
+                                 color: "#A0937A",
                                  font: { family: "IBM Plex Mono", size: 11 },
                                  callback: v => {
                                              if (metric === "rank") return "#" + v;
@@ -2066,7 +2899,7 @@ function buildFormPie(c) {
             datasets: [{
                 data: d.vals,
                 backgroundColor: countryFormColors[c] || ["#5B8DB8", "#1A56A0", "#0D3A6E", "#7BB3D4", "#A0C4E0"],
-                borderColor: "#fff",
+                borderColor: "#FBF7EC",
                 borderWidth: 2
             }]
         },
@@ -2076,13 +2909,19 @@ function buildFormPie(c) {
             maintainAspectRatio: false,
             plugins: {
                 legend: { display: false },
+                datalabels: {
+                    display: ctx => ctx.dataset.data[ctx.dataIndex] >= 7,
+                    color: "#FBF7EC",
+                    font: { family: "IBM Plex Mono", size: 10.5, weight: '600' },
+                    formatter: v => v + "%"
+                },
                 tooltip: {
-                    backgroundColor: "#fff",
-                    borderColor: "#E2DED8",
+                    backgroundColor: "#FBF7EC",
+                    borderColor: "#DFD3B4",
                     borderWidth: 1,
                     padding: 8,
-                    titleColor: "#1A1814",
-                    bodyColor: "#5A5650",
+                    titleColor: "#2B2417",
+                    bodyColor: "#6B5F49",
                     titleFont: { family: "IBM Plex Mono", size: 11.5 },
                     bodyFont: { family: "IBM Plex Mono", size: 11 },
                     callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}%` }
