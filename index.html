@@ -17,7 +17,7 @@
             --bg-panel: #F1F1EC;
             --bg-panel-raised: #E7E6DE;
             --ink: #17181A;
-            --ink-dim: #4B4C4E;
+            --ink-dim: #333438;
             --ink-faint: #8A8B86;
             --blue: #1A56A0;
             --blue-soft: #4580C8;
@@ -96,23 +96,117 @@
             gap: 0;
             border: 1px solid rgba(255,255,255,.35);
             border-radius: 4px;
-            overflow: hidden;
         }
-        .topbar-nav a {
+        .topbar-nav > a,
+        .topbar-nav > .nav-item {
+            position: relative;
+            border-right: 1px solid rgba(255,255,255,.35);
+        }
+        .topbar-nav > a:last-child,
+        .topbar-nav > .nav-item:last-child {
+            border-right: none;
+        }
+        .topbar-nav > a:first-child,
+        .topbar-nav > .nav-item:first-child > .nav-link {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+        .topbar-nav > a:last-child,
+        .topbar-nav > .nav-item:last-child > .nav-link {
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+        .topbar-nav a,
+        .topbar-nav .nav-link {
+            display: block;
             font-family: 'IBM Plex Mono', monospace;
             font-size: 11.5px;
             padding: 6px 14px;
             color: rgba(255,255,255,.85);
             text-decoration: none;
-            border-right: 1px solid rgba(255,255,255,.35);
             transition: background .12s;
+            white-space: nowrap;
+            cursor: pointer;
         }
-        .topbar-nav a:last-child {
-            border-right: none;
-        }
-        .topbar-nav a:hover {
+        .topbar-nav > a:hover,
+        .topbar-nav .nav-item > .nav-link:hover,
+        .topbar-nav .nav-item.open > .nav-link {
             background: rgba(255,255,255,.16);
             color: #fff;
+        }
+        .nav-item.has-sub > .nav-link::after {
+            content: "▾";
+            margin-left: 6px;
+            font-size: 8px;
+            opacity: .75;
+            position: relative;
+            top: -1px;
+        }
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 6px;
+            min-width: 230px;
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            box-shadow: var(--shadow-sm);
+            padding: 8px;
+            display: none;
+            flex-direction: column;
+            gap: 1px;
+            z-index: 200;
+        }
+        .nav-dropdown::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -6px;
+            height: 6px;
+        }
+        .nav-item.has-sub:hover .nav-dropdown {
+            display: flex;
+        }
+        .nav-dropdown a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            padding: 7px 10px;
+            border-radius: 4px;
+            color: var(--ink-dim);
+            text-decoration: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .nav-dropdown a:hover {
+            background: var(--bg-panel);
+            color: var(--ink);
+        }
+        .nav-dropdown-wide {
+            left: auto;
+            right: 0;
+            flex-direction: row;
+            gap: 20px;
+            min-width: 600px;
+            padding: 14px 18px;
+        }
+        .nav-dd-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            flex: 1;
+            min-width: 155px;
+        }
+        .nav-dd-group-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .03em;
+            color: var(--ink-dim);
+            padding: 2px 10px 7px;
+            margin-bottom: 5px;
+            border-bottom: 2px solid var(--dd-accent, var(--line-soft));
         }
         @media(max-width:680px) {
             .topbar-nav {
@@ -710,6 +804,34 @@
 .guide-list .ai-num {
     color: var(--blue);
 }
+.guide-sub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 4px;
+}
+.guide-sub-item {
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+}
+.guide-sub-item:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+.guide-sub-item .gsi-tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    color: var(--blue);
+    margin-bottom: 5px;
+}
+.guide-sub-item p {
+    font-size: 13.5px;
+    color: var(--ink-dim);
+    line-height: 1.75;
+}
 
 /* ===== 国家高亮卡片行（1.1 看点内） ===== */
 .takeaway .tw-content {
@@ -752,7 +874,7 @@
 .ch-chip .ch-sub {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 10px;
-    color: var(--ink-faint);
+    color: var(--ink-dim);
     margin-top: 3px;
 }
 @media(max-width:640px) {
@@ -1337,6 +1459,10 @@
         }
         .brand-tier-label .tt.tier1 { background: var(--blue); }
         .brand-tier-label .tt.tier2 { background: var(--ink-faint); }
+        /* ---- 4.3 主要品牌与产品矩阵：标题徽标颜色随所在国家主题色统一 ---- */
+        [id="panel-United States"] .brand-tier-label .tt.tier1 { background: var(--us); }
+        [id="panel-United Kingdom"] .brand-tier-label .tt.tier1 { background: var(--uk); }
+        [id="panel-Germany"] .brand-tier-label .tt.tier1 { background: var(--de); }
         .brand-tier-label .tt-desc {
             font-size: 12px;
             color: var(--ink-faint);
@@ -1565,10 +1691,41 @@
             <div class="topbar-logo">Firstunion · 用户体验部</div>
             <div class="topbar-nav">
                 <a href="#sec-guide">指引</a>
-                <a href="#sec-overview">01 全球总览</a>
+                <div class="nav-item has-sub">
+                    <a href="#sec-overview" class="nav-link">01 全球总览</a>
+                    <div class="nav-dropdown">
+                        <a href="#sub-1-1">1.1 全球市场规模</a>
+                        <a href="#sub-1-2">1.2 全球使用人口</a>
+                    </div>
+                </div>
                 <a href="#sec-bump">02 排位变迁</a>
                 <a href="#sec-composition">03 年度构成</a>
-                <a href="#sec-focus">04 三国专题</a>
+                <div class="nav-item has-sub">
+                    <a href="#sec-focus" class="nav-link">04 三国专题</a>
+                    <div class="nav-dropdown nav-dropdown-wide">
+                        <div class="nav-dd-group" style="--dd-accent:var(--us)">
+                            <div class="nav-dd-group-label">🇺🇸 美国</div>
+                            <a onclick="gotoSub('United States','sub-us-4-1');return false;">4.1 市场规模与使用人口</a>
+                            <a onclick="gotoSub('United States','sub-us-4-2');return false;">4.2 产品形态与渠道分布</a>
+                            <a onclick="gotoSub('United States','sub-us-4-3');return false;">4.3 主要品牌与产品矩阵</a>
+                            <a onclick="gotoSub('United States','sub-us-4-4');return false;">4.4 监管政策要点</a>
+                        </div>
+                        <div class="nav-dd-group" style="--dd-accent:var(--uk)">
+                            <div class="nav-dd-group-label">🇬🇧 英国</div>
+                            <a onclick="gotoSub('United Kingdom','sub-uk-4-1');return false;">4.1 市场规模与使用人口</a>
+                            <a onclick="gotoSub('United Kingdom','sub-uk-4-2');return false;">4.2 产品形态与渠道分布</a>
+                            <a onclick="gotoSub('United Kingdom','sub-uk-4-3');return false;">4.3 主要品牌与产品矩阵</a>
+                            <a onclick="gotoSub('United Kingdom','sub-uk-4-4');return false;">4.4 监管政策要点</a>
+                        </div>
+                        <div class="nav-dd-group" style="--dd-accent:var(--de)">
+                            <div class="nav-dd-group-label">🇩🇪 德国</div>
+                            <a onclick="gotoSub('Germany','sub-de-4-1');return false;">4.1 市场规模与使用人口</a>
+                            <a onclick="gotoSub('Germany','sub-de-4-2');return false;">4.2 产品形态与渠道分布</a>
+                            <a onclick="gotoSub('Germany','sub-de-4-3');return false;">4.3 主要品牌与产品矩阵</a>
+                            <a onclick="gotoSub('Germany','sub-de-4-4');return false;">4.4 监管政策要点</a>
+                        </div>
+                    </div>
+                </div>
                 <a href="#sec-policy">05 政策对比</a>
             </div>
         </div>
@@ -1593,46 +1750,45 @@
         <!-- 阅读指引 -->
         <section class="block guide-block" id="sec-guide">
             <div class="sec-head"><span class="sec-num" style="background:var(--ink-dim)">GUIDE</span><span class="sec-title">阅读指引</span></div>
-            <p class="sec-desc">正式进入数据前，先花一分钟了解本报告的数据来源与使用方式。</p>
+            <p class="sec-desc">正式进入报告前，先花一分钟了解本报告的数据来源与使用方式。</p>
             <div class="guide-list analysis-list">
                 <div class="analysis-item">
                     <div class="ai-num">01</div>
                     <div class="ai-body">
                         <h5>数据来源</h5>
-                        <p>本报告数据来源于 TobaccoIntelligence 提供的51个市场雾化烟（E-Vapor/E-Cigarette）数据，以及 ECigIntelligence 发布的美国、英国、德国、法国、俄罗斯监管报告（分别更新于2026年3月11日、6月30日、3月5日、5月15日、4月2日）。</p>
-                        <P> 本报告其他交叉验证的数据来源包括：Statista, ASH Smokefree GB Adult Survey 2026, NielsenIQ, 以及线下调研
+                        <p>本报告数据来源于<b> TobaccoIntelligence 提供的51个市场雾化烟（E-Vapor/E-Cigarette）数据，以及 ECigIntelligence 发布的美国、英国、德国、法国、俄罗斯监管报告</b>（分别更新于2026年3月11日、6月30日、3月5日、5月15日、4月2日）。</p>
+                         <P> 本报告其他交叉验证的数据来源包括：Statista; ASH Smokefree GB Adult Survey 2026; NielsenIQ; 以及用户体验部负责各个市场同事们的线下调研</P>
                     </div>
                 </div>
                 <div class="analysis-item">
                     <div class="ai-num">02</div>
                     <div class="ai-body">
-                        <h5>顶部导航栏</h5>
-                        <p>页面顶部导航栏可在"指引""全球总览""排位变迁""年度构成""三国专题""政策对比"六个模块间快速跳转定位；导航栏始终悬浮在页面顶部，滚动到任意位置都可以直接点击跳转，不必反复滑回顶部。</p>
+                        <h5>页面导航与图表交互</h5>
+                        <div class="guide-sub-list">
+                            <div class="guide-sub-item">
+                                <span class="gsi-tag"><b>顶部导航栏</b></span>
+                                <p><b>页面顶部导航栏</b>可在"指引""全球总览""排位变迁""年度构成""三国专题""政策对比"六个模块间快速跳转定位；导航栏始终悬浮在页面顶部，滚动到任意位置都可以直接点击跳转，不必反复滑回顶部。<b>带▾标记的模块（如"01 全球总览""04 三国专题"）鼠标悬停即可展开二级子标题，直接定位到具体小节。</b></p>
+                            </div>
+                            <div class="guide-sub-item">
+                                <span class="gsi-tag"><b>三国专题的国家切换</b></span>
+                                <p>04三国专题模块内，<b>点击"🇬🇧英国 / 🇺🇸美国 / 🇩🇪德国"三个标签即可切换对应国家面板</b>；每个国家面板结构完全一致（市场规模与使用人口、产品形态与渠道分布、主要品牌与产品矩阵、监管政策要点四个子模块），方便在同一位置横向比较不同国家的对应数据，而不必跳转到其他页面。</p>
+                            </div>
+                            <div class="guide-sub-item">
+                                <span class="gsi-tag"><b>图表类交互</b></span>
+                                <p>报告内大部分图表都支持交互：<b>点击图例文字可高亮/隐藏对应系列</b>，方便单独观察某一个市场的走势；<b>03年度构成模块拖动滑块或点击播放按钮</b>可逐年查看份额构成的动态变化；点击图表上方的指标按钮（如"市场规模／使用人口／全球占比／全球排名"）可切换查看角度；<b>鼠标悬停在柱状图、折线图或排位图</b>上还能看到具体数值的提示框。建议<b>边读边动手尝试</b>，比单纯看静态图表更容易发现规律。</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="analysis-item">
                     <div class="ai-num">03</div>
                     <div class="ai-body">
-                        <h5>三国专题的国家切换</h5>
-                        <p>04三国专题模块内，点击"🇬🇧英国 / 🇺🇸美国 / 🇩🇪德国"三个标签即可切换对应国家面板；每个国家面板结构完全一致（市场规模与使用人口、产品形态与渠道分布、主要品牌与产品矩阵、监管政策要点四个子模块），方便在同一位置横向比较不同国家的对应数据，而不必跳转到其他页面。</p>
+                        <h5>推荐阅读顺序</h5>
+                        <p>若只想快速了解<b>大盘走势</b>，重点看<b>01章节</b>的看点与图表即可；<b>02与03章节</b>则提供更加详细的<b>世界各国趋势与关键性洞察</b>；若想深入<b>英、美、德其中某一具体市场</b>，可直接跳转到<b>04三国专题</b>查看对应国家面板；<b>05的监管政策对比表</b>目前包含英、美、德、法、俄罗斯五个国家的信息，则更适合作为随时查阅的工具</p>
                     </div>
                 </div>
                 <div class="analysis-item">
                     <div class="ai-num">04</div>
-                    <div class="ai-body">
-                        <h5>图表类交互</h5>
-                        <p>报告内大部分图表都支持交互：点击图例文字可高亮/隐藏对应系列，方便单独观察某一个市场的走势；拖动滑块或点击播放按钮可逐年查看份额构成的动态变化；点击图表上方的指标按钮（如"市场规模／使用人口／全球占比／全球排名"）可切换查看角度；鼠标悬停在柱状图、折线图或排位图上还能看到具体数值的提示框。建议边读边动手尝试，比单纯看静态图表更容易发现规律。</p>
-                    </div>
-                </div>
-                <div class="analysis-item">
-                    <div class="ai-num">05</div>
-                    <div class="ai-body">
-                        <h5>推荐阅读顺序</h5>
-                        <p>若只想快速了解大盘走势，重点看01模块的看点与图表即可；若想深入某一具体市场，可直接跳转到04三国专题查看对应国家面板；05的监管政策对比表则更适合作为随时查阅的工具，不必按顺序通读。</p>
-                    </div>
-                </div>
-                <div class="analysis-item">
-                    <div class="ai-num">06</div>
                     <div class="ai-body">
                         <h5>口径说明</h5>
                         <p>F2026/F2027 均为预测值，图表中以半透明色块或虚线区分于历史实际值；"其他"指全样本51个市场总量扣除当年前十大市场后的余额，不代表具体某一市场。</p>
@@ -1646,7 +1802,7 @@
             <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">全球总览</span></div>
             <p class="sec-desc">51个市场雾化烟规模与使用人口追踪，2016–2027年（含预测）。以下拆分为"全球市场规模"与"全球使用人口"两个子模块分别呈现。</p>
 
-            <div class="subsec-head"><span class="subsec-num" style="background:var(--blue)">1.1</span><span class="subsec-title">全球市场规模 · 2016–2027</span></div>
+            <div class="subsec-head" id="sub-1-1"><span class="subsec-num" style="background:var(--blue)">1.1</span><span class="subsec-title">全球市场规模 · 2016–2027</span></div>
             <p class="sec-desc" style="margin-top:6px;">Top10 市场叠加"其他"构成全球总量；右轴折线为总量同比增速，F2026/F2027 为预测值，以虚线区分。</p>
 
             <div class="takeaway">
@@ -1769,7 +1925,7 @@
             </div>
 
             <!-- ===== 使用人口 子模块 ===== -->
-            <div class="subsec-head" style="margin-top:44px;"><span class="subsec-num" style="background:var(--blue)">1.2</span><span class="subsec-title">全球使用人口 · 2017–2027</span></div>
+            <div class="subsec-head" id="sub-1-2" style="margin-top:44px;"><span class="subsec-num" style="background:var(--blue)">1.2</span><span class="subsec-title">全球使用人口 · 2017–2027</span></div>
             <p class="sec-desc" style="margin-top:6px;">51个市场雾化烟使用人口（vaping population）加总；"*"代表该市场当年无估算数据，已在总量与排名中剔除。口径与规模图一致：Top10 + 其他，F2026/F2027 为预测值。</p>
 
             <div class="takeaway" style="margin-top:0;">
@@ -2065,7 +2221,7 @@
                 </div>
 
                 <!-- 趋势图 -->
-                <div class="subsec-head"><span class="subsec-num" style="background:var(--us)">4.1</span><span class="subsec-title">市场规模与使用人口</span></div>
+                <div class="subsec-head" id="sub-us-4-1"><span class="subsec-num" style="background:var(--us)">4.1</span><span class="subsec-title">市场规模与使用人口</span></div>
                 <div class="chart-card">
                     <div class="chart-head">
                         <h3>市场规模与使用人口</h3>
@@ -2083,7 +2239,7 @@
                 </div>
 
                 <!-- 两列：产品形态 + 渠道分布 (重写) -->
-                <div class="subsec-head"><span class="subsec-num" style="background:var(--us)">4.2</span><span class="subsec-title">产品形态与渠道分布</span></div>
+                <div class="subsec-head" id="sub-us-4-2"><span class="subsec-num" style="background:var(--us)">4.2</span><span class="subsec-title">产品形态与渠道分布</span></div>
                 <div class="focus-grid-2">
                     <!-- 产品形态 -->
                     <div class="sub-card">
@@ -2110,7 +2266,7 @@
                 </div>
 
                 <!-- 主要品牌与产品 -->
-                <div class="subsec-head"><span class="subsec-num" style="background:var(--us)">4.3</span><span class="subsec-title">主要品牌与产品矩阵</span></div>
+                <div class="subsec-head" id="sub-us-4-3"><span class="subsec-num" style="background:var(--us)">4.3</span><span class="subsec-title">主要品牌与产品矩阵</span></div>
                 <div class="brand-matrix">
 
                     <div class="brand-tier-block">
@@ -2230,7 +2386,7 @@
                 </div>
 
                 <!-- 政策专题 -->
-                <div class="subsec-head"><span class="subsec-num" style="background:var(--us)">4.4</span><span class="subsec-title">监管政策要点</span></div>
+                <div class="subsec-head" id="sub-us-4-4"><span class="subsec-num" style="background:var(--us)">4.4</span><span class="subsec-title">监管政策要点</span></div>
                 <div class="policy-section">
                     <div class="policy-head">
                         <h4>🏛️ 分维度政策卡片</h4>
@@ -2290,7 +2446,7 @@
                     <div class="note-signoff">— 分析笔记 · TobaccoIntelligence / ECigIntelligence 数据</div>
                 </div>
 
-                <div class="subsec-head"><span class="subsec-num" style="background:var(--uk)">4.1</span><span class="subsec-title">市场规模与使用人口</span></div>
+                <div class="subsec-head" id="sub-uk-4-1"><span class="subsec-num" style="background:var(--uk)">4.1</span><span class="subsec-title">市场规模与使用人口</span></div>
                 <div class="chart-card">
                     <div class="chart-head">
                         <h3>市场规模与使用人口</h3>
@@ -2307,7 +2463,7 @@
                     <div class="viz-summary">📌 英国市场规模在2024年触及<b>$2,365M</b>峰值后，2025年因一次性禁令骤降<b>16%</b>至$1,987M，全球排名同步跌至第4；预测2027年反弹至约$2.1B，但使用人口2025年后基本停滞在<b>590–600万</b>之间，增长动能明显弱于规模波动。</div>
                 </div>
 
-                <div class="subsec-head"><span class="subsec-num" style="background:var(--uk)">4.2</span><span class="subsec-title">产品形态与渠道分布</span></div>
+                <div class="subsec-head" id="sub-uk-4-2"><span class="subsec-num" style="background:var(--uk)">4.2</span><span class="subsec-title">产品形态与渠道分布</span></div>
                 <div class="focus-grid-2">
                     <div class="sub-card">
                         <h4>产品形态占比（2026年，用户份额）</h4>
@@ -2332,7 +2488,7 @@
                 </div>
 
                 <!-- 主要品牌与产品 -->
-                <div class="subsec-head"><span class="subsec-num" style="background:var(--uk)">4.3</span><span class="subsec-title">主要品牌与产品矩阵</span></div>
+                <div class="subsec-head" id="sub-uk-4-3"><span class="subsec-num" style="background:var(--uk)">4.3</span><span class="subsec-title">主要品牌与产品矩阵</span></div>
 
                 <div class="key-metrics" style="grid-template-columns:repeat(3,1fr);">
                     <div class="metric-card">
@@ -2466,7 +2622,7 @@
                 </div>
 
                 <!-- 政策专题 -->
-                <div class="subsec-head"><span class="subsec-num" style="background:var(--uk)">4.4</span><span class="subsec-title">监管政策要点</span></div>
+                <div class="subsec-head" id="sub-uk-4-4"><span class="subsec-num" style="background:var(--uk)">4.4</span><span class="subsec-title">监管政策要点</span></div>
                 <div class="policy-section">
                     <div class="policy-head">
                         <h4>🏛️ 分维度政策卡片</h4>
@@ -2526,7 +2682,7 @@
                     <div class="note-signoff">— 分析笔记 · TobaccoIntelligence / ECigIntelligence 数据</div>
                 </div>
 
-                <div class="subsec-head"><span class="subsec-num" style="background:var(--de)">4.1</span><span class="subsec-title">市场规模与使用人口</span></div>
+                <div class="subsec-head" id="sub-de-4-1"><span class="subsec-num" style="background:var(--de)">4.1</span><span class="subsec-title">市场规模与使用人口</span></div>
                 <div class="chart-card">
                     <div class="chart-head">
                         <h3>市场规模与使用人口</h3>
@@ -2543,7 +2699,7 @@
                     <div class="viz-summary">📌 德国市场规模在2022–2023两年间从$600M跳涨至<b>$1,444M（+141%）</b>，随后增速放缓，2025年约<b>$1.5B</b>；使用人口同期从约170万增长到约300万，与规模跳涨节奏基本同步，说明这轮增长伴随着实际渗透率的提升，而非单纯价格效应。</div>
                 </div>
 
-                <div class="subsec-head"><span class="subsec-num" style="background:var(--de)">4.2</span><span class="subsec-title">产品形态与渠道分布</span></div>
+                <div class="subsec-head" id="sub-de-4-2"><span class="subsec-num" style="background:var(--de)">4.2</span><span class="subsec-title">产品形态与渠道分布</span></div>
                 <div class="focus-grid-2">
                     <div class="sub-card">
                         <h4>产品形态占比（2026年，用户份额）</h4>
@@ -2568,7 +2724,7 @@
                 </div>
 
                 <!-- 主要品牌与产品 -->
-                <div class="subsec-head"><span class="subsec-num" style="background:var(--de)">4.3</span><span class="subsec-title">主要品牌与产品矩阵</span></div>
+                <div class="subsec-head" id="sub-de-4-3"><span class="subsec-num" style="background:var(--de)">4.3</span><span class="subsec-title">主要品牌与产品矩阵</span></div>
 
                 <div class="key-metrics" style="grid-template-columns:repeat(3,1fr);">
                     <div class="metric-card">
@@ -2727,7 +2883,7 @@
                 </div>
 
                 <!-- 政策专题 -->
-                <div class="subsec-head"><span class="subsec-num" style="background:var(--de)">4.4</span><span class="subsec-title">监管政策要点</span></div>
+                <div class="subsec-head" id="sub-de-4-4"><span class="subsec-num" style="background:var(--de)">4.4</span><span class="subsec-title">监管政策要点</span></div>
                 <div class="policy-section">
                     <div class="policy-head">
                         <h4>🏛️ 分维度政策卡片</h4>
@@ -4166,6 +4322,19 @@ function buildFormPie(c) {
                 renderFormLegend(c);
                 renderChanExtras(c);
             }, 80);
+        }
+
+        /* ---- 导航栏二级标题跳转（04三国专题需先切换到对应国家面板） ---- */
+        function gotoSub(country, id) {
+            const panel = document.getElementById("panel-" + country);
+            const alreadyActive = panel && panel.classList.contains("active");
+            if (!alreadyActive) {
+                switchCountry(country);
+            }
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, alreadyActive ? 0 : 160);
         }
 
         /* ---- 指标切换 ---- */
