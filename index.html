@@ -448,6 +448,24 @@
             flex-wrap: wrap;
             gap: 12px;
         }
+        .panel-chart-title {
+            font-family: 'Newsreader', serif;
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 16px;
+        }
+        .panel-chart-title::before {
+            content: "";
+            width: 5px;
+            height: 18px;
+            border-radius: 2px;
+            background: var(--blue);
+            display: inline-block;
+        }
 
         .legend-row {
             display: flex;
@@ -1802,7 +1820,7 @@
             <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">全球总览</span></div>
             <p class="sec-desc">51个市场雾化烟规模与使用人口追踪，2016–2027年（含预测）。以下拆分为"全球市场规模"与"全球使用人口"两个子模块分别呈现。</p>
 
-            <div class="subsec-head" id="sub-1-1"><span class="subsec-num" style="background:var(--blue)">1.1</span><span class="subsec-title">全球市场规模 · 2016–2027</span></div>
+            <div class="subsec-head" id="sub-1-1"><span class="subsec-num" style="background:var(--blue)">1.1</span><span class="subsec-title">全球市场规模</span></div>
             <p class="sec-desc" style="margin-top:6px;">Top10 市场叠加"其他"构成全球总量；右轴折线为总量同比增速，F2026/F2027 为预测值，以虚线区分。</p>
 
             <div class="takeaway">
@@ -1843,6 +1861,7 @@
             </div>
 
             <div class="panel">
+                <h3 class="panel-chart-title">全球市场份额构成</h3>
                 <div class="chart-toolbar">
                     <div style="font-size:13px;color:var(--ink-dim);">拖动滑块或点击播放，逐年查看前十大市场的份额构成；英国、美国、德国加彩色标签高亮。</div>
                 </div>
@@ -1865,6 +1884,7 @@
             </div>
 
             <div class="panel">
+                <h3 class="panel-chart-title">全球市场规模追踪 · 2017–2027</h3>
                 <div class="chart-toolbar">
                     <div class="pillbar" id="overviewToggle">
                         <button class="pill active" data-mode="abs">绝对规模 (USD)</button>
@@ -1938,6 +1958,7 @@
             </div>
 
             <div class="panel">
+                <h3 class="panel-chart-title">全球使用人口追踪 · 2017–2027</h3>
                 <div class="chart-toolbar">
                     <div class="pillbar" id="popOverviewToggle">
                         <button class="pill active" data-mode="abs">绝对人数</button>
@@ -2013,6 +2034,7 @@
             </div>
 
             <div class="panel">
+                <h3 class="panel-chart-title">排位变迁</h3>
                 <div class="bump-wrap">
                     <div class="bump-chart-area">
                         <svg id="bumpSvg" viewBox="0 0 960 480" style="width:100%;height:auto;display:block;"></svg>
