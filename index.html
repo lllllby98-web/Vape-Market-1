@@ -1196,7 +1196,7 @@
             gap: 24px;
             margin-bottom: 12px;
         }
-        .focus-grid-2 .sub-card {
+        .sub-card {
             background: var(--bg-card);
             border: 1px solid var(--line);
             border-radius: var(--radius);
@@ -1204,7 +1204,7 @@
             display: flex;
             flex-direction: column;
         }
-        .focus-grid-2 .sub-card h4 {
+        .sub-card h4 {
             font-family: 'IBM Plex Mono', monospace;
             font-size: 11.5px;
             font-weight: 700;
@@ -1326,6 +1326,11 @@
             .channel-extras {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* ---- 产品类型占比模块：与"产品形态占比"模块保持一致的环形图+图例排版，但限制整体宽度避免拉伸 ---- */
+        .pie-wrap-narrow {
+            max-width: 420px;
         }
 
         /* ---- 可视化图表下方的总结性文字 ---- */
@@ -2072,11 +2077,33 @@
 
             <div class="takeaway" style="margin-top:0;">
                 <div class="tw-lead">看点</div>
+                <div class="tw-content">
+                    <div class="country-highlight-row">
+                        <div class="ch-chip" style="border-top-color:var(--uk)">
+                            <div class="ch-flag">🇬🇧</div>
+                            <div class="ch-name">英国</div>
+                            <div class="ch-value" style="color:var(--uk)">600万</div>
+                            <div class="ch-sub">全球第2 · 7.4%份额</div>
+                        </div>
+                        <div class="ch-chip" style="border-top-color:var(--us)">
+                            <div class="ch-flag">🇺🇸</div>
+                            <div class="ch-name">美国</div>
+                            <div class="ch-value" style="color:var(--us)">1,850万</div>
+                            <div class="ch-sub">全球第1 · 22.9%份额</div>
+                        </div>
+                        <div class="ch-chip" style="border-top-color:var(--de)">
+                            <div class="ch-flag">🇩🇪</div>
+                            <div class="ch-name">德国</div>
+                            <div class="ch-value" style="color:var(--de)">320万</div>
+                            <div class="ch-sub">全球第6 · 4.0%份额</div>
+                        </div>
+                    </div>
                 <ul>
                     <li>全球使用人口从2017年<b>3,265万</b>涨到2025年<b>7,983万</b>，但预测2027年同比<b>-0.7%</b>，是11年来首次出现下降，比市场规模更早触顶</li>
                     <li>人口端的头部集中度稀释比规模更彻底：Top10国家份额从2017年<b>80.2%</b>降到2027年<b>66.3%</b></li>
                     <li>英美人均消费（ARPU）走势分化：美国人均年消费从$458涨到$803；英国因一次性禁令从$455骤降到$337，人多了但人均花得更少</li>
                 </ul>
+                </div>
             </div>
 
             <div class="panel">
@@ -2402,6 +2429,17 @@
                     </div>
                 </div>
 
+                <div class="sub-card" style="margin-top:20px;">
+                    <h4>产品类型占比（Hardware / Bottled e-liquid / Cartridges / Disposables，用户份额）</h4>
+                    <div class="pie-wrap pie-wrap-narrow">
+                        <div class="pie-canvas-wrap">
+                            <canvas id="formPie2-United States"></canvas>
+                        </div>
+                        <div class="pie-legend" id="formPie2Legend-United States"></div>
+                    </div>
+                    <div class="viz-summary" id="typeInsight-United States"></div>
+                </div>
+
                 <!-- 主要品牌与产品 -->
                 <div class="subsec-head" id="sub-us-4-3"><span class="subsec-num" style="background:var(--us)">4.3</span><span class="subsec-title">主要品牌与产品矩阵</span></div>
                 <div class="brand-matrix">
@@ -2622,6 +2660,17 @@
                         </div>
                         <div class="viz-summary" id="chanInsight-United Kingdom"></div>
                     </div>
+                </div>
+
+                <div class="sub-card" style="margin-top:20px;">
+                    <h4>产品类型占比（Hardware / Bottled e-liquid / Cartridges / Disposables，用户份额）</h4>
+                    <div class="pie-wrap pie-wrap-narrow">
+                        <div class="pie-canvas-wrap">
+                            <canvas id="formPie2-United Kingdom"></canvas>
+                        </div>
+                        <div class="pie-legend" id="formPie2Legend-United Kingdom"></div>
+                    </div>
+                    <div class="viz-summary" id="typeInsight-United Kingdom"></div>
                 </div>
 
                 <!-- 主要品牌与产品 -->
@@ -2858,6 +2907,17 @@
                         </div>
                         <div class="viz-summary" id="chanInsight-Germany"></div>
                     </div>
+                </div>
+
+                <div class="sub-card" style="margin-top:20px;">
+                    <h4>产品类型占比（Hardware / Bottled e-liquid / Cartridges / Disposables，用户份额）</h4>
+                    <div class="pie-wrap pie-wrap-narrow">
+                        <div class="pie-canvas-wrap">
+                            <canvas id="formPie2-Germany"></canvas>
+                        </div>
+                        <div class="pie-legend" id="formPie2Legend-Germany"></div>
+                    </div>
+                    <div class="viz-summary" id="typeInsight-Germany"></div>
                 </div>
 
                 <!-- 主要品牌与产品 -->
@@ -4060,6 +4120,14 @@
         const FORM_COLORS = ["#5B8DB8", "#1A56A0", "#0D3A6E", "#7BB3D4", "#A0C4E0"];
         const CHAN_COLORS = ["#2E7D5A", "#5FAA85", "#A8D5BE"];
 
+        /* ---- 三国产品形态对比（Hardware / Bottled e-liquid / Cartridges / Disposables） ---- */
+        const FORM_COMPARE_LABELS = ["Hardware with no liquid", "Bottled e-liquid", "Cartridges", "Disposables"];
+        const FORM_COMPARE_DATA = {
+            "Germany": [13, 36, 33, 17],
+            "United Kingdom": [17, 26, 45, 12],
+            "United States": [6, 7, 53, 34]
+        };
+
         const CHAN_EXTRAS = {
             "United States": {
                 rows: [
@@ -4248,6 +4316,80 @@ function renderFormLegend(c) {
             });
         }
         FOCUS3.forEach(c => buildChanChart(c));
+
+        /* ---- 产品类型占比环形图（Hardware / Bottled e-liquid / Cartridges / Disposables）—— 完全参照"产品形态占比"模块的环形图+图例排版 ---- */
+        const formPie2Charts = {};
+        const TYPE_COLORS = {
+            "United States": ["#1A56A0", "#3A7BC8", "#5A9CD4", "#7ABDE0"],
+            "United Kingdom": ["#B83030", "#D45A5A", "#E88A8A", "#F0B0B0"],
+            "Germany": ["#2E7D5A", "#5FAA85", "#8CC4A8", "#B0D8C0"]
+        };
+        const TYPE_INSIGHT = {
+            "United States": "📌 美国产品类型高度集中于<b>Cartridges（53%）与Disposables（34%）</b>，两者合计占比达87%，瓶装烟油与裸机合计不足15%，说明美国用户几乎只为“预填充、即插即用”的产品付费。",
+            "United Kingdom": "📌 <b>Cartridges（45%）</b>是英国绝对主导品类，瓶装烟油（26%）为第二位；受一次性禁令冲击，Disposables占比已降至12%，与4.2中一次性设备份额骤降的趋势相互印证。",
+            "Germany": "📌 德国是三国中唯一由<b>瓶装烟油（36%）</b>领先于Cartridges（33%）的市场，DIY自加注文化更浓厚，Disposables占比（17%）也高于英国，产品结构明显更偏“开放式”。"
+        };
+
+        function buildFormPie2(c) {
+            const ctx = document.getElementById("formPie2-" + c);
+            if (!ctx) return;
+            const vals = FORM_COMPARE_DATA[c];
+            const colors = TYPE_COLORS[c] || FORM_COLORS;
+
+            if (formPie2Charts[c]) {
+                formPie2Charts[c].destroy();
+                delete formPie2Charts[c];
+            }
+            formPie2Charts[c] = new Chart(ctx, {
+                type: "doughnut",
+                data: {
+                    labels: FORM_COMPARE_LABELS,
+                    datasets: [{
+                        data: vals,
+                        backgroundColor: colors,
+                        borderColor: "#FFFFFF",
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    cutout: "55%",
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        datalabels: {
+                            display: ctx => ctx.dataset.data[ctx.dataIndex] >= 7,
+                            color: "#FFFFFF",
+                            font: { family: "IBM Plex Mono", size: 11, weight: '700' },
+                            formatter: v => v + "%"
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => `${ctx.label}: ${ctx.parsed}%`
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderFormPie2Legend(c) {
+            const el = document.getElementById("formPie2Legend-" + c);
+            if (!el) return;
+            const vals = FORM_COMPARE_DATA[c];
+            const colors = TYPE_COLORS[c] || FORM_COLORS;
+            el.innerHTML = FORM_COMPARE_LABELS.map((lbl, i) => `
+                <div class="pl-item">
+                    <span class="pl-dot" style="background:${colors[i]}"></span>
+                    ${lbl}
+                    <span class="pl-pct">${vals[i]}%</span>
+                </div>
+            `).join("");
+            const iEl = document.getElementById("typeInsight-" + c);
+            if (iEl) iEl.innerHTML = TYPE_INSIGHT[c] || "";
+        }
+        FOCUS3.forEach(c => buildFormPie2(c));
+        FOCUS3.forEach(c => renderFormPie2Legend(c));
 
         /* ---- 趋势图 ---- */
         const trendCharts = {};
@@ -4456,8 +4598,10 @@ function buildFormPie(c) {
                 buildTrendChart(c, m);
                 buildFormPie(c);
                 buildChanChart(c);
+                buildFormPie2(c);
                 renderFormLegend(c);
                 renderChanExtras(c);
+                renderFormPie2Legend(c);
             }, 80);
         }
 
