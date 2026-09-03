@@ -214,6 +214,97 @@
             }
         }
 
+        /* ===== MOBILE NAV (hamburger drawer) ===== */
+        .nav-toggle {
+            display: none;
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.35);
+            color: #fff;
+            font-size: 16px;
+            line-height: 1;
+            width: 34px;
+            height: 34px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            cursor: pointer;
+            flex: none;
+        }
+        @media(max-width:680px) {
+            .nav-toggle {
+                display: flex;
+            }
+        }
+        .mobile-nav-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(20,16,8,.35);
+            z-index: 150;
+        }
+        .mobile-nav-backdrop.open {
+            display: block;
+        }
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            background: var(--bg-card);
+            border-top: 1px solid var(--line);
+            box-shadow: var(--shadow-sm);
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 200;
+        }
+        .mobile-nav.open {
+            display: flex;
+        }
+        @media(min-width:681px) {
+            .mobile-nav, .mobile-nav-backdrop {
+                display: none !important;
+            }
+        }
+        .mnav-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 13px 20px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--line-soft);
+        }
+        .mnav-top:active {
+            background: var(--bg-panel);
+        }
+        .mnav-sub {
+            display: block;
+            padding: 10px 20px 10px 34px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--ink-dim);
+            text-decoration: none;
+            border-bottom: 1px solid var(--line-soft);
+        }
+        .mnav-sub:active {
+            background: var(--bg-panel);
+        }
+        .mnav-country-label {
+            padding: 9px 20px 5px 34px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .03em;
+            color: var(--ink-dim);
+            background: var(--bg-panel);
+            border-bottom: 2px solid var(--dd-accent, var(--line-soft));
+        }
+
         /* ===== MASTHEAD ===== */
         .masthead {
             padding: 60px 0 44px;
@@ -1746,6 +1837,37 @@
                 </div>
                 <a href="#sec-policy">05 政策对比</a>
             </div>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+        </div>
+        <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#sec-guide" class="mnav-top">指引</a>
+
+            <a href="#sec-overview" class="mnav-top">01 全球总览</a>
+            <a href="#sub-1-1" class="mnav-sub">1.1 全球市场规模</a>
+            <a href="#sub-1-2" class="mnav-sub">1.2 全球使用人口</a>
+
+            <a href="#sec-bump" class="mnav-top">02 排位变迁</a>
+            <a href="#sec-composition" class="mnav-top">03 年度构成</a>
+
+            <a href="#sec-focus" class="mnav-top">04 三国专题</a>
+            <div class="mnav-country-label" style="--dd-accent:var(--us)">🇺🇸 美国</div>
+            <a class="mnav-sub" onclick="gotoSub('United States','sub-us-4-1');return false;">4.1 市场规模与使用人口</a>
+            <a class="mnav-sub" onclick="gotoSub('United States','sub-us-4-2');return false;">4.2 产品形态与渠道分布</a>
+            <a class="mnav-sub" onclick="gotoSub('United States','sub-us-4-3');return false;">4.3 主要品牌与产品矩阵</a>
+            <a class="mnav-sub" onclick="gotoSub('United States','sub-us-4-4');return false;">4.4 监管政策要点</a>
+            <div class="mnav-country-label" style="--dd-accent:var(--uk)">🇬🇧 英国</div>
+            <a class="mnav-sub" onclick="gotoSub('United Kingdom','sub-uk-4-1');return false;">4.1 市场规模与使用人口</a>
+            <a class="mnav-sub" onclick="gotoSub('United Kingdom','sub-uk-4-2');return false;">4.2 产品形态与渠道分布</a>
+            <a class="mnav-sub" onclick="gotoSub('United Kingdom','sub-uk-4-3');return false;">4.3 主要品牌与产品矩阵</a>
+            <a class="mnav-sub" onclick="gotoSub('United Kingdom','sub-uk-4-4');return false;">4.4 监管政策要点</a>
+            <div class="mnav-country-label" style="--dd-accent:var(--de)">🇩🇪 德国</div>
+            <a class="mnav-sub" onclick="gotoSub('Germany','sub-de-4-1');return false;">4.1 市场规模与使用人口</a>
+            <a class="mnav-sub" onclick="gotoSub('Germany','sub-de-4-2');return false;">4.2 产品形态与渠道分布</a>
+            <a class="mnav-sub" onclick="gotoSub('Germany','sub-de-4-3');return false;">4.3 主要品牌与产品矩阵</a>
+            <a class="mnav-sub" onclick="gotoSub('Germany','sub-de-4-4');return false;">4.4 监管政策要点</a>
+
+            <a href="#sec-policy" class="mnav-top">05 政策对比</a>
         </div>
     </nav>
 
@@ -1945,7 +2067,7 @@
             </div>
 
             <!-- ===== 使用人口 子模块 ===== -->
-            <div class="subsec-head" id="sub-1-2" style="margin-top:44px;"><span class="subsec-num" style="background:var(--blue)">1.2</span><span class="subsec-title">全球使用人口</span></div>
+            <div class="subsec-head" id="sub-1-2" style="margin-top:44px;"><span class="subsec-num" style="background:var(--blue)">1.2</span><span class="subsec-title">全球使用人口 · 2017–2027</span></div>
             <p class="sec-desc" style="margin-top:6px;">51个市场雾化烟使用人口（vaping population）加总；"*"代表该市场当年无估算数据，已在总量与排名中剔除。口径与规模图一致：Top10 + 其他，F2026/F2027 为预测值。</p>
 
             <div class="takeaway" style="margin-top:0;">
@@ -2088,7 +2210,7 @@
                         <h5>🇨🇦 加拿大 & 🇲🇽 墨西哥 · 中段稳步上升的两个北美/拉美市场</h5>
                         <p>加拿大从2016年长期排在第8–10名区间，2023年后加速上升，2025年以$1,833M升至<b>第六名左右</b>，是14个市场里少有的"晚熟型"选手——起步慢但近三年增速持续加快。墨西哥路径类似：2016年一度跌出前十，2021年后重新进入并稳步爬升，2025年以$1,430M紧随其后。两者共同点是排名爬升过程中几乎没有出现过大幅回撤，走势比多数欧洲市场更平滑。</p>
                     </div>
-                </div>
+                </div>            
                 <div class="analysis-item">
                     <div class="ai-num">07</div>
                     <div class="ai-body">
@@ -2364,7 +2486,7 @@
 
                     <div class="brand-tier-block">
                         <div class="brand-tier-label">
-                            <span class="tt tier1">第二梯队品牌</span>
+                            <span class="tt tier2">第二梯队品牌</span>
                             <span class="tt-desc">声量与铺货范围小于头部四家，但仍具备可观份额</span>
                         </div>
                         <div class="brand-grid">
@@ -4351,6 +4473,36 @@ function buildFormPie(c) {
                 if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
             }, alreadyActive ? 0 : 160);
         }
+
+        /* ---- 移动端导航抽屉 ---- */
+        (function() {
+            const toggleBtn = document.getElementById("navToggle");
+            const drawer = document.getElementById("mobileNav");
+            const backdrop = document.getElementById("mobileNavBackdrop");
+            if (!toggleBtn || !drawer || !backdrop) return;
+
+            function closeDrawer() {
+                drawer.classList.remove("open");
+                backdrop.classList.remove("open");
+                toggleBtn.textContent = "☰";
+            }
+            function openDrawer() {
+                drawer.classList.add("open");
+                backdrop.classList.add("open");
+                toggleBtn.textContent = "✕";
+            }
+            toggleBtn.addEventListener("click", () => {
+                if (drawer.classList.contains("open")) closeDrawer();
+                else openDrawer();
+            });
+            backdrop.addEventListener("click", closeDrawer);
+            drawer.querySelectorAll("a").forEach(a => {
+                a.addEventListener("click", closeDrawer);
+            });
+            window.addEventListener("resize", () => {
+                if (window.innerWidth > 680) closeDrawer();
+            });
+        })();
 
         /* ---- 指标切换 ---- */
         FOCUS3.forEach(c => {
