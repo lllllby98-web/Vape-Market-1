@@ -1330,6 +1330,78 @@
             }
         }
 
+
+        /* ---- 耗材/硬件并列 + 中英文图例 + 渠道整行 ---- */
+        .sub-card h4 .h4-unit {
+            display: block;
+            margin-top: 3px;
+            font-weight: 500;
+            letter-spacing: .02em;
+            text-transform: none;
+            font-size: 10.5px;
+            color: var(--ink-faint);
+        }
+        .pie-legend .pl-item .pl-name {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            line-height: 1.3;
+        }
+        .pie-legend .pl-item .pl-name b {
+            font-weight: 600;
+            color: var(--ink);
+            font-size: 12.5px;
+        }
+        .pie-legend .pl-item .pl-name i {
+            font-style: normal;
+            font-size: 10.5px;
+            color: var(--ink-faint);
+        }
+        .pie-legend .pl-item .pl-pct {
+            text-align: right;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+        .pie-legend .pl-item .pl-pct em {
+            display: block;
+            font-style: normal;
+            color: var(--ink-dim);
+            font-weight: 600;
+        }
+        .pie-legend { gap: 7px; }
+        .focus-grid-2 .viz-summary { margin-top: auto; }
+        .focus-grid-2 .pie-wrap { margin-bottom: 14px; }
+        .sub-card-wide .chan-content {
+            flex-direction: row;
+            align-items: stretch;
+            gap: 32px;
+        }
+        .sub-card-wide .chan-content .chan-chart-wrap {
+            flex: 1.3;
+            min-width: 0;
+            height: 170px;
+        }
+        .sub-card-wide .channel-extras {
+            flex: 1;
+            min-width: 0;
+            align-content: center;
+            grid-template-columns: 1fr;
+            padding-top: 0;
+            padding-left: 32px;
+            border-top: none;
+            border-left: 1px solid var(--line-soft);
+        }
+        @media(max-width:820px) {
+            .sub-card-wide .chan-content { flex-direction: column; gap: 12px; }
+            .sub-card-wide .chan-content .chan-chart-wrap { flex: none; height: 140px; }
+            .sub-card-wide .channel-extras {
+                padding-left: 0;
+                padding-top: 12px;
+                border-left: none;
+                border-top: 1px solid var(--line-soft);
+            }
+        }
+
         /* ---- 产品类型占比模块：与"产品形态占比"模块保持一致的环形图+图例排版，但限制整体宽度避免拉伸 ---- */
         .pie-wrap-narrow {
             max-width: 420px;
@@ -2649,9 +2721,9 @@
                 <!-- 两列：产品形态 + 渠道分布 (重写) -->
                 <div class="subsec-head" id="sub-us-4-2"><span class="subsec-num" style="background:var(--us)">5.2</span><span class="subsec-title">产品形态与渠道分布</span></div>
                 <div class="focus-grid-2">
-                    <!-- 产品形态 -->
+                    <!-- 耗材 Consumables 构成 -->
                     <div class="sub-card">
-                        <h4>产品形态占比（2026年，用户份额）</h4>
+                        <h4>耗材 Consumables 构成<span class="h4-unit">USD million · 占该组合计比例</span></h4>
                         <div class="pie-wrap">
                             <div class="pie-canvas-wrap">
                                 <canvas id="formPie-United States"></canvas>
@@ -2660,28 +2732,29 @@
                         </div>
                         <div class="viz-summary" id="formInsight-United States"></div>
                     </div>
-                    <!-- 渠道分布 -->
+                    <!-- 硬件 Hardware 构成 -->
                     <div class="sub-card">
-                        <h4>零售渠道分布（用户份额）</h4>
-                        <div class="chan-content">
-                            <div class="chan-chart-wrap">
-                                <canvas id="chanChart-United States"></canvas>
+                        <h4>硬件 Hardware 构成<span class="h4-unit">USD million · 占该组合计比例</span></h4>
+                        <div class="pie-wrap">
+                            <div class="pie-canvas-wrap">
+                                <canvas id="formPie2-United States"></canvas>
                             </div>
-                            <div class="channel-extras" id="chanExtras-United States"></div>
+                            <div class="pie-legend" id="formPie2Legend-United States"></div>
                         </div>
-                        <div class="viz-summary" id="chanInsight-United States"></div>
+                        <div class="viz-summary" id="typeInsight-United States"></div>
                     </div>
                 </div>
 
-                <div class="sub-card" style="margin-top:20px;">
-                    <h4>产品类型占比（Hardware / Bottled e-liquid / Cartridges / Disposables，用户份额）</h4>
-                    <div class="pie-wrap pie-wrap-narrow">
-                        <div class="pie-canvas-wrap">
-                            <canvas id="formPie2-United States"></canvas>
+                <!-- 零售渠道分布 -->
+                <div class="sub-card sub-card-wide" style="margin-bottom:12px;">
+                    <h4>零售渠道分布（用户份额）</h4>
+                    <div class="chan-content">
+                        <div class="chan-chart-wrap">
+                            <canvas id="chanChart-United States"></canvas>
                         </div>
-                        <div class="pie-legend" id="formPie2Legend-United States"></div>
+                        <div class="channel-extras" id="chanExtras-United States"></div>
                     </div>
-                    <div class="viz-summary" id="typeInsight-United States"></div>
+                    <div class="viz-summary" id="chanInsight-United States"></div>
                 </div>
 
                 <!-- 主要品牌与产品 -->
@@ -2884,8 +2957,9 @@
 
                 <div class="subsec-head" id="sub-uk-4-2"><span class="subsec-num" style="background:var(--uk)">5.2</span><span class="subsec-title">产品形态与渠道分布</span></div>
                 <div class="focus-grid-2">
+                    <!-- 耗材 Consumables 构成 -->
                     <div class="sub-card">
-                        <h4>产品形态占比（2026年，用户份额）</h4>
+                        <h4>耗材 Consumables 构成<span class="h4-unit">USD million · 占该组合计比例</span></h4>
                         <div class="pie-wrap">
                             <div class="pie-canvas-wrap">
                                 <canvas id="formPie-United Kingdom"></canvas>
@@ -2894,27 +2968,29 @@
                         </div>
                         <div class="viz-summary" id="formInsight-United Kingdom"></div>
                     </div>
+                    <!-- 硬件 Hardware 构成 -->
                     <div class="sub-card">
-                        <h4>零售渠道分布（用户份额）</h4>
-                        <div class="chan-content">
-                            <div class="chan-chart-wrap">
-                                <canvas id="chanChart-United Kingdom"></canvas>
+                        <h4>硬件 Hardware 构成<span class="h4-unit">USD million · 占该组合计比例</span></h4>
+                        <div class="pie-wrap">
+                            <div class="pie-canvas-wrap">
+                                <canvas id="formPie2-United Kingdom"></canvas>
                             </div>
-                            <div class="channel-extras" id="chanExtras-United Kingdom"></div>
+                            <div class="pie-legend" id="formPie2Legend-United Kingdom"></div>
                         </div>
-                        <div class="viz-summary" id="chanInsight-United Kingdom"></div>
+                        <div class="viz-summary" id="typeInsight-United Kingdom"></div>
                     </div>
                 </div>
 
-                <div class="sub-card" style="margin-top:20px;">
-                    <h4>产品类型占比（Hardware / Bottled e-liquid / Cartridges / Disposables，用户份额）</h4>
-                    <div class="pie-wrap pie-wrap-narrow">
-                        <div class="pie-canvas-wrap">
-                            <canvas id="formPie2-United Kingdom"></canvas>
+                <!-- 零售渠道分布 -->
+                <div class="sub-card sub-card-wide" style="margin-bottom:12px;">
+                    <h4>零售渠道分布（用户份额）</h4>
+                    <div class="chan-content">
+                        <div class="chan-chart-wrap">
+                            <canvas id="chanChart-United Kingdom"></canvas>
                         </div>
-                        <div class="pie-legend" id="formPie2Legend-United Kingdom"></div>
+                        <div class="channel-extras" id="chanExtras-United Kingdom"></div>
                     </div>
-                    <div class="viz-summary" id="typeInsight-United Kingdom"></div>
+                    <div class="viz-summary" id="chanInsight-United Kingdom"></div>
                 </div>
 
                 <!-- 主要品牌与产品 -->
@@ -3131,8 +3207,9 @@
 
                 <div class="subsec-head" id="sub-de-4-2"><span class="subsec-num" style="background:var(--de)">5.2</span><span class="subsec-title">产品形态与渠道分布</span></div>
                 <div class="focus-grid-2">
+                    <!-- 耗材 Consumables 构成 -->
                     <div class="sub-card">
-                        <h4>产品形态占比（2026年，用户份额）</h4>
+                        <h4>耗材 Consumables 构成<span class="h4-unit">USD million · 占该组合计比例</span></h4>
                         <div class="pie-wrap">
                             <div class="pie-canvas-wrap">
                                 <canvas id="formPie-Germany"></canvas>
@@ -3141,27 +3218,29 @@
                         </div>
                         <div class="viz-summary" id="formInsight-Germany"></div>
                     </div>
+                    <!-- 硬件 Hardware 构成 -->
                     <div class="sub-card">
-                        <h4>零售渠道分布（用户份额）</h4>
-                        <div class="chan-content">
-                            <div class="chan-chart-wrap">
-                                <canvas id="chanChart-Germany"></canvas>
+                        <h4>硬件 Hardware 构成<span class="h4-unit">USD million · 占该组合计比例</span></h4>
+                        <div class="pie-wrap">
+                            <div class="pie-canvas-wrap">
+                                <canvas id="formPie2-Germany"></canvas>
                             </div>
-                            <div class="channel-extras" id="chanExtras-Germany"></div>
+                            <div class="pie-legend" id="formPie2Legend-Germany"></div>
                         </div>
-                        <div class="viz-summary" id="chanInsight-Germany"></div>
+                        <div class="viz-summary" id="typeInsight-Germany"></div>
                     </div>
                 </div>
 
-                <div class="sub-card" style="margin-top:20px;">
-                    <h4>产品类型占比（Hardware / Bottled e-liquid / Cartridges / Disposables，用户份额）</h4>
-                    <div class="pie-wrap pie-wrap-narrow">
-                        <div class="pie-canvas-wrap">
-                            <canvas id="formPie2-Germany"></canvas>
+                <!-- 零售渠道分布 -->
+                <div class="sub-card sub-card-wide" style="margin-bottom:12px;">
+                    <h4>零售渠道分布（用户份额）</h4>
+                    <div class="chan-content">
+                        <div class="chan-chart-wrap">
+                            <canvas id="chanChart-Germany"></canvas>
                         </div>
-                        <div class="pie-legend" id="formPie2Legend-Germany"></div>
+                        <div class="channel-extras" id="chanExtras-Germany"></div>
                     </div>
-                    <div class="viz-summary" id="typeInsight-Germany"></div>
+                    <div class="viz-summary" id="chanInsight-Germany"></div>
                 </div>
 
                 <!-- 主要品牌与产品 -->
@@ -5375,13 +5454,13 @@
             "Germany": { years: [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
             vals: [1500000, 1750000, 1900000, 1650000, 1700000, 2100000, 2500000, 2800000, 3000000, 3200000, 3350000] }
         };
-        const FORM_DATA = {
-            "United States": { labels: ["Basic kits", "Open pod systems", "Advanced Kits", "Prefilled pod systems", "Disposables"],
-            vals: [8, 19, 6, 25, 42] },
-            "United Kingdom": { labels: ["Basic kits", "Open pod systems", "Advanced kits", "Prefilled pod systems", "Disposables"],
-            vals: [12, 34, 11, 35, 8] },
-            "Germany": { labels: ["Basic kits", "Open pod systems", "Advanced kits", "Prefilled pod systems", "Disposables"],
-            vals: [10, 33, 14, 31, 12] }
+        /* 单位：USD million；cn 为中文对应名称 */
+        const FORM_DATA = {"United States": {"labels": ["Bottled e-liquid", "Pre-filled pods", "Disposables"], "cn": ["瓶装烟油", "预充注烟弹", "一次性电子烟"], "vals": [7.0, 36.6, 56.4], "amts": [955, 5024, 7751], "total": 13730, "share": 94.2}, "United Kingdom": {"labels": ["Bottled e-liquid", "Pre-filled pods", "Disposables"], "cn": ["瓶装烟油", "预充注烟弹", "一次性电子烟"], "vals": [30.9, 54.8, 14.3], "amts": [473, 839, 219], "total": 1531, "share": 83.0}, "Germany": {"labels": ["Bottled e-liquid", "Pre-filled pods", "Disposables"], "cn": ["瓶装烟油", "预充注烟弹", "一次性电子烟"], "vals": [41.4, 38.5, 20.1], "amts": [597, 554, 289], "total": 1440, "share": 86.8}};
+        /* 饼图配色：Consumables（3类）按国家取3个对比度足够的色阶 */
+        const CONS_COLORS = {
+            "United States": ["#5A9CD4", "#2A66B5", "#0D3A6E"],
+            "United Kingdom": ["#E07070", "#B83030", "#701B1B"],
+            "Germany": ["#5FAA85", "#2E7D5A", "#184A35"]
         };
         const CHAN_DATA = {
             "United States": { labels: ["线下专卖店", "其他线下渠道", "线上渠道"], vals: [10, 70, 20] },
@@ -5391,13 +5470,10 @@
         const FORM_COLORS = ["#5B8DB8", "#1A56A0", "#0D3A6E", "#7BB3D4", "#A0C4E0"];
         const CHAN_COLORS = ["#2E7D5A", "#5FAA85", "#A8D5BE"];
 
-        /* ---- 三国产品形态对比（Hardware / Bottled e-liquid / Cartridges / Disposables） ---- */
-        const FORM_COMPARE_LABELS = ["Hardware with no liquid", "Bottled e-liquid", "Cartridges", "Disposables"];
-        const FORM_COMPARE_DATA = {
-            "Germany": [13, 36, 33, 17],
-            "United Kingdom": [17, 26, 45, 12],
-            "United States": [6, 7, 53, 34]
-        };
+        /* ---- 三国 Hardware 构成（Basic open system / Open pod system / Advanced open system / Pre-filled pod kits / Other hardware） ---- */
+        const FORM_COMPARE_LABELS = ["Basic open system", "Open pod system", "Advanced open system", "Pre-filled pod kits", "Other hardware"];
+        const FORM_COMPARE_CN = ["基础开放式设备", "开放式换弹设备", "进阶开放式设备", "预充注烟弹套装", "其他硬件"];
+        const FORM_COMPARE_DATA = {"United States": {"vals": [6.6, 9.8, 10.5, 13.4, 59.7], "amts": [56, 83, 89, 113, 505], "total": 846, "share": 5.8}, "United Kingdom": {"vals": [11.5, 18.8, 15.9, 12.1, 41.7], "amts": [36, 59, 50, 38, 131], "total": 314, "share": 17.0}, "Germany": {"vals": [7.3, 13.7, 21.9, 6.4, 50.7], "amts": [16, 30, 48, 14, 111], "total": 219, "share": 13.2}};
 
         const CHAN_EXTRAS = {
             "United States": {
@@ -5480,15 +5556,14 @@ function renderFormLegend(c) {
         "Germany": ["#2E7D5A", "#5FAA85", "#8CC4A8", "#B0D8C0", "#D0E8D8"]
     };
 
-    const colors = countryFormColors[c] || ["#5B8DB8", "#1A56A0", "#0D3A6E", "#7BB3D4", "#A0C4E0"];
+    const colors = CONS_COLORS[c];
 
-    el.innerHTML = d.labels.map((lbl, i) => `
-        <div class="pl-item">
+    const CNS = d.cn, LBL = d.labels, AMT = d.amts, VAL = d.vals;
+    el.innerHTML = LBL.map((lbl, i) => `<div class="pl-item">
             <span class="pl-dot" style="background:${colors[i]}"></span>
-            ${lbl}
-            <span class="pl-pct">${d.vals[i]}%</span>
-        </div>
-    `).join("");
+            <span class="pl-name"><b>${CNS[i]}</b><i>${LBL[i]}</i></span>
+            <span class="pl-pct"><em>$${AMT[i].toLocaleString()}M</em>${VAL[i].toFixed(1)}%</span>
+        </div>`).join("");
 }
 
         /* ---- 渲染渠道额外信息 ---- */
@@ -5507,11 +5582,7 @@ function renderFormLegend(c) {
         FOCUS3.forEach(c => renderChanExtras(c));
 
         /* ---- 产品形态 / 渠道分布 各自的洞察文字 ---- */
-        const FORM_INSIGHT = {
-            "United States": "📌 一次性电子烟占<b>42%</b>，三国中最高，是FDA当前执法重点品类，也是美国监管风险最集中的产品线；预充式pod（25%）为第二大形态，开放式系统合计占比不足三分之一，说明美国用户更偏向“开箱即用”的便捷产品，而非可自行加注烟油的开放系统。",
-            "United Kingdom": "📌 受2025年一次性禁令直接冲击，产品结构已转向<b>预充式pod（35%）与开放式pod（34%）</b>并列主导，一次性占比骤降至仅8%，是三国中最低；这也印证了政策对产品形态的直接塑造作用——需求并未消失，而是被迫转移到替代品类。",
-            "Germany": "📌 德国产品结构三国中<b>最均衡</b>：开放式pod（33%）与预充式pod（31%）并重，一次性仅占12%，基础开放系统与进阶开放系统合计也有24%；这种结构使德国面对未来可能的一次性禁令冲击时，抗风险能力明显强于美英两国。"
-        };
+        const FORM_INSIGHT = {"United States": "📌 美国耗材合计<b>$13,730M</b>，占该国总额的<b>94.2%</b>；<b>一次性电子烟 Disposables（$7,751M，56.4%）</b>为最大品类，预充注烟弹 Pre-filled pods（$5,024M，36.6%）次之，瓶装烟油 Bottled e-liquid 仅7.0%，是三国中一次性占耗材比重最高的市场。<br><span style='color:var(--ink-faint);font-size:11.5px'>注：金额单位 USD million；占比为各分项占该组合计的比例；分项四舍五入，合计与EC原表可能有±1的差异。数据来源：EC数据库。</span>", "United Kingdom": "📌 英国耗材合计<b>$1,531M</b>，占总额的<b>83.0%</b>；<b>预充注烟弹 Pre-filled pods（$839M，54.8%）</b>占过半，瓶装烟油 Bottled e-liquid（$473M，30.9%）次之，一次性电子烟 Disposables 仅$219M（14.3%），是三国中一次性占耗材比重最低的市场。<br><span style='color:var(--ink-faint);font-size:11.5px'>注：金额单位 USD million；占比为各分项占该组合计的比例；分项四舍五入，合计与EC原表可能有±1的差异。数据来源：EC数据库。</span>", "Germany": "📌 德国耗材合计<b>$1,440M</b>，占总额的<b>86.8%</b>；三国中唯一由<b>瓶装烟油 Bottled e-liquid（$597M，41.4%）</b>排名第一，预充注烟弹 Pre-filled pods（$554M，38.5%）紧随其后，一次性电子烟 Disposables 为$289M（20.1%）。<br><span style='color:var(--ink-faint);font-size:11.5px'>注：金额单位 USD million；占比为各分项占该组合计的比例；分项四舍五入，合计与EC原表可能有±1的差异。数据来源：EC数据库。</span>"};
         const CHAN_INSIGHT = {
             "United States": "📌 渠道高度集中在<b>其他线下渠道（便利店/加油站等，70%）</b>，专卖店占比仅10%为三国最低；线上流量中91%流向本土网站，是三国中本土化程度最高的市场，反映美国雾化烟消费高度依赖高频、低门槛的零散线下触点，而非专业渠道教育。",
             "United Kingdom": "📌 专卖店渠道占比<b>37%</b>，为三国最高，与英国4,000家线下专卖店的密集网络相符；线上流量96%集中在本土网站，生态最为封闭——这也解释了为何一次性禁令等监管冲击对英国市场的短期扰动最为剧烈，本土渠道对冲击的缓冲空间有限。",
@@ -5588,23 +5659,20 @@ function renderFormLegend(c) {
         }
         FOCUS3.forEach(c => buildChanChart(c));
 
-        /* ---- 产品类型占比环形图（Hardware / Bottled e-liquid / Cartridges / Disposables）—— 完全参照"产品形态占比"模块的环形图+图例排版 ---- */
+        /* ---- Hardware 构成环形图（5类细分）—— 与 Consumables 环形图保持一致的环形图+图例排版 ---- */
         const formPie2Charts = {};
         const TYPE_COLORS = {
-            "United States": ["#1A56A0", "#3A7BC8", "#5A9CD4", "#7ABDE0"],
-            "United Kingdom": ["#B83030", "#D45A5A", "#E88A8A", "#F0B0B0"],
-            "Germany": ["#2E7D5A", "#5FAA85", "#8CC4A8", "#B0D8C0"]
+            "United States": ["#5A9CD4", "#3A7BC8", "#2A66B5", "#1A56A0", "#0D3A6E"],
+            "United Kingdom": ["#D45A5A", "#C84545", "#B83030", "#962424", "#701B1B"],
+            "Germany": ["#5FAA85", "#46966F", "#2E7D5A", "#226347", "#184A35"]
         };
-        const TYPE_INSIGHT = {
-            "United States": "📌 美国产品类型高度集中于<b>Cartridges（53%）与Disposables（34%）</b>，两者合计占比达87%，瓶装烟油与裸机合计不足15%，说明美国用户几乎只为“预填充、即插即用”的产品付费。",
-            "United Kingdom": "📌 <b>Cartridges（45%）</b>是英国绝对主导品类，瓶装烟油（26%）为第二位；受一次性禁令冲击，Disposables占比已降至12%，与4.2中一次性设备份额骤降的趋势相互印证。",
-            "Germany": "📌 德国是三国中唯一由<b>瓶装烟油（36%）</b>领先于Cartridges（33%）的市场，DIY自加注文化更浓厚，Disposables占比（17%）也高于英国，产品结构明显更偏“开放式”。"
-        };
+        const TYPE_INSIGHT = {"United States": "📌 美国硬件合计<b>$846M</b>，仅占该国总额的<b>5.8%</b>，为三国最低；<b>其他硬件 Other hardware（$505M，59.7%）</b>占近六成，预充注烟弹套装 Pre-filled pod kits（$113M，13.4%）次之。<br><span style='color:var(--ink-faint);font-size:11.5px'>注：金额单位 USD million；占比为各分项占该组合计的比例；分项四舍五入，合计与EC原表可能有±1的差异。数据来源：EC数据库。</span>", "United Kingdom": "📌 英国硬件合计<b>$314M</b>，占总额的<b>17.0%</b>，为三国最高；<b>其他硬件 Other hardware（$131M，41.7%）</b>居首，开放式换弹设备 Open pod system（$59M，18.8%）次之，其余三类介于$36M–$50M之间。<br><span style='color:var(--ink-faint);font-size:11.5px'>注：金额单位 USD million；占比为各分项占该组合计的比例；分项四舍五入，合计与EC原表可能有±1的差异。数据来源：EC数据库。</span>", "Germany": "📌 德国硬件合计<b>$219M</b>，占总额的<b>13.2%</b>；<b>其他硬件 Other hardware（$111M，50.7%）</b>过半，进阶开放式设备 Advanced open system（$48M，21.9%）次之，预充注烟弹套装 Pre-filled pod kits 仅$14M（6.4%），为该国最小分项。<br><span style='color:var(--ink-faint);font-size:11.5px'>注：金额单位 USD million；占比为各分项占该组合计的比例；分项四舍五入，合计与EC原表可能有±1的差异。数据来源：EC数据库。</span>"};
 
         function buildFormPie2(c) {
             const ctx = document.getElementById("formPie2-" + c);
             if (!ctx) return;
-            const vals = FORM_COMPARE_DATA[c];
+            const hd = FORM_COMPARE_DATA[c];
+            const vals = hd.vals;
             const colors = TYPE_COLORS[c] || FORM_COLORS;
 
             if (formPie2Charts[c]) {
@@ -5614,7 +5682,7 @@ function renderFormLegend(c) {
             formPie2Charts[c] = new Chart(ctx, {
                 type: "doughnut",
                 data: {
-                    labels: FORM_COMPARE_LABELS,
+                    labels: FORM_COMPARE_LABELS.map((l, i) => FORM_COMPARE_CN[i] + " " + l),
                     datasets: [{
                         data: vals,
                         backgroundColor: colors,
@@ -5632,11 +5700,11 @@ function renderFormLegend(c) {
                             display: ctx => ctx.dataset.data[ctx.dataIndex] >= 7,
                             color: "#FFFFFF",
                             font: { family: "IBM Plex Mono", size: 11, weight: '700' },
-                            formatter: v => v + "%"
+                            formatter: v => v.toFixed(1) + "%"
                         },
                         tooltip: {
                             callbacks: {
-                                label: ctx => `${ctx.label}: ${ctx.parsed}%`
+                                label: ctx => `${ctx.label}: $${hd.amts[ctx.dataIndex].toLocaleString()}M · ${hd.vals[ctx.dataIndex].toFixed(1)}%`
                             }
                         }
                     }
@@ -5647,15 +5715,15 @@ function renderFormLegend(c) {
         function renderFormPie2Legend(c) {
             const el = document.getElementById("formPie2Legend-" + c);
             if (!el) return;
-            const vals = FORM_COMPARE_DATA[c];
+            const hd = FORM_COMPARE_DATA[c];
+            const vals = hd.vals;
             const colors = TYPE_COLORS[c] || FORM_COLORS;
-            el.innerHTML = FORM_COMPARE_LABELS.map((lbl, i) => `
-                <div class="pl-item">
-                    <span class="pl-dot" style="background:${colors[i]}"></span>
-                    ${lbl}
-                    <span class="pl-pct">${vals[i]}%</span>
-                </div>
-            `).join("");
+            const CNS = FORM_COMPARE_CN, LBL = FORM_COMPARE_LABELS, AMT = hd.amts, VAL = vals;
+            el.innerHTML = LBL.map((lbl, i) => `<div class="pl-item">
+            <span class="pl-dot" style="background:${colors[i]}"></span>
+            <span class="pl-name"><b>${CNS[i]}</b><i>${LBL[i]}</i></span>
+            <span class="pl-pct"><em>$${AMT[i].toLocaleString()}M</em>${VAL[i].toFixed(1)}%</span>
+        </div>`).join("");
             const iEl = document.getElementById("typeInsight-" + c);
             if (iEl) iEl.innerHTML = TYPE_INSIGHT[c] || "";
         }
@@ -5802,10 +5870,10 @@ function buildFormPie(c) {
     formCharts[c] = new Chart(ctx, {
         type: "doughnut",
         data: {
-            labels: d.labels,
+            labels: d.labels.map((l, i) => d.cn[i] + " " + l),
             datasets: [{
                 data: d.vals,
-                backgroundColor: countryFormColors[c] || ["#5B8DB8", "#1A56A0", "#0D3A6E", "#7BB3D4", "#A0C4E0"],
+                backgroundColor: CONS_COLORS[c],
                 borderColor: "#FFFFFF",
                 borderWidth: 2
             }]
@@ -5820,7 +5888,7 @@ function buildFormPie(c) {
                     display: ctx => ctx.dataset.data[ctx.dataIndex] >= 7,
                     color: "#FFFFFF",
                     font: { family: "IBM Plex Mono", size: 10.5, weight: '600' },
-                    formatter: v => v + "%"
+                    formatter: v => v.toFixed(1) + "%"
                 },
                 tooltip: {
                     backgroundColor: "#FFFFFF",
@@ -5831,7 +5899,7 @@ function buildFormPie(c) {
                     bodyColor: "#4B4C4E",
                     titleFont: { family: "IBM Plex Mono", size: 11.5 },
                     bodyFont: { family: "IBM Plex Mono", size: 11 },
-                    callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}%` }
+                    callbacks: { label: ctx => ` ${ctx.label}: $${FORM_DATA[c].amts[ctx.dataIndex].toLocaleString()}M · ${FORM_DATA[c].vals[ctx.dataIndex].toFixed(1)}%` }
                 }
             }
         }
